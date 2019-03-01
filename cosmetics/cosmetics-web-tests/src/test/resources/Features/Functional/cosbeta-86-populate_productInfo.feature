@@ -9,7 +9,7 @@ I shoud be able populate from a file import
 @regression
 Scenario:Verify add product by file import
 Given I login user as
-|nasiralikhan1982@gmail.com|Test@123|
+|user|pwd|
 And I click on "Show my cosmetic products"
 And I click on "Try uploading files again"
 And I upload file "example-cpnp-export.zip"
