@@ -1,8 +1,11 @@
 package uk.gov.beis.cosmetics.pagemodel;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import static org.junit.Assert.assertTrue;
+import src.main.java.uk.gov.beis.digital.*;
+
 
 public class AddProductPage extends BasePage {
 	private  WebDriver driver;

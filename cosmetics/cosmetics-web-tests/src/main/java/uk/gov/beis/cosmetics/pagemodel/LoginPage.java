@@ -1,4 +1,5 @@
 package uk.gov.beis.cosmetics.pagemodel;
+import src.main.java.uk.gov.beis.digital.*;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

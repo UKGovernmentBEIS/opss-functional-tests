@@ -1,4 +1,4 @@
-package uk.gov.beis.cosmetics.pagemodel;
+package src.main.java.uk.gov.beis.digital;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import static org.junit.Assert.assertTrue;
-import uk.gov.beis.cosmetics.Utils.AppProperties;
+
 
 /**
  * @
@@ -19,7 +19,7 @@ import uk.gov.beis.cosmetics.Utils.AppProperties;
  */
 public class BasePage {
 	private WebDriver driver;
-	private String envurl = AppProperties.get("envurl");
+	//private String envurl = AppProperties.get("envurl");
 
 	protected SearchContext getSearchCtx() {
 		return driver;
@@ -29,14 +29,14 @@ public class BasePage {
 		this.driver = driver;
 	}
 
-	public void launch_app() throws InterruptedException {
-		driver.get(envurl);
+	public void launch_app(String url) throws InterruptedException {
+		
 		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
 
 	public void gotoLogin() {
-		driver.navigate().to(envurl + "ui-login/login");
+		
 	}
 
 	public WebElement find(By locator) {

@@ -7,8 +7,9 @@ import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import uk.gov.beis.cosmetics.Utils.AppProperties;
 import uk.gov.beis.cosmetics.pagemodel.AddProductPage;
-import uk.gov.beis.cosmetics.pagemodel.BasePage;
+import src.main.java.uk.gov.beis.digital.*;
 import uk.gov.beis.cosmetics.pagemodel.LoginPage;
 
 public class GivenSteps extends SharedWebDriver {
@@ -16,7 +17,7 @@ public class GivenSteps extends SharedWebDriver {
 	private static WebDriver driver;
 	LoginPage loginPge;
 	AddProductPage addProd;
-	
+	String env = AppProperties.get("envurl");
 	public GivenSteps(SharedWebDriver driver)
 	{
 		this.driver  = driver;
@@ -26,7 +27,7 @@ public class GivenSteps extends SharedWebDriver {
 	}
 	@Given("^I upload a valid file$")
 	public void i_upload_a_valid_file() throws Throwable {
-		loginPge.launch_app();
+		loginPge.launch_app(env);
 		loginPge.verifyPageTitle("Landing Page - Cosmetics Portal");
 		loginPge.login_as("nasiralikhan1982@gmail.com", "Test@123");   
 	}
@@ -42,7 +43,8 @@ public class GivenSteps extends SharedWebDriver {
 	}
 	@Given("^I login user as$")
 	public void i_login_user_as(DataTable arg1) throws Throwable {
-		loginPge.launch_app();
+		loginPge.launch_app(env);
+		Thread.sleep(3000);
 		loginPge.verifyPageTitle("Landing Page - Cosmetics Portal");
 	    loginPge.login_user(arg1);
 	}
