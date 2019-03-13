@@ -1,9 +1,13 @@
 package uk.gov.beis.cosmetics.stepdefs;
 
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.PageFactory;
 
 import cucumber.api.DataTable;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -11,6 +15,7 @@ import uk.gov.beis.cosmetics.Utils.AppProperties;
 import uk.gov.beis.cosmetics.pagemodel.AddProductPage;
 import src.main.java.uk.gov.beis.digital.*;
 import uk.gov.beis.cosmetics.pagemodel.LoginPage;
+import org.openqa.selenium.TakesScreenshot;
 
 public class GivenSteps extends SharedWebDriver {
 	
@@ -74,7 +79,37 @@ public class GivenSteps extends SharedWebDriver {
 	    
 	}
 
-	
-	
+	@When("^I upload \"(.*?)\"$")
+	public void i_upload(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+		addProd.add_notification_file(arg1);
+		Thread.sleep(5000);
+	}
+
+	@Then("^I should see respective error\"(.*?)\"$")
+	public void i_should_see_respective_error(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	addProd.validate_notification_error(arg1);
+	}
+
+	@After()
+    /**
+     * Embed a screenshot in test report if test is marked as failed
+     */
+    public void embedScreenshot(Scenario scenario) {
+
+        if (scenario.isFailed()) {
+            try {
+                scenario.write("Current Page URL is " + driver.getCurrentUrl());
+                // byte[] screenshot = getScreenshotAs(OutputType.BYTES);
+                byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+                scenario.embed(screenshot, "image/png");
+            } catch (WebDriverException somePlatformsDontSupportScreenshots) {
+                System.err.println(somePlatformsDontSupportScreenshots.getMessage());
+            }
+
+        }
+
+    }
 
 }

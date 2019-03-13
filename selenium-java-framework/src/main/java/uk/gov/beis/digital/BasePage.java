@@ -7,19 +7,25 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import static org.junit.Assert.assertTrue;
 
-
 /**
- * @
- * @author nasirkhan
- * @
+ * @ @author nasirkhan @
  *
  */
 public class BasePage {
 	private WebDriver driver;
-	//private String envurl = AppProperties.get("envurl");
+	private WebDriverWait wait;
+	private static final int TIMEOUT = 5;
+	private static final int POLLING = 50;
+	By cases = By.cssSelector("#h1.govuk-heading-xl");
 
 	protected SearchContext getSearchCtx() {
 		return driver;
@@ -27,22 +33,38 @@ public class BasePage {
 
 	public BasePage(WebDriver driver) {
 		this.driver = driver;
+		wait = new WebDriverWait(driver, TIMEOUT, POLLING);
+		PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);
 	}
 
 	public void launch_app(String url) throws InterruptedException {
-		
+
 		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+		driver.navigate().to(url);
 		driver.manage().window().maximize();
 	}
+	
+	public void got_to(String page_url)
+	{
+		driver.navigate().to(page_url);
+	}
 
-	public void gotoLogin() {
-		
+	protected void waitForElementToLoad(By locator) {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
 	public WebElement find(By locator) {
+		
 		return driver.findElement(locator);
-	}
+		}
+		
 
+	public void open_mspsds_case(String title)
+	{
+		driver.findElement(By.linkText(title)).click();
+	   // this.waitForElementToLoad(cases);
+	}
+	
 	public List<WebElement> findelements(By locator) {
 		return driver.findElements(locator);
 	}
@@ -118,27 +140,23 @@ public class BasePage {
 		return flag;
 	}
 
-	 public void click_by_text(String text)
-	 {
-		try{
-		 driver.findElement(By.xpath("//a[contains(.,'"+text+"')]")).click();
-		}
-		catch(Exception e)
-		{
+	public void click_by_text(String text) {
+		try {
+			driver.findElement(By.xpath("//a[contains(.,'" + text + "')]")).click();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	 }
-	 
-	 
-	public void file_upload(By locator,String file)
-	{
+	}
+
+	public void file_upload(By locator, String file) {
 		String testFile;
-		testFile = System.getProperty("properties",System.getProperty("user.dir") + "/src/test/resources/testdata/" + file);
+		testFile = System.getProperty("properties",
+				System.getProperty("user.dir") + "/src/test/resources/testdata/" + file);
 		System.out.println(testFile);
 		WebElement uploadElement = this.find(locator);
 		uploadElement.sendKeys(testFile);
 	}
-	 
+
 	public void highlightElements(By locator) throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		WebElement element = find(locator);
