@@ -22,6 +22,7 @@ public class LoginPage extends BasePage {
 
 	public LoginPage(WebDriver driver) {
 		super(driver);
+		this.driver=driver;
 		
 	}
 	
@@ -29,11 +30,14 @@ public class LoginPage extends BasePage {
 	{
 		List<List<String>> data = login_details.raw();
 		//this.click(signIn_link);
+		if(!driver.getPageSource().contains("Sign out"))
+		{
 		this.type(UserNameFld,data.get(0).get(0));
 		this.type(PasswordFld,data.get(0).get(1));
 		this.click(login_button);
 		Thread.sleep(4000);
 		assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));
+		}
 		
 	}
 }
