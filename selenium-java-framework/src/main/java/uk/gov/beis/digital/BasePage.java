@@ -139,7 +139,81 @@ public class BasePage {
 		}
 		return flag;
 	}
+	
+	public boolean IsElementDisplayed(WebElement findElement) throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 
+		boolean flag;
+
+		if ((findElement).isDisplayed()) {
+
+			WebElement element = findElement;
+			js.executeScript("arguments[0].style.border='3px solid red'", element);
+			Thread.sleep(2000);
+			flag = true;
+		} else {
+			flag = false;
+		}
+		return flag;
+	}
+ /**
+  * @param text
+  * @return
+  */
+	
+   public boolean verify_page_header1(String title)
+   {
+
+		boolean flag= false;
+		if(driver.findElement(By.cssSelector("h1.govuk-heading-xl")).getText().equals(title))
+		return flag=true;
+		else 
+		{
+			return flag=false;
+		}
+   }
+	
+	public boolean verify_element_by_text(String text)
+	{
+		boolean flag= false;
+		if(driver.findElement(By.xpath("//a[contains(.,'" + text + "')]")).getText().equals(text))
+		return flag=true;
+		else 
+		{
+			return flag=false;
+		}
+	}
+	/**
+	 * 
+	 * @param radio button text
+	 * @returns true if radio button exist
+	 */
+	
+	public boolean verify_radio_button_by_text(String text)
+	{
+		boolean flag=false;
+		if(driver.findElement(By.xpath("//label[contains(.,'"+ text + "')]")).getText().equals(text))
+		return true;
+		else{
+			return flag=false;
+		}
+	}
+	
+	/**
+	 * 
+	 * @param radio button text
+	 */
+	public void select_radio_button_by_text(String text)
+	{
+	 try{
+		 driver.findElement(By.xpath("//label[contains(.,'"+ text + "')]")).getText().equals(text);
+	 }
+	 catch (Exception e) {
+			e.printStackTrace();
+	 }
+		
+	}
+	
 	public void click_by_text(String text) {
 		try {
 			driver.findElement(By.xpath("//a[contains(.,'" + text + "')]")).click();
@@ -156,7 +230,7 @@ public class BasePage {
 		WebElement uploadElement = this.find(locator);
 		uploadElement.sendKeys(testFile);
 	}
-
+	
 	public void highlightElements(By locator) throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		WebElement element = find(locator);
