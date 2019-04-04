@@ -16,6 +16,7 @@ import uk.gov.beis.cosmetics.pagemodel.AddProductPage;
 import src.main.java.uk.gov.beis.digital.*;
 import uk.gov.beis.cosmetics.pagemodel.LoginPage;
 import org.openqa.selenium.TakesScreenshot;
+import static org.junit.Assert.assertTrue;
 
 public class GivenSteps extends SharedWebDriver {
 	
@@ -50,7 +51,7 @@ public class GivenSteps extends SharedWebDriver {
 	public void i_login_user_as(DataTable arg1) throws Throwable {
 		loginPge.launch_app(env);
 		Thread.sleep(3000);
-		loginPge.verifyPageTitle("Landing Page - Cosmetics Portal");
+		loginPge.verifyPageTitle("Landing Page - Submit cosmetic product notifications");
 	    loginPge.login_user(arg1);
 	}
 
@@ -91,7 +92,35 @@ public class GivenSteps extends SharedWebDriver {
 	    // Write code here that turns the phrase above into concrete actions
 	addProd.validate_notification_error(arg1);
 	}
+	
+	@Then("^I should see \"(.*?)\"$")
+	public void i_should_see(String arg1) throws Throwable {
+	  assertTrue("Failed:Not on expected page",addProd.verify_cosmetic_page_header1(arg1)) ;
+	}
 
+	@When("^I click \"(.*?)\"$")
+	public void i_click(String arg1) throws Throwable {
+	  addProd.select_radio_button_by_text(arg1);
+	  addProd.click_continue();
+	  Thread.sleep(3000);
+	}
+	
+	@Given("^I login user as notify user$")
+	public void i_login_user_as_notify_user(DataTable arg1) throws Throwable {
+		loginPge.launch_app(env);
+		Thread.sleep(3000);
+		loginPge.verifyPageTitle("Landing Page - Submit cosmetic product notifications");
+	    loginPge.login_user(arg1);
+	}
+
+	@Then("^I should see landing page$")
+	public void i_should_see_landing_page() throws Throwable {
+		//assertTrue("Failed:Landing page not loaded",loginPge.verify_page_header1("Your cosmetic products"));
+	    assertTrue("Failed: Landing page not loaded",loginPge.verify_element_by_text("Your cosmetic products"));
+	}
+
+
+	
 	@After()
     /**
      * Embed a screenshot in test report if test is marked as failed

@@ -26,6 +26,7 @@ public class AddProductPage extends BasePage {
 	By reason_error = By.xpath("(//td[contains(@class,'govuk-table__cell')])[2]");
 	By notification_check_status = By.xpath("//a[contains(.,'Refresh the browser to see uploaded products')]");
 	By dismiss_error = By.xpath("(//input[@type='submit'])[2]");
+	By page_header = By.xpath("//h1[@class='govuk-fieldset__heading']");
 	
 	
 	public void login_as(String user,String pwd) throws InterruptedException
@@ -35,6 +36,19 @@ public class AddProductPage extends BasePage {
 	  assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));
 	  
 	}
+	
+	
+	public boolean verify_cosmetic_page_header1(String title)
+	   {
+
+			boolean flag= false;
+			if(driver.findElement(page_header).getText().equals(title))
+			return flag=true;
+			else 
+			{
+				return flag=false;
+			}
+	   }
 	
 	public void add_notification_file(String file) throws InterruptedException
 	{

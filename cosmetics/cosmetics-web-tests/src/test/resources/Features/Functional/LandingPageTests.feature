@@ -1,19 +1,13 @@
-
-#Sample Feature Definition Template
-@tag
-Feature: Bulk upload
-	As a user
-	In order to notify multiple products
-	I should be able to do bulk upload
+Feature: Validate Landing Page
 	
-	
-Scenario: File upload more than 100
-Given I login as 
+@nasir
+Scenario:Validate landing page
+Given I login user as notify user
 |nasiralikhan1982@gmail.com|Test@123|
-When I upload 101 files
-Then I should see error ""
+Then I should see landing page 
 
-Scenario: No file upload
+
+
 
 
 @tag1
