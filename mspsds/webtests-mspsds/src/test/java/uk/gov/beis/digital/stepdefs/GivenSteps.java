@@ -29,7 +29,7 @@ public class GivenSteps {
 		login_pge.launch_app(env);
 		Thread.sleep(5000);
 		login_pge.login_user(arg1);
-		login_pge.verifyPageTitle("Cases - Market Surveillance & Product Safety");
+		login_pge.verifyPageTitle("Cases - Product safety database - GOV.UK");
 		
 	}
 

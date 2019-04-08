@@ -26,6 +26,7 @@ public class BasePage {
 	private static final int TIMEOUT = 5;
 	private static final int POLLING = 50;
 	By cases = By.cssSelector("#h1.govuk-heading-xl");
+	By banner_message = By.xpath("//div[@class='hmcts-banner__message']");
 
 	protected SearchContext getSearchCtx() {
 		return driver;
@@ -51,6 +52,12 @@ public class BasePage {
 
 	protected void waitForElementToLoad(By locator) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+	
+	public void verify_banner_message(String message)
+	{
+		assertTrue("Failed: Expected notification" + message + " did not match to actual  ",find(banner_message).getText().equals(message));
+			
 	}
 
 	public WebElement find(By locator) {
@@ -199,6 +206,11 @@ public class BasePage {
 		}
 	}
 	
+	public void click_continue()
+	{
+		driver.findElement(By.xpath("//input[@value='Continue']")).click();
+	}
+	
 	/**
 	 * 
 	 * @param radio button text
@@ -206,7 +218,7 @@ public class BasePage {
 	public void select_radio_button_by_text(String text)
 	{
 	 try{
-		 driver.findElement(By.xpath("//label[contains(.,'"+ text + "')]")).getText().equals(text);
+		 driver.findElement(By.xpath("//label[contains(.,'"+ text + "')]")).click();
 	 }
 	 catch (Exception e) {
 			e.printStackTrace();

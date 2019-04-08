@@ -2,6 +2,7 @@ package uk.gov.beis.cosmetics.pagemodel;
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import static org.junit.Assert.assertTrue;
 import src.main.java.uk.gov.beis.digital.*;
@@ -27,6 +28,12 @@ public class AddProductPage extends BasePage {
 	By notification_check_status = By.xpath("//a[contains(.,'Refresh the browser to see uploaded products')]");
 	By dismiss_error = By.xpath("(//input[@type='submit'])[2]");
 	By page_header = By.xpath("//h1[@class='govuk-fieldset__heading']");
+	By prod_name = By.xpath("//input[contains(@type,'text')]");
+	By prod_import_country = By.xpath("//input[@id='location-autocomplete']");
+	By prod_category = By.xpath("//select[@id='picker-sub_sub_category']");
+	By frame_formulation = By.xpath("//select[@id='picker-frame_formulation']");
+	By prod_UK_register = By.xpath("//div[@class='product']");
+	
 	
 	
 	public void login_as(String user,String pwd) throws InterruptedException
@@ -37,6 +44,25 @@ public class AddProductPage extends BasePage {
 	  
 	}
 	
+	public void enter_productname(String name)
+	{
+		this.type(prod_name, name);
+	}
+	
+	public void enter_country_imported_from(String country)
+	{
+		this.type(prod_import_country,country);
+		find(prod_import_country).sendKeys(Keys.ENTER);
+	}
+	public void select_frame_formulation(String formulation)
+	{
+		this.SelectItem(frame_formulation, formulation);
+	}
+	
+	public void select_prod_category(String cat)
+	{
+		this.SelectItem(prod_category, cat);
+	}
 	
 	public boolean verify_cosmetic_page_header1(String title)
 	   {

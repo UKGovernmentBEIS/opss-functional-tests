@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.PageFactory;
 
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
@@ -119,6 +120,92 @@ public class GivenSteps extends SharedWebDriver {
 	    assertTrue("Failed: Landing page not loaded",loginPge.verify_element_by_text("Your cosmetic products"));
 	}
 
+	@When("^I select to manual journey$")
+	public void i_select_to_manual_journey() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+		  addProd.select_radio_button_by_text("No, they have not been notified in the EU");
+		  addProd.click_continue();
+	      addProd.select_radio_button_by_text("No");
+	      addProd.click_continue();
+	}
+
+	@When("^I select imported into UK \"(.*?)\"$")
+	public void i_select_imported_into_UK(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    addProd.select_radio_button_by_text("Yes");
+	    addProd.click_continue();
+	}
+
+	@When("^I select sold as single component \"(.*?)\"$")
+	public void i_select_sold_as_single_component(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    addProd.select_radio_button_by_text(arg1);
+	    addProd.click_continue();
+	}
+
+	@When("^I select cosmetic sold as more than one shade \"(.*?)\"$")
+	public void i_select_cosmetic_sold_as_more_than_one_shade(String arg1) throws Throwable {
+	   addProd.select_radio_button_by_text(arg1);
+	   addProd.click_continue();
+	}
+
+	
+
+	@When("^I select nanomaterials as \"(.*?)\"$")
+	public void i_select_nanomaterials_as(String arg1) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	   addProd.select_radio_button_by_text("No");
+	   addProd.click_continue();
+	}
+
+
+	@When("^I select image to upload$")
+	public void i_select_image_to_upload() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^I should successfully land on checkyour answers page$")
+	public void i_should_successfully_land_on_checkyour_answers_page() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+
+@When("^I enter product name\"(.*?)\"$")
+public void i_enter_product_name(String arg1) throws Throwable {
+    addProd.enter_productname(arg1);
+  
+}
+
+@When("^I enter country imported from\"(.*?)\"$")
+public void i_enter_country_imported_from(String arg1) throws Throwable {
+   addProd.enter_country_imported_from(arg1);
+   
+}
+
+@When("^I select product category\"(.*?)\"$")
+public void i_select_product_category(String arg1) throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    addProd.select_prod_category(arg1);
+  
+}
+
+@When("^I select formulation\"(.*?)\"$")
+public void i_select_formulation(String arg1) throws Throwable {
+  addProd.select_radio_button_by_text(arg1);
+}
+
+@When("^I select frame formulation\"(.*?)\"$")
+public void i_select_frame_formulation(String arg1) throws Throwable {
+	addProd.select_frame_formulation(arg1);
+}
+
+@Then("^I should see product name\"(.*?)\"$")
+public void i_should_see_product_name(String arg1) throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+}
 
 	
 	@After()

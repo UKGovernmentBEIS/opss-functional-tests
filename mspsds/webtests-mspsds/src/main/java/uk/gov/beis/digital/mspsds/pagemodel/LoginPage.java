@@ -17,7 +17,7 @@ public class LoginPage extends BasePage {
 	By UserNameFld = By.cssSelector("#username");
 	By PasswordFld = By.cssSelector("#password");
 	By login_button = By.cssSelector("#kc-login");
-	By signOut_link = By.xpath("//a[contains(text(),'Sign out')]");
+	By signOut_link = By.xpath("//input[@value='Sign out']");
 	By signIn_link = By.xpath("//a[text()='Sign in']");
 
 	public LoginPage(WebDriver driver) {

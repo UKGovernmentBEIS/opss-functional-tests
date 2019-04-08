@@ -1,5 +1,3 @@
-#Sample Feature Definition Template
-@tag
 Feature: Display prioritise teamslist
 	As an OPSS user
 	in order to assign a case

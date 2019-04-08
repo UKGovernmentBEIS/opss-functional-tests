@@ -1,6 +1,6 @@
 Feature: Validate Landing Page
 	
-@nasir
+@regression
 Scenario:Validate landing page
 Given I login user as notify user
 |nasiralikhan1982@gmail.com|Test@123|
