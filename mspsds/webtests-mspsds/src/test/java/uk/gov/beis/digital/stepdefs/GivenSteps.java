@@ -35,7 +35,7 @@ public class GivenSteps {
 
 	@When("^I want to assign any case$")
 	public void i_want_to_assign_any_case() throws Throwable {
-		login_pge.open_mspsds_case("Lasers – Fire/burn (no product specified)");
+		login_pge.open_mspsds_case("Fancy Dress – Penetrating force (no product specified)");
 		assignpge.click_change_assign();
 	    
 	}

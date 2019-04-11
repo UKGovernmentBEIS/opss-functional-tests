@@ -34,7 +34,9 @@ public class WhenSteps extends SharedWebDriver{
 
 	@Then("^I should see my team name \"(.*?)\" displayed$")
 	public void i_should_see_my_team_name_displayed(String arg1) throws Throwable {
+	
 	   dashpge.verify_element_by_text(arg1);
+		
 	   
 	}
 

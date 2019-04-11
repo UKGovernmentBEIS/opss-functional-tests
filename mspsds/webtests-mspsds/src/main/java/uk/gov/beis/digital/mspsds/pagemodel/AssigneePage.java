@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 
 public class AssigneePage extends BasePage {
 	By team_elements = By.xpath("//label[contains(@class,'label')]");
-	By change_assign = By.xpath("(//a[contains(.,'Change')])[2]");
+	By change_assign = By.xpath("(//a[contains(.,'Change')])");
 	
 	public AssigneePage(WebDriver driver) {
 		super(driver);

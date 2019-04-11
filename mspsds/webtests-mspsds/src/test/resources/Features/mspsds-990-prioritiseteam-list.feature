@@ -3,7 +3,7 @@ Feature: Display prioritise teamslist
 	in order to assign a case
 	I should be able see prioritse team list
 
-@regression
+@regression @fix
 Scenario: Verify priority list displayed
 Given I login as OPSS user
 |nasirkhan.beis@gmail.com|Nasir@123|

@@ -69,7 +69,7 @@ public class BasePage {
 	public void open_mspsds_case(String title)
 	{
 		driver.findElement(By.linkText(title)).click();
-	   // this.waitForElementToLoad(cases);
+	     this.waitForElementToLoad(cases);
 	}
 	
 	public List<WebElement> findelements(By locator) {
@@ -172,7 +172,7 @@ public class BasePage {
    {
 
 		boolean flag= false;
-		if(driver.findElement(By.cssSelector("h1.govuk-heading-xl")).getText().equals(title))
+		if(driver.findElement(By.cssSelector("h1.govuk-heading-l")).getText().equals(title))
 		return flag=true;
 		else 
 		{
