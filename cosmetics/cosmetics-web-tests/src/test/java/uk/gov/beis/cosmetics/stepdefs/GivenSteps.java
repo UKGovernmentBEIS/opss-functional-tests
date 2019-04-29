@@ -14,7 +14,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import uk.gov.beis.cosmetics.Utils.AppProperties;
 import uk.gov.beis.cosmetics.pagemodel.AddProductPage;
-import src.main.java.uk.gov.beis.digital.*;
+import uk.gov.beis.digital.*;
 import uk.gov.beis.cosmetics.pagemodel.LoginPage;
 import org.openqa.selenium.TakesScreenshot;
 import static org.junit.Assert.assertTrue;
