@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import src.main.java.uk.gov.beis.digital.BasePage;
+import uk.gov.beis.digital.BasePage;
 
 import static org.junit.Assert.assertTrue;
 
