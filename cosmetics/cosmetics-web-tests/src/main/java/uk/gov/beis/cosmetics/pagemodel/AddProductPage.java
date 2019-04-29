@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import static org.junit.Assert.assertTrue;
-import src.main.java.uk.gov.beis.digital.*;
+import uk.gov.beis.digital.*;
 
 
 public class AddProductPage extends BasePage {

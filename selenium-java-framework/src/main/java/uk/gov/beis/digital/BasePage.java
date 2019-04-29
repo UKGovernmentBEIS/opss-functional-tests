@@ -1,4 +1,4 @@
-package src.main.java.uk.gov.beis.digital;
+package uk.gov.beis.digital;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
