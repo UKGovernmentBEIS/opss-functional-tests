@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import cucumber.api.DataTable;
-import src.main.java.uk.gov.beis.digital.BasePage;
+import uk.gov.beis.digital.BasePage;
 import uk.gov.beis.digital.mspsds.Utils.AppProperties;
 
 
