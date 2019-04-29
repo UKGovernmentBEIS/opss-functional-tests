@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import cucumber.api.DataTable;
 import src.main.java.uk.gov.beis.digital.BasePage;
 
+
 public class LoginPage extends BasePage {
 	
 	private WebDriver driver;
@@ -17,7 +18,7 @@ public class LoginPage extends BasePage {
 	By UserNameFld = By.cssSelector("#username");
 	By PasswordFld = By.cssSelector("#password");
 	By login_button = By.cssSelector("#kc-login");
-	By signOut_link = By.xpath("//input[@value='Sign out']");
+	By signOut_link = By.xpath("//a[contains(text(),'Sign out')]");
 	By signIn_link = By.xpath("//a[text()='Sign in']");
 
 	public LoginPage(WebDriver driver) {
@@ -26,12 +27,54 @@ public class LoginPage extends BasePage {
 		
 	}
 	
-	public void login_user(DataTable login_details) throws InterruptedException
+	public void log_out()
+	{
+		if(driver.getPageSource().contains("Sign out"))
+		{
+			this.click(signOut_link);
+		}
+		
+	}
+	
+	public void login_as_opss(DataTable login_details) throws InterruptedException
 	{
 		List<List<String>> data = login_details.raw();
 		//this.click(signIn_link);
-		if(!driver.getPageSource().contains("Sign out"))
+		if(driver.getPageSource().contains("Home"))
 		{
+		this.click(signOut_link);
+		Thread.sleep(2000);
+		this.type(UserNameFld,data.get(0).get(0));
+		this.type(PasswordFld,data.get(0).get(1));
+		this.click(login_button);
+		Thread.sleep(4000);
+		assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));
+		}
+		else if(driver.getPageSource().contains("Email address")){
+		this.type(UserNameFld,data.get(0).get(0));
+		this.type(PasswordFld,data.get(0).get(1));
+		this.click(login_button);
+		Thread.sleep(4000);
+		assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));
+		}
+	
+	}
+	
+	public void login_as_ts(DataTable login_details) throws InterruptedException
+	{
+		List<List<String>> data = login_details.raw();
+		//this.click(signIn_link);
+		if(!driver.getPageSource().contains("Home"))
+		{
+		this.click(signOut_link);
+		Thread.sleep(2000);
+		this.type(UserNameFld,data.get(0).get(0));
+		this.type(PasswordFld,data.get(0).get(1));
+		this.click(login_button);
+		Thread.sleep(4000);
+		assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));
+		}
+		else{
 		this.type(UserNameFld,data.get(0).get(0));
 		this.type(PasswordFld,data.get(0).get(1));
 		this.click(login_button);
@@ -39,5 +82,7 @@ public class LoginPage extends BasePage {
 		assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));
 		}
 		
+		}
+
 	}
-}
+

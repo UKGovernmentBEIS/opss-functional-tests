@@ -3,7 +3,7 @@ Feature: MSPSDS-1046 See other team members
 @regression
 Scenario: Verify user team is displayed
 Given I login as OPSS user
-|nasirkhan.beis@gmail.com|Nasir@123|
+|nasirkhan.beis@gmail.com|Test@123|
 When I am on dashboard
 Then I should see my team name "Your team" displayed
 

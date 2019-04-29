@@ -28,14 +28,25 @@ public class GivenSteps {
 	public void i_login_as_OPSS_user(DataTable arg1) throws Throwable {
 		login_pge.launch_app(env);
 		Thread.sleep(5000);
-		login_pge.login_user(arg1);
+		
+		login_pge.login_as_opss(arg1);
 		login_pge.verifyPageTitle("Cases - Product safety database - GOV.UK");
 		
 	}
+	@Given("^I login as Trading standard user$")
+	public void i_login_as_Trading_standard_user(DataTable arg1) throws Throwable {
+		
+		login_pge.launch_app(env);
+		Thread.sleep(5000);
+		login_pge.login_as_ts(arg1);
+		login_pge.verifyPageTitle("Home Page - Product safety database - GOV.UK");
+	}
+	
 
 	@When("^I want to assign any case$")
 	public void i_want_to_assign_any_case() throws Throwable {
 		login_pge.open_mspsds_case("Fancy Dress – Penetrating force (no product specified)");
+		Thread.sleep(4000);
 		assignpge.click_change_assign();
 	    
 	}

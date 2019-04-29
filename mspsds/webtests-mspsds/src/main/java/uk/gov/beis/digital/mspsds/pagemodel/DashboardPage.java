@@ -4,9 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import src.main.java.uk.gov.beis.digital.BasePage;
+
 import static org.junit.Assert.assertTrue;
 
-import src.main.java.uk.gov.beis.digital.BasePage;
+
 
 public class DashboardPage extends BasePage {
 	private WebDriver driver;

@@ -9,11 +9,12 @@ import org.openqa.selenium.WebElement;
 
 import cucumber.api.DataTable;
 import src.main.java.uk.gov.beis.digital.BasePage;
+
 import static org.junit.Assert.assertTrue;
 
 public class AssigneePage extends BasePage {
 	By team_elements = By.xpath("//label[contains(@class,'label')]");
-	By change_assign = By.xpath("(//a[contains(.,'Change')])");
+	By change_assign = By.xpath("(//a[contains(.,'Change')])[2]");
 	
 	public AssigneePage(WebDriver driver) {
 		super(driver);
