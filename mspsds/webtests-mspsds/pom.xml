@@ -30,26 +30,26 @@
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-java</artifactId>
 			<version>${cucumber-jvm.version}</version>
-			<scope>test</scope>
+			
 		</dependency>
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-picocontainer</artifactId>
 			<version>${cucumber-jvm.version}</version>
-			<scope>test</scope>
+			
 		</dependency>
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-junit</artifactId>
 			<version>${cucumber-jvm.version}</version>
-			<scope>test</scope>
+			
 		</dependency>
 		<dependency>
 			<groupId>info.cukes</groupId>
 			<artifactId>cucumber-jvm</artifactId>
 			<version>${cucumber-jvm.version}</version>
 			<type>pom</type>
-			<scope>test</scope>
+			
 		</dependency>
 		<dependency>
     	<groupId>io.rest-assured</groupId>
