@@ -1,0 +1,35 @@
+
+			<contactList>
+				
+				<contact>
+					<id>123</id>	
+					<orgId>456</orgId>
+					<countryId>GB</countryId>
+					<name>Responsible Person</name>					
+					<street></street>					
+					<city></city>
+					<postCode></postCode>
+					<email>responsible.person@example.com</email>
+					<phone></phone>
+					<fax></fax>
+					<additionalPhone1></additionalPhone1>
+					<additionalPhone2></additionalPhone2>
+				</contact>
+				
+				<contact>
+					<id>234</id>	
+					<orgId>456</orgId>
+					<countryId>GB</countryId>
+					<name>Contact Person</name>					
+					<street></street>					
+					<city></city>
+					<postCode></postCode>
+					<email>contact.person@example.com</email>
+					<phone></phone>
+					<fax></fax>
+					<additionalPhone1></additionalPhone1>
+					<additionalPhone2></additionalPhone2>
+				</contact>
+				
+			</contactList>
+			
