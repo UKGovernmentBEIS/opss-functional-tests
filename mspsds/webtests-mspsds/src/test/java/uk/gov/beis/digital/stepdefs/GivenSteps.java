@@ -14,7 +14,7 @@ import uk.gov.beis.digital.mspsds.pagemodel.LoginPage;
 public class GivenSteps {
 	
 	private WebDriver driver;
-	String env = System.getenv("PSD_STAGE");
+	String env = System.getenv("PSD_URL");
 	LoginPage login_pge;
 	AssigneePage assignpge;
 	public GivenSteps(SharedWebDriver driver)

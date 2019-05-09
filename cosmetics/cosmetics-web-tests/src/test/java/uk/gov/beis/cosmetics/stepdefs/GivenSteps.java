@@ -24,7 +24,7 @@ public class GivenSteps extends SharedWebDriver {
 	private static WebDriver driver;
 	LoginPage loginPge;
 	AddProductPage addProd;
-	String env = System.getenv("COSMETICS_STAGE");
+	String env = System.getenv("COSMETICS_URL");
 	public GivenSteps(SharedWebDriver driver)
 	{
 		this.driver  = driver;
