@@ -179,6 +179,18 @@ public class BasePage {
 			return flag=false;
 		}
    }
+   
+   public boolean verify_cosmetics_page_headers(String title)
+   {
+
+		boolean flag= false;
+		if(driver.findElement(By.cssSelector("h1.govuk-heading-xl")).getText().equals(title))
+		return flag=true;
+		else 
+		{
+			return flag=false;
+		}
+   }
 	
 	public boolean verify_element_by_text(String text)
 	{

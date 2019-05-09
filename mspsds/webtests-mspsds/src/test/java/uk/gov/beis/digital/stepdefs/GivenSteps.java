@@ -14,7 +14,7 @@ import uk.gov.beis.digital.mspsds.pagemodel.LoginPage;
 public class GivenSteps {
 	
 	private WebDriver driver;
-	String env = AppProperties.get("envurl");
+	String env = System.getenv("PSD_STAGE");
 	LoginPage login_pge;
 	AssigneePage assignpge;
 	public GivenSteps(SharedWebDriver driver)
@@ -23,26 +23,23 @@ public class GivenSteps {
 		login_pge = PageFactory.initElements(driver,LoginPage.class);
 		assignpge = PageFactory.initElements(driver, AssigneePage.class);
 	}
-
 	@Given("^I login as OPSS user$")
-	public void i_login_as_OPSS_user(DataTable arg1) throws Throwable {
+	public void i_login_as_OPSS_user() throws Throwable {
 		login_pge.launch_app(env);
 		Thread.sleep(5000);
 		
-		login_pge.login_as_opss(arg1);
+		login_pge.login_as_opss();
 		login_pge.verifyPageTitle("Cases - Product safety database - GOV.UK");
 		
 	}
 	@Given("^I login as Trading standard user$")
-	public void i_login_as_Trading_standard_user(DataTable arg1) throws Throwable {
+	public void i_login_as_Trading_standard_user() throws Throwable {
 		
 		login_pge.launch_app(env);
 		Thread.sleep(5000);
-		login_pge.login_as_ts(arg1);
+		login_pge.login_as_ts();
 		login_pge.verifyPageTitle("Home Page - Product safety database - GOV.UK");
 	}
-	
-
 	@When("^I want to assign any case$")
 	public void i_want_to_assign_any_case() throws Throwable {
 		login_pge.open_mspsds_case("Fancy Dress – Penetrating force (no product specified)");
