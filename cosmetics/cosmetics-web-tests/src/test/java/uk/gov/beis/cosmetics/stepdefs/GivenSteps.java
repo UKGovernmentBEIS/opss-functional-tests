@@ -24,7 +24,7 @@ public class GivenSteps extends SharedWebDriver {
 	private static WebDriver driver;
 	LoginPage loginPge;
 	AddProductPage addProd;
-	String env = AppProperties.get("envurl");
+	String env = System.getenv("COSMETICS_URL");
 	public GivenSteps(SharedWebDriver driver)
 	{
 		this.driver  = driver;
@@ -49,11 +49,11 @@ public class GivenSteps extends SharedWebDriver {
 	  
 	}
 	@Given("^I login user as$")
-	public void i_login_user_as(DataTable arg1) throws Throwable {
+	public void i_login_user_as() throws Throwable {
 		loginPge.launch_app(env);
 		Thread.sleep(3000);
 		loginPge.verifyPageTitle("Landing Page - Submit cosmetic product notifications");
-	    loginPge.login_user(arg1);
+	    loginPge.login_user();
 	}
 
 	@Given("^I click on \"(.*?)\"$")
@@ -96,7 +96,7 @@ public class GivenSteps extends SharedWebDriver {
 	
 	@Then("^I should see \"(.*?)\"$")
 	public void i_should_see(String arg1) throws Throwable {
-	  assertTrue("Failed:Not on expected page",addProd.verify_cosmetic_page_header1(arg1)) ;
+	  assertTrue("Failed:Not on expected page",addProd.verify_cosmetics_page_headers(arg1)) ;
 	}
 
 	@When("^I click \"(.*?)\"$")
@@ -107,17 +107,17 @@ public class GivenSteps extends SharedWebDriver {
 	}
 	
 	@Given("^I login user as notify user$")
-	public void i_login_user_as_notify_user(DataTable arg1) throws Throwable {
+	public void i_login_user_as_notify_user() throws Throwable {
 		loginPge.launch_app(env);
 		Thread.sleep(3000);
 		loginPge.verifyPageTitle("Landing Page - Submit cosmetic product notifications");
-	    loginPge.login_user(arg1);
+	    loginPge.login_user();
 	}
 
 	@Then("^I should see landing page$")
 	public void i_should_see_landing_page() throws Throwable {
 		//assertTrue("Failed:Landing page not loaded",loginPge.verify_page_header1("Your cosmetic products"));
-	    assertTrue("Failed: Landing page not loaded",loginPge.verify_element_by_text("Your cosmetic products"));
+		loginPge.verifyPageTitle("Your cosmetic products - Submit cosmetic product notifications");
 	}
 
 	@When("^I select to manual journey$")

@@ -23,7 +23,7 @@ public class LoginPage extends BasePage {
 	By UserNameFld = By.cssSelector("#username");
 	By PasswordFld = By.cssSelector("#password");
 	By login_button = By.cssSelector("#kc-login");
-	By signOut_link = By.xpath("//input[@value='Sign out']");
+	By signOut_link = By.xpath("//a[contains(.,'Sign out')]");
 	By signIn_link = By.xpath("//a[text()='Sign in']");
 	//By signOut_link = By.xpath("//a[text()='Sign out']");
 	
@@ -39,16 +39,14 @@ public class LoginPage extends BasePage {
 		  }
 	}
 	
-	public void login_user(DataTable login_details) throws InterruptedException
+	public void login_user() throws InterruptedException
 	{
 		if(driver.getPageSource().contains("Sign in"))
 		{
 			
-		
-		List<List<String>> data = login_details.raw();
 		this.click(signIn_link);
-		this.type(UserNameFld,data.get(0).get(0));
-		this.type(PasswordFld,data.get(0).get(1));
+		this.type(UserNameFld,System.getenv("PSD_OPSS_USERNAME"));
+		this.type(PasswordFld,System.getenv("PSD_OPSS_PASSWORD"));
 		this.click(login_button);
 		Thread.sleep(4000);
 		assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));

@@ -4,10 +4,9 @@ Feature: Opss user
 	I should have expected permissions
 	
 
-@regression
+@regression @smoke
 Scenario: Login as opss user
 Given I login as OPSS user
-|nasirkhan.beis@gmail.com|Test@123|
 Then I should see "Cases" tab
 And I should see "Businesses" tab
 And I should see "Products" tab
