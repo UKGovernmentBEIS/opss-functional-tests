@@ -8,8 +8,7 @@ Feature: Bulk upload
 	
 	
 Scenario: File upload more than 100
-Given I login as 
-|nasiralikhan1982@gmail.com|Test@123|
+Given I login as responsible person user
 When I upload 101 files
 Then I should see error ""
 

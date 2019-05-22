@@ -18,8 +18,7 @@ Then I should see "Cosmetic product name"
 
 @manual
 Scenario Outline: notify product manually
-Given I login user as notify user
-|nasiralikhan1982@gmail.com|Test@123|
+Given I login as responsible person user
 And I click on "Your cosmetic products"
 When I click on "Add cosmetic products"
 And I select to manual journey
@@ -45,8 +44,7 @@ Examples:
 
 @regression
 Scenario: Validate bulk upload journey screens
-Given I login user as
-|nasiralikhan1982@gmail.com|Test@123|
+Given I login as responsible person user
 And I click on "Your cosmetic products"
 When I click on "Add cosmetic products"
 Then I should see "Have the cosmetic products been notified in the EU?"
