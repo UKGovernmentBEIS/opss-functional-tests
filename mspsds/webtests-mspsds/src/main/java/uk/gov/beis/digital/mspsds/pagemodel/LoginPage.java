@@ -1,89 +1,63 @@
 package uk.gov.beis.digital.mspsds.pagemodel;
 
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import cucumber.api.DataTable;
 import uk.gov.beis.digital.BasePage;
+import uk.gov.beis.digital.mspsds.Utils.EnvironmentProperties;
 
-
+import static org.junit.Assert.assertTrue;
 
 public class LoginPage extends BasePage {
 	
 	private WebDriver driver;
 	
-	By UserNameFld = By.cssSelector("#username");
-	By PasswordFld = By.cssSelector("#password");
-	By login_button = By.cssSelector("#kc-login");
-	By signOut_link = By.xpath("//a[contains(text(),'Sign out')]");
-	By signIn_link = By.xpath("//a[text()='Sign in']");
+	private By usernameField = By.cssSelector("#username");
+	private By passwordField = By.cssSelector("#password");
+	private By loginButton = By.cssSelector("#kc-login");
+	private By signInLink = By.xpath("//a[text()='Sign in']");
+	private By signOutLink = By.xpath("//a[contains(text(),'Sign out')]");
 
-	public LoginPage(WebDriver driver) {
-		super(driver);
-		this.driver=driver;
-		
-	}
-	
-	public void log_out()
+	public LoginPage(WebDriver driver)
 	{
-		if(driver.getPageSource().contains("Sign out"))
-		{
-			this.click(signOut_link);
-		}
-		
+		super(driver);
+		this.driver = driver;
 	}
-	
+
 	public void login_as_opss() throws InterruptedException
 	{
-		
-		//this.click(signIn_link);
-		if(driver.getPageSource().contains("Home"))
-		{
-		this.click(signOut_link);
-		Thread.sleep(2000);
-		this.type(UserNameFld,System.getenv("PSD_OPSS_USERNAME"));
-		this.type(PasswordFld,System.getenv("PSD_OPSS_PASSWORD"));
-		this.click(login_button);
-		Thread.sleep(4000);
-		assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));
+		if (driver.getPageSource().contains("Home")) {
+			this.click(signOutLink);
+			Thread.sleep(2000);
 		}
-		else if(driver.getPageSource().contains("Email address")){
-			this.type(UserNameFld,System.getenv("PSD_OPSS_USERNAME"));
-			this.type(PasswordFld,System.getenv("PSD_OPSS_PASSWORD"));
-		this.click(login_button);
+
+		this.type(usernameField, EnvironmentProperties.getOpssUsername());
+		this.type(passwordField, EnvironmentProperties.getOpssPassword());
+		this.click(loginButton);
 		Thread.sleep(4000);
-		assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));
-		}
-	
+
+		assertTrue("Failed to sign in", this.IsElementDisplayed(signOutLink));
 	}
-	
+
 	public void login_as_ts() throws InterruptedException
 	{
-		
-		//this.click(signIn_link);
-		if(!driver.getPageSource().contains("Home"))
-		{
-		this.click(signOut_link);
-		Thread.sleep(2000);
-		this.type(UserNameFld,System.getenv("PSD_TS_USERNAME"));
-		this.type(PasswordFld,System.getenv("PSD_TS_PASSWORD"));
-		this.click(login_button);
-		Thread.sleep(4000);
-		assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));
-		}
-		else{
-			this.type(UserNameFld,System.getenv("PSD_TS_USERNAME"));
-			this.type(PasswordFld,System.getenv("PSD_TS_PASSWORD"));
-		this.click(login_button);
-		Thread.sleep(4000);
-		assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));
-		}
-		
+		if (!driver.getPageSource().contains("Home")) {
+			this.click(signOutLink);
+			Thread.sleep(2000);
 		}
 
+		this.type(usernameField, EnvironmentProperties.getTradingStandardsUsername());
+		this.type(passwordField, EnvironmentProperties.getTradingStandardsPassword());
+		this.click(loginButton);
+		Thread.sleep(4000);
+
+		assertTrue("Failed to sign in", this.IsElementDisplayed(signOutLink));
 	}
 
+	public void log_out()
+	{
+		if (driver.getPageSource().contains("Sign out")) {
+			this.click(signOutLink);
+		}
+	}
+}
