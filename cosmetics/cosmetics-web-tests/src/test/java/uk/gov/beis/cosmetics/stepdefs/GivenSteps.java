@@ -24,6 +24,7 @@ public class GivenSteps extends SharedWebDriver {
 	private static WebDriver driver;
 	LoginPage loginPge;
 	AddProductPage addProd;
+	//String env = AppProperties.get("envurl");
 	String env = System.getenv("COSMETICS_URL");
 	public GivenSteps(SharedWebDriver driver)
 	{
@@ -58,7 +59,7 @@ public class GivenSteps extends SharedWebDriver {
 
 	@Given("^I click on \"(.*?)\"$")
 	public void i_click_on(String arg1) throws Throwable {
-	   loginPge.click_by_text(arg1);
+		loginPge.click_by_text(arg1);
 	    
 	}
 
@@ -96,7 +97,9 @@ public class GivenSteps extends SharedWebDriver {
 	
 	@Then("^I should see \"(.*?)\"$")
 	public void i_should_see(String arg1) throws Throwable {
-	  assertTrue("Failed:Not on expected page",addProd.verify_cosmetics_page_headers(arg1)) ;
+		
+	  addProd.Is_trigger_rule_displayed();
+	  assertTrue("Failed:Not on expected page",addProd.verify_cosmetics_trigger_rules_question(arg1)) ;
 	}
 
 	@When("^I click \"(.*?)\"$")
@@ -141,6 +144,7 @@ public class GivenSteps extends SharedWebDriver {
 	    // Write code here that turns the phrase above into concrete actions
 	    addProd.select_radio_button_by_text(arg1);
 	    addProd.click_continue();
+	   
 	}
 
 	@When("^I select cosmetic sold as more than one shade \"(.*?)\"$")
@@ -167,8 +171,7 @@ public class GivenSteps extends SharedWebDriver {
 
 	@Then("^I should successfully land on checkyour answers page$")
 	public void i_should_successfully_land_on_checkyour_answers_page() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new PendingException();
+	    
 	}
 
 
@@ -181,6 +184,7 @@ public void i_enter_product_name(String arg1) throws Throwable {
 @When("^I enter country imported from\"(.*?)\"$")
 public void i_enter_country_imported_from(String arg1) throws Throwable {
    addProd.enter_country_imported_from(arg1);
+   addProd.click_continue();
    
 }
 
@@ -194,6 +198,7 @@ public void i_select_product_category(String arg1) throws Throwable {
 @When("^I select formulation\"(.*?)\"$")
 public void i_select_formulation(String arg1) throws Throwable {
   addProd.select_radio_button_by_text(arg1);
+  addProd.click_continue();
 }
 
 @When("^I select frame formulation\"(.*?)\"$")
@@ -206,6 +211,51 @@ public void i_should_see_product_name(String arg1) throws Throwable {
     // Write code here that turns the phrase above into concrete actions
     throw new PendingException();
 }
+@Given("^I select manually to notify produt with single component$")
+public void i_select_manually_to_notify_produt_with_single_component() throws Throwable {
+	    addProd.add_product_manually();
+}
+
+@Given("^I select \"(.*?)\" product contains anti-dandruff agents$")
+public void i_select_product_contains_anti_dandruff_agents(String arg1) throws Throwable {
+    addProd.select_radio_button_by_text(arg1);
+    addProd.click_continue();
+}
+
+@Given("^I enter agents substance \"(.*?)\"$")
+public void i_enter_agents_substance(String arg1) throws Throwable {
+    addProd.enter_trigger_rule1(arg1);
+}
+
+@Given("^I enter  substance value \"(.*?)\"$")
+public void i_enter_substance_value(String arg1) throws Throwable {
+    addProd.enter_trigger_rule2(arg1);
+    Thread.sleep(3000);
+}
+
+@Given("^I select pH between three and ten as \"(.*?)\"$")
+public void i_select_pH_between_three_and_ten_as(String arg1) throws Throwable {
+	addProd.select_radio_button_by_text(arg1);
+    
+}
+
+
+@Given("^I enter ph value as \"(.*?)\"$")
+public void i_enter_ph_value_as(String arg1) throws Throwable {
+	addProd.enter_trigger_rule1(arg1);
+   
+}
+
+@Given("^I enter invalid pH value \"(.*?)\"$")
+public void i_enter_invalid_pH_value(String arg1) throws Throwable {
+	addProd.enter_trigger_rule1(arg1);
+}
+
+@Given("^I enter valid pH value between (\\d+) and (\\d+) \"(.*?)\"$")
+public void i_enter_valid_pH_value_between_and(int arg1, int arg2, String arg3) throws Throwable {
+   addProd.enter_trigger_rule1(arg3);
+}
+
 
 	
 	@After()

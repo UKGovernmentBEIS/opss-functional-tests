@@ -1,4 +1,5 @@
 package uk.gov.beis.cosmetics.pagemodel;
+import uk.gov.beis.cosmetics.Utils.AppProperties;
 import uk.gov.beis.digital.*;
 
 import org.openqa.selenium.By;
@@ -45,8 +46,8 @@ public class LoginPage extends BasePage {
 		{
 			
 		this.click(signIn_link);
-		this.type(UserNameFld,System.getenv("PSD_OPSS_USERNAME"));
-		this.type(PasswordFld,System.getenv("PSD_OPSS_PASSWORD"));
+		this.type(UserNameFld,System.getenv("RP_ACCOUNT_USERNAME"));
+		this.type(PasswordFld,System.getenv("RP_ACCOUNT_PASSWORD"));
 		this.click(login_button);
 		Thread.sleep(4000);
 		assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));

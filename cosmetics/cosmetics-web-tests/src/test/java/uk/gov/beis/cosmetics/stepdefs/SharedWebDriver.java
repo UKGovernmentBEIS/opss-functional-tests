@@ -33,7 +33,9 @@ public class SharedWebDriver extends EventFiringWebDriver {
 			String browser = AppProperties.get("browser");
 			String env = AppProperties.get("environment");
 			String platform = AppProperties.get("platform");
-			String envUrl = AppProperties.get("envurl");
+			//String envUrl = AppProperties.get("envurl");
+			
+			String envUrl = System.getenv("COSMETICS_URL");
 
 			String OS = AppProperties.get("OS").toLowerCase();
 			if (OS.length() == 0 || "detect".equals(OS.toLowerCase())) {
