@@ -6,7 +6,7 @@ in order to add my cosmetic product
 I shoud be able populate from a file import
 
 
-@regression 
+ 
 Scenario:Verify add product by file import
 Given I login user as
 |nasiralikhan1982@gmail.com|Test@123|

@@ -33,7 +33,9 @@ public class SharedWebDriver extends EventFiringWebDriver {
 			String browser = AppProperties.get("browser");
 			String env = AppProperties.get("environment");
 			String platform = AppProperties.get("platform");
-			String envUrl = AppProperties.get("envurl");
+			//String envUrl = AppProperties.get("envurl");
+			
+			String envUrl = System.getenv("COSMETICS_URL");
 
 			String OS = AppProperties.get("OS").toLowerCase();
 			if (OS.length() == 0 || "detect".equals(OS.toLowerCase())) {
@@ -66,13 +68,13 @@ public class SharedWebDriver extends EventFiringWebDriver {
 				String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub.browserstack.com/wd/hub";
 
 				DesiredCapabilities caps = new DesiredCapabilities();
-				caps.setCapability("browser", "Firefox");
-				caps.setCapability("browser_version", "45.0");
-				caps.setCapability("os", _OS_WINDOWS);
-				caps.setCapability("os_version", "7");
-				caps.setCapability("resolution", "1024x768");
+				caps.setCapability("os", "Windows");
+				caps.setCapability("os_version", "10");
+				caps.setCapability("browser", "IE");
+				caps.setCapability("browser_version", "11.0");
+				caps.setCapability("browserstack.local", "false");
+				caps.setCapability("browserstack.selenium_version", "3.5.2");
 				caps.setCapability("browserstack.debug", "true");
-				caps.setCapability("browserstack.local", "true");
 
 				driver = new RemoteWebDriver(new URL(URL), caps);
 

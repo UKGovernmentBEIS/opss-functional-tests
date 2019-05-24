@@ -1,4 +1,4 @@
-package src.main.java.uk.gov.beis.digital;
+package uk.gov.beis.digital;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -25,7 +25,8 @@ public class BasePage {
 	private WebDriverWait wait;
 	private static final int TIMEOUT = 5;
 	private static final int POLLING = 50;
-	By cases = By.cssSelector("#h1.govuk-heading-xl");
+	By cases = By.cssSelector("#h1.govuk-heading-l");
+	By banner_message = By.xpath("//div[@class='hmcts-banner__message']");
 
 	protected SearchContext getSearchCtx() {
 		return driver;
@@ -52,6 +53,12 @@ public class BasePage {
 	protected void waitForElementToLoad(By locator) {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
+	
+	public void verify_banner_message(String message)
+	{
+		assertTrue("Failed: Expected notification" + message + " did not match to actual  ",find(banner_message).getText().equals(message));
+			
+	}
 
 	public WebElement find(By locator) {
 		
@@ -62,7 +69,7 @@ public class BasePage {
 	public void open_mspsds_case(String title)
 	{
 		driver.findElement(By.linkText(title)).click();
-	   // this.waitForElementToLoad(cases);
+	    // this.waitForElementToLoad(cases);
 	}
 	
 	public List<WebElement> findelements(By locator) {
@@ -131,7 +138,7 @@ public class BasePage {
 		if (find(locator).isDisplayed()) {
 
 			WebElement element = find(locator);
-			js.executeScript("arguments[0].style.border='3px solid red'", element);
+			js.executeScript("arguments[0].style.border='3px solid blue'", element);
 			Thread.sleep(2000);
 			flag = true;
 		} else {
@@ -165,12 +172,43 @@ public class BasePage {
    {
 
 		boolean flag= false;
+		if(driver.findElement(By.cssSelector("h1.govuk-heading-l")).getText().equals(title))
+		return flag=true;
+		else 
+		{
+			return flag=false;
+		}
+   }
+   
+   public boolean verify_cosmetics_page_headers(String title)
+   {
+
+		boolean flag= false;
 		if(driver.findElement(By.cssSelector("h1.govuk-heading-xl")).getText().equals(title))
 		return flag=true;
 		else 
 		{
 			return flag=false;
 		}
+   }
+   
+   public boolean verify_cosmetics_trigger_rules_question(String question)
+  
+   {
+
+		boolean flag= false;
+		if(driver.findElement(By.xpath("//h1[@class='govuk-fieldset__heading']")).getText().equals(question))
+		return flag=true;
+		else 
+		{
+			return flag=false;
+		}
+   }
+   
+   public void click_back_on_cosmetics_page()
+   {
+	   driver.findElement(By.xpath("//a[@class='govuk-back-link']")).click();
+	   
    }
 	
 	public boolean verify_element_by_text(String text)
@@ -186,17 +224,24 @@ public class BasePage {
 	/**
 	 * 
 	 * @param radio button text
+	 * @throws InterruptedException 
 	 * @returns true if radio button exist
 	 */
 	
-	public boolean verify_radio_button_by_text(String text)
+	public boolean verify_radio_button_by_text(String text) throws InterruptedException
 	{
 		boolean flag=false;
-		if(driver.findElement(By.xpath("//label[contains(.,'"+ text + "')]")).getText().equals(text))
+		Thread.sleep(4000);
+		if(driver.findElement(By.xpath("//label[contains(text(),'" + text +"')]")).getText().equals(text))
 		return true;
 		else{
 			return flag=false;
 		}
+	}
+	
+	public void click_continue()
+	{
+		driver.findElement(By.xpath("//input[@value='Continue']")).click();
 	}
 	
 	/**
@@ -206,7 +251,7 @@ public class BasePage {
 	public void select_radio_button_by_text(String text)
 	{
 	 try{
-		 driver.findElement(By.xpath("//label[contains(.,'"+ text + "')]")).getText().equals(text);
+		 driver.findElement(By.xpath("//label[contains(.,'"+ text + "')]")).click();
 	 }
 	 catch (Exception e) {
 			e.printStackTrace();

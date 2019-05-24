@@ -8,7 +8,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import cucumber.api.DataTable;
-import src.main.java.uk.gov.beis.digital.BasePage;
+import uk.gov.beis.digital.BasePage;
+
+
 
 public class LoginPage extends BasePage {
 	
@@ -26,18 +28,62 @@ public class LoginPage extends BasePage {
 		
 	}
 	
-	public void login_user(DataTable login_details) throws InterruptedException
+	public void log_out()
 	{
-		List<List<String>> data = login_details.raw();
-		//this.click(signIn_link);
-		if(!driver.getPageSource().contains("Sign out"))
+		if(driver.getPageSource().contains("Sign out"))
 		{
-		this.type(UserNameFld,data.get(0).get(0));
-		this.type(PasswordFld,data.get(0).get(1));
+			this.click(signOut_link);
+		}
+		
+	}
+	
+	public void login_as_opss() throws InterruptedException
+	{
+		
+		//this.click(signIn_link);
+		if(driver.getPageSource().contains("Home"))
+		{
+		this.click(signOut_link);
+		Thread.sleep(2000);
+		this.type(UserNameFld,System.getenv("PSD_OPSS_USERNAME"));
+		this.type(PasswordFld,System.getenv("PSD_OPSS_PASSWORD"));
+		this.click(login_button);
+		Thread.sleep(4000);
+		assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));
+		}
+		else if(driver.getPageSource().contains("Email address")){
+			this.type(UserNameFld,System.getenv("PSD_OPSS_USERNAME"));
+			this.type(PasswordFld,System.getenv("PSD_OPSS_PASSWORD"));
+		this.click(login_button);
+		Thread.sleep(4000);
+		assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));
+		}
+	
+	}
+	
+	public void login_as_ts() throws InterruptedException
+	{
+		
+		//this.click(signIn_link);
+		if(!driver.getPageSource().contains("Home"))
+		{
+		this.click(signOut_link);
+		Thread.sleep(2000);
+		this.type(UserNameFld,System.getenv("PSD_TS_USERNAME"));
+		this.type(PasswordFld,System.getenv("PSD_TS_PASSWORD"));
+		this.click(login_button);
+		Thread.sleep(4000);
+		assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));
+		}
+		else{
+			this.type(UserNameFld,System.getenv("PSD_TS_USERNAME"));
+			this.type(PasswordFld,System.getenv("PSD_TS_PASSWORD"));
 		this.click(login_button);
 		Thread.sleep(4000);
 		assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));
 		}
 		
+		}
+
 	}
-}
+

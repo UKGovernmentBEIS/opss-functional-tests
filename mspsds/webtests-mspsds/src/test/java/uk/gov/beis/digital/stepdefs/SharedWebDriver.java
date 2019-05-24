@@ -103,7 +103,7 @@ public class SharedWebDriver extends EventFiringWebDriver {
 			 */
 			else if (browser.equalsIgnoreCase("chrome")) {
 				System.setProperty("webdriver.chrome.driver",
-						System.getProperty("user.dir") + "/src/test/resources/chromedriver");
+						System.getProperty("user.dir") + "/src/test/resources/linux/chromedriver");
 				ChromeOptions options = new ChromeOptions();
 				// options.addArguments("headless");
 				options.addArguments("window-size=1024x768");
