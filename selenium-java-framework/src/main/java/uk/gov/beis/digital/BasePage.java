@@ -121,7 +121,7 @@ public class BasePage {
 	}
 
 	public void verifyPageTitle(String title) {
-		assertTrue("Failed: Expected Page" + title + " did not match to actual  " + driver.getTitle() + "",
+		assertTrue("Failed: Expected Page " + title + " did not match to actual  " + driver.getTitle() + "",
 				driver.getTitle().equals(title));
 
 	}
@@ -172,7 +172,7 @@ public class BasePage {
    {
 
 		boolean flag= false;
-		if(driver.findElement(By.cssSelector("h1.govuk-heading-l")).getText().equals(title))
+		if(driver.findElement(By.cssSelector("h1.govuk-heading-xl")).getText().equals(title))
 		return flag=true;
 		else 
 		{
