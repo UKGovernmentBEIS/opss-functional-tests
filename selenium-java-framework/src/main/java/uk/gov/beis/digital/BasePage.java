@@ -138,7 +138,7 @@ public class BasePage {
 		if (find(locator).isDisplayed()) {
 
 			WebElement element = find(locator);
-			js.executeScript("arguments[0].style.border='3px solid red'", element);
+			js.executeScript("arguments[0].style.border='3px solid blue'", element);
 			Thread.sleep(2000);
 			flag = true;
 		} else {
@@ -190,6 +190,25 @@ public class BasePage {
 		{
 			return flag=false;
 		}
+   }
+   
+   public boolean verify_cosmetics_trigger_rules_question(String question)
+  
+   {
+
+		boolean flag= false;
+		if(driver.findElement(By.xpath("//h1[@class='govuk-fieldset__heading']")).getText().equals(question))
+		return flag=true;
+		else 
+		{
+			return flag=false;
+		}
+   }
+   
+   public void click_back_on_cosmetics_page()
+   {
+	   driver.findElement(By.xpath("//a[@class='govuk-back-link']")).click();
+	   
    }
 	
 	public boolean verify_element_by_text(String text)
