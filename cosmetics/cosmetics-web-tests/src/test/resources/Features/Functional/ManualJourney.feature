@@ -4,7 +4,7 @@ In order to add product with right information
 as a user
 I should be able to see trigger rules
 	
-@regression
+@regression @nasir
 Scenario: Validate manual journey screens
 Given I login user as notify user
 And I click on "Your cosmetic products"
@@ -65,7 +65,7 @@ Examples:
 
 
 #Validate trigger rules 
-@regression @nasir
+@regression @nasir @wip
 Scenario: Verify anti-dandruff trigger question for manual journey
 Given I login user as notify user
 And I select manually to notify produt with single component
@@ -73,14 +73,14 @@ When I choose frame formulation
 Then I should see trigger rule question "Does the cosmetic product contain anti-dandruff agents?"
 
 
-@wip @nasir @regression
+@wip @regression
 Scenario: Verify anti-dandruff agents 
 Given I select "Yes" product contains anti-dandruff agents
 Then  I should be presented with anti-dandruff agents form page to enter details
 And I select "No" product contains anti-dandruff agents
 Then I should be presented with trigger rule question "What is the pH of the cosmetic product?"
 
-@wip @nasir @regression
+@wip @regression
 Scenario: Verify validations on anti-dandruff agents questions
 Given I select "Yes" product contains anti-dandruff agents
 When I click on continue
@@ -348,13 +348,26 @@ When I click "No"
 And I click on continue
 Then I should see "Does the cosmetic product contain essential oils, camphor, menthol, or eucalyptol?"
 
+@wip @regression
+Scenario: Verify essential oils, camphor, menthol, or eucalyptol agents trigger rule question
+Given I click "Yes"
+Then I should see "List the essential oils, camphor, menthol, or eucalyptol and their concentration"
+
+When I click on continue
+Then I should see error message "No substance added"
+
+Given I click back
+When I click "No"
+Then I should see "Does the cosmetic product contain ethanols?"
+
+
 
 #Validate anti-pigmentation agent 
 
 Scenario:
 
 
-@regression
+
 Scenario: Validate bulk upload journey screens
 Given I login user as
 |nasiralikhan1982@gmail.com|Test@123|

@@ -5,6 +5,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import uk.gov.beis.cosmetics.Utils.AppProperties;
 import uk.gov.beis.cosmetics.pagemodel.AddProductPage;
 import uk.gov.beis.cosmetics.pagemodel.LoginPage;
 
@@ -13,6 +14,7 @@ public class WhenSteps extends SharedWebDriver {
 	LoginPage loginPge;
 	AddProductPage addProd;
 	String env = System.getenv("COSMETICS_URL");
+	//String env = AppProperties.get("envurl");
 
 	public WhenSteps(SharedWebDriver driver) {
 		this.driver = driver;
