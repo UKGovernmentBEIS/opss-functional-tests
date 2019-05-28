@@ -15,7 +15,6 @@ And I should see "Products" tab
 @regression
 Scenario: Verify each header displays correct respective information
 Given I login as OPSS user
-|nasirkhan.beis@gmail.com|Test@123|
 When I click on "Businesses" tab
 Then I should see "Businesses" list page
 When I click on "Products" tab
@@ -24,7 +23,6 @@ Then I should see "Products" list page
 
 Scenario: As OPSSuser, I should be able to create a case
 Given I login as OPSS user
-|nasirkhan.beis@gmail.com|Test@123|
 When I click button "Create new"
 And I select case type "Product safety allegation"
 And I select reporter as "Local authority (Trading Standards)"
@@ -35,7 +33,6 @@ Then I should see "Allegation was successfully created"
 @regression
 Scenario Outline: As OPSSuser, I should be able to create a case
 Given I login as OPSS user
-|nasirkhan.beis@gmail.com|Test@123|
 When I click button "Create new"
 And I select case type "Product safety allegation"
 And I select reporter as "Local authority (Trading Standards)"

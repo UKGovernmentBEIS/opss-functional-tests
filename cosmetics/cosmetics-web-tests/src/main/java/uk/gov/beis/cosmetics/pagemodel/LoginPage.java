@@ -42,10 +42,16 @@ public class LoginPage extends BasePage {
 	
 	public void login_user() throws InterruptedException
 	{
-		if(driver.getPageSource().contains("Sign in"))
+		
+		if(driver.getPageSource().contains("Sign out"))
 		{
-			
+			this.click(signOut_link);
+		}
 		this.click(signIn_link);
+		// for local run in eclipse IDE
+//		this.type(UserNameFld,AppProperties.get("userName"));
+//		this.type(PasswordFld,AppProperties.get("password"));
+		
 		this.type(UserNameFld,System.getenv("RP_ACCOUNT_USERNAME"));
 		this.type(PasswordFld,System.getenv("RP_ACCOUNT_PASSWORD"));
 		this.click(login_button);
@@ -54,4 +60,4 @@ public class LoginPage extends BasePage {
 		  }
 	}
 	
-}
+
