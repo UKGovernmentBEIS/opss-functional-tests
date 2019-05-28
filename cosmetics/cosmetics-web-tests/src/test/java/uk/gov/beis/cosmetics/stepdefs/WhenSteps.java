@@ -35,7 +35,13 @@ public class WhenSteps extends SharedWebDriver {
 	}
 	@When("^I click on continue$")
 	public void i_click_on_continue() throws Throwable {
+		Thread.sleep(2000);
 	    addProd.click_continue();
+	}
+	
+	@When("^I should see manual-journey step \"(.*?)\"$")
+	public void i_should_see_manual_journey_step(String arg1) throws Throwable {
+	   addProd.verify_cosmetics_page_headers(arg1);
 	}
 	
 	@When("^I notify product manually$")
@@ -80,8 +86,6 @@ public class WhenSteps extends SharedWebDriver {
 	}
 
 	@Then("^I should be asked if the product contains anti-dandruff agents$")
-	public void i_should_be_asked_if_the_product_contains_anti_dandruff_agents() throws Throwable {
-		
-	   
+	public void i_should_be_asked_if_the_product_contains_anti_dandruff_agents() throws Throwable {   
 	}
 }
