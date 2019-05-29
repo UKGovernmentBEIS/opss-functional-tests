@@ -61,6 +61,9 @@ public class ThenSteps extends SharedWebDriver {
 		addProd.Is_trigger_rule_question_displayed();
 	}
 
-	
+	@Then("^I dismiss any existing errors from error tab$")
+	public void i_dismiss_any_existing_errors_from_error_tab() throws Throwable {
+	    addProd.dismiss_error();
+	}
 	
 }

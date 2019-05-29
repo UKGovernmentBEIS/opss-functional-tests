@@ -24,9 +24,9 @@ public class AddProductPage extends BasePage {
 	By login_button = By.cssSelector("#kc-login");
 	By signOut_link = By.xpath("//a[contains(text(),'Sign out')]");
 	By signIn_link = By.xpath("//a[text()='Sign in']");
-	By reason_error = By.xpath("(//td[contains(@class,'govuk-table__cell')])[2]");
+	By reason_error = By.xpath("//tbody[@class='govuk-table__body']//tr[1]//td[2]");
 	By notification_check_status = By.xpath("//a[contains(.,'Refresh the browser to see uploaded products')]");
-	By dismiss_error = By.xpath("(//input[@type='submit'])[2]");
+	By dismiss_error = By.xpath("//input[contains(@value,'Dismiss all error messages')]");
 	By page_header = By.xpath("//h1[@class='govuk-fieldset__heading']");
 	By prod_name = By.xpath("//input[contains(@type,'text')]");
 	By prod_import_country = By.xpath("//input[@id='location-autocomplete']");
@@ -170,6 +170,11 @@ public class AddProductPage extends BasePage {
 		}
 		System.out.println(this.getText(reason_error));
 		assertTrue(this.getText(reason_error).contains(error));
+		
+	}
+	
+	public void dismiss_error()
+	{
 		this.click(dismiss_error);
 	}
 	
