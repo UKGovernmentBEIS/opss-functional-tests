@@ -7,8 +7,8 @@ I should be able to see trigger rules
 #Validate trigger rules 
 @regression
 Scenario: Verify anti-dandruff trigger question for manual journey
-Given I login user as notify user
-And I select manually to notify produt with single component
+Given I login as responsible person user
+And I select manually to notify product with single component
 When I choose frame formulation 
 Then I should see trigger rule question "Does the cosmetic product contain anti-dandruff agents?"
 
@@ -16,7 +16,7 @@ Then I should see trigger rule question "Does the cosmetic product contain anti-
 @regression
 Scenario: Verify anti-dandruff agents 
 Given I select "Yes" product contains anti-dandruff agents
-Then  I should be presented with anti-dandruff agents form page to enter details
+Then I should be presented with anti-dandruff agents form page to enter details
 And I select "No" product contains anti-dandruff agents
 Then I should be presented with trigger rule question "What is the pH of the cosmetic product?"
 
@@ -31,7 +31,7 @@ Then I should see error message "No substance added"
 @regression
 Scenario: Verify list anti-dandruff agents and concentration
 Given I enter agents substance "test"
-And I enter  substance value "10.22"
+And I enter substance value "10.22"
 When I click on continue
 Then I should see "Is the pH between 3 and 10?"
 
@@ -79,7 +79,7 @@ Then I should see error message "No substance added"
 @regression
 Scenario: Enter alkaline agents
 Given I enter agents substance "test-alkaline"
-And I enter  substance value "8.22"
+And I enter substance value "8.22"
 When I click on continue
 Then I should see "Do the components of the cosmetic product need to be mixed?"
 
@@ -160,7 +160,7 @@ When I click "No"
 Then I should see "Does the cosmetic product contain propellants?"
 
 @regression
-Scenario: Verify  propellants trigger rule question
+Scenario: Verify propellants trigger rule question
 Given I click "Yes"
 Then I should see "List the propellants and their concentration"
 

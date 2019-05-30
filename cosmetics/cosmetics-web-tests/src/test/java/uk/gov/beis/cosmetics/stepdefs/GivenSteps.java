@@ -223,7 +223,7 @@ public void i_enter_agents_substance(String arg1) throws Throwable {
     addProductPage.enter_trigger_rule1(arg1);
 }
 
-@Given("^I enter  substance value \"(.*?)\"$")
+@Given("^I enter substance value \"(.*?)\"$")
 public void i_enter_substance_value(String arg1) throws Throwable {
     addProductPage.enter_trigger_rule2(arg1);
     Thread.sleep(3000);
