@@ -26,6 +26,10 @@ public class LoginPage extends BasePage {
 
 	public void login_as(String username, String password) throws InterruptedException
 	{
+		if (this.IsElementDisplayed(signOutLink)) {
+			this.click(signOutLink);
+		}
+
 		if (this.IsElementDisplayed(signInLink)) {
 			this.click(signInLink);
 			this.type(usernameField, username);
