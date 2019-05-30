@@ -39,27 +39,11 @@ public class LoginPage extends BasePage {
 
 	public void login_as_responsible_person() throws InterruptedException
 	{
-		if (this.IsElementDisplayed(signInLink)) {
-			this.click(signInLink);
-			this.type(usernameField, EnvironmentProperties.getResponsiblePersonUsername());
-			this.type(passwordField, EnvironmentProperties.getResponsiblePersonPassword());
-			this.click(loginButton);
-			Thread.sleep(4000);
-		}
-
-		assertTrue("Failed to sign in", this.IsElementDisplayed(signOutLink));
+		login_as(EnvironmentProperties.getResponsiblePersonUsername(), EnvironmentProperties.getResponsiblePersonPassword());
 	}
 
 	public void login_as_poison_centre() throws InterruptedException
 	{
-		if (this.IsElementDisplayed(signInLink)) {
-			this.click(signInLink);
-			this.type(usernameField, EnvironmentProperties.getPoisonCentreUsername());
-			this.type(passwordField, EnvironmentProperties.getPoisonCentrePassword());
-			this.click(loginButton);
-			Thread.sleep(4000);
-		}
-
-		assertTrue("Failed to sign in", this.IsElementDisplayed(signOutLink));
+		login_as(EnvironmentProperties.getPoisonCentreUsername(), EnvironmentProperties.getPoisonCentrePassword());
 	}
 }

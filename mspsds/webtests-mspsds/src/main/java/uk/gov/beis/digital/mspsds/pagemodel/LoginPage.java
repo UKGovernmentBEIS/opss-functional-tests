@@ -24,34 +24,28 @@ public class LoginPage extends BasePage {
 		this.driver = driver;
 	}
 
-	public void login_as_opss() throws InterruptedException
+	public void login_as(String username, String password) throws InterruptedException
 	{
-		if (driver.getPageSource().contains("Home")) {
+		if (this.IsElementDisplayed(signOutLink)) {
 			this.click(signOutLink);
-			Thread.sleep(2000);
 		}
 
-		this.type(usernameField, EnvironmentProperties.getOpssUsername());
-		this.type(passwordField, EnvironmentProperties.getOpssPassword());
+		this.type(usernameField, username);
+		this.type(passwordField, password);
 		this.click(loginButton);
 		Thread.sleep(4000);
 
 		assertTrue("Failed to sign in", this.IsElementDisplayed(signOutLink));
 	}
 
+	public void login_as_opss() throws InterruptedException
+	{
+		login_as(EnvironmentProperties.getOpssUsername(), EnvironmentProperties.getOpssPassword());
+	}
+
 	public void login_as_ts() throws InterruptedException
 	{
-		if (!driver.getPageSource().contains("Home")) {
-			this.click(signOutLink);
-			Thread.sleep(2000);
-		}
-
-		this.type(usernameField, EnvironmentProperties.getTradingStandardsUsername());
-		this.type(passwordField, EnvironmentProperties.getTradingStandardsPassword());
-		this.click(loginButton);
-		Thread.sleep(4000);
-
-		assertTrue("Failed to sign in", this.IsElementDisplayed(signOutLink));
+		login_as(EnvironmentProperties.getTradingStandardsUsername(), EnvironmentProperties.getTradingStandardsPassword());
 	}
 
 	public void log_out()
