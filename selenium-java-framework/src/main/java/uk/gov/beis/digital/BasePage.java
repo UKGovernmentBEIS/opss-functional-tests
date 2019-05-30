@@ -174,7 +174,7 @@ public class BasePage {
    {
 
 		boolean flag= false;
-		if(driver.findElement(By.cssSelector("h1.govuk-heading-xl")).getText().equals(title))
+		if(driver.findElement(By.cssSelector("h1.govuk-heading-l")).getText().equals(title))
 		return flag=true;
 		else 
 		{
