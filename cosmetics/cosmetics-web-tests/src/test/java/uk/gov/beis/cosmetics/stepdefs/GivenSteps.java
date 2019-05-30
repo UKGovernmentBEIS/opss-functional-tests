@@ -121,7 +121,7 @@ public class GivenSteps extends SharedWebDriver {
 
 	@Then("^I should see landing page$")
 	public void i_should_see_landing_page() throws Throwable {
-		assertTrue("Failed: Landing page not loaded", loginPage.verify_page_header1("Your cosmetic products"));
+		assertTrue("Failed: Landing page not loaded", loginPage.verify_cosmetics_page_headers("Your cosmetic products"));
 	}
 
 	@When("^I select to manual journey$")
