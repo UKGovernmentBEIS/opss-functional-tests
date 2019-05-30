@@ -56,5 +56,11 @@ public class ThenSteps extends SharedWebDriver {
 	   
 	}
 	
+	@Then("^I should see free text to enter amount contains in product$")
+	public void i_should_see_free_text_to_enter_amount_contains_in_product() throws Throwable {
+		addProd.Is_trigger_rule_question_displayed();
+	}
+
+	
 	
 }
