@@ -208,7 +208,7 @@ public void i_should_see_product_name(String arg1) throws Throwable {
     throw new PendingException();
 }
 @Given("^I select manually to notify product with single component$")
-public void i_select_manually_to_notify_produt_with_single_component() throws Throwable {
+public void i_select_manually_to_notify_product_with_single_component() throws Throwable {
 	    addProductPage.add_product_manually();
 }
 
