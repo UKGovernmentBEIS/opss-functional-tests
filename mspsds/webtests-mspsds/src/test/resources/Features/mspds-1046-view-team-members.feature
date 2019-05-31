@@ -9,5 +9,5 @@ Then I should see my team name "Your team" displayed
 @regression
 Scenario: Verify team
 When I click team "Your team"
-Then I should see team page "OPSS Processing"
-And I should see team member "nasirkhan.beis@gmail.com"
+Then I should see team page "OPSS Testing"
+And I should see team member "user@example.com"

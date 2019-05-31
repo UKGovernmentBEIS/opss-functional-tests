@@ -6,8 +6,7 @@ I should be able add product manually
 	
 @regression
 Scenario: Validate manual journey screens
-Given I login user as notify user
-And I click on "Your cosmetic products"
+Given I login as responsible person user
 When I click on "Add cosmetic products"
 Then I should see "Have the cosmetic products been notified in the EU?"
 
@@ -19,7 +18,7 @@ Then I should see manual journey "Cosmetic product name"
 
 @regression
 Scenario Outline: notify product manually
-Given I login user as notify user
+Given I login as responsible person user
 When I click on "Add cosmetic products"
 And I select to manual journey
 And I enter product name"<product-name>"
@@ -60,8 +59,7 @@ Examples:
 
 
 Scenario: Validate bulk upload journey screens
-Given I login user as
-|nasiralikhan1982@gmail.com|Test@123|
+Given I login as responsible person user
 And I click on "Your cosmetic products"
 When I click on "Add cosmetic products"
 Then I should see "Have the cosmetic products been notified in the EU?"
