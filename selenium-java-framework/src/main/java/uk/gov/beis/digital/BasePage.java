@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -60,11 +61,10 @@ public class BasePage {
 			
 	}
 
-	public WebElement find(By locator) {
-		
+	public WebElement find(By locator) throws NoSuchElementException
+	{
 		return driver.findElement(locator);
-		}
-		
+	}
 
 	public void open_mspsds_case(String title)
 	{
@@ -121,7 +121,7 @@ public class BasePage {
 	}
 
 	public void verifyPageTitle(String title) {
-		assertTrue("Failed: Expected Page" + title + " did not match to actual  " + driver.getTitle() + "",
+		assertTrue("Failed: Expected Page " + title + " did not match to actual  " + driver.getTitle() + "",
 				driver.getTitle().equals(title));
 
 	}
@@ -131,22 +131,24 @@ public class BasePage {
 	}
 
 	public boolean IsElementDisplayed(By locator) throws InterruptedException {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
+		WebElement element;
+		try {
+			element = find(locator);
+		} catch(NoSuchElementException e) {
+			return false;
+		}
 
-		boolean flag;
-
-		if (find(locator).isDisplayed()) {
-
-			WebElement element = find(locator);
+		if (element.isDisplayed()) {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("arguments[0].style.border='3px solid blue'", element);
 			Thread.sleep(2000);
-			flag = true;
+
+			return true;
 		} else {
-			flag = false;
+			return false;
 		}
-		return flag;
 	}
-	
+
 	public boolean IsElementDisplayed(WebElement findElement) throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 

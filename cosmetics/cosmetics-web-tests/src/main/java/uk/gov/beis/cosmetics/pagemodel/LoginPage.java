@@ -1,63 +1,53 @@
 package uk.gov.beis.cosmetics.pagemodel;
-import uk.gov.beis.cosmetics.Utils.AppProperties;
-import uk.gov.beis.digital.*;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import cucumber.api.DataTable;
+import uk.gov.beis.cosmetics.Utils.EnvironmentProperties;
+import uk.gov.beis.digital.BasePage;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.List;
-
 public class LoginPage extends BasePage {
-	private  WebDriver driver;
-	
+
+	private WebDriver driver;
+
+	private By usernameField = By.cssSelector("#username");
+	private By passwordField = By.cssSelector("#password");
+	private By loginButton = By.cssSelector("#kc-login");
+	private By signInLink = By.xpath("//a[text()='Sign in']");
+	private By signOutLink = By.xpath("//a[text()='Sign out']");
+
 	public LoginPage(WebDriver driver)
 	{
 		super(driver);
 		this.driver = driver;
-		
 	}
 
-	By UserNameFld = By.cssSelector("#username");
-	By PasswordFld = By.cssSelector("#password");
-	By login_button = By.cssSelector("#kc-login");
-	By signOut_link = By.xpath("//a[contains(.,'Sign out')]");
-	By signIn_link = By.xpath("//a[text()='Sign in']");
-	//By signOut_link = By.xpath("//a[text()='Sign out']");
-	
-	public void login_as(String user,String pwd) throws InterruptedException
+	public void login_as(String username, String password) throws InterruptedException
 	{
-	  if(this.IsElementDisplayed(signIn_link))
-		  {
-	  this.click(signIn_link);
-	  this.type(UserNameFld,user);
-	  this.type(PasswordFld, pwd);
-	  this.click(login_button);
-	  assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));
-		  }
-	}
-	
-	public void login_user() throws InterruptedException
-	{
-		
-		if(driver.getPageSource().contains("Sign out"))
-		{
-			this.click(signOut_link);
+		if (this.IsElementDisplayed(signOutLink)) {
+			this.click(signOutLink);
 		}
-		this.click(signIn_link);
-		// for local run in eclipse IDE
-//		this.type(UserNameFld,AppProperties.get("userName"));
-//		this.type(PasswordFld,AppProperties.get("password"));
-		
-		this.type(UserNameFld,System.getenv("RP_ACCOUNT_USERNAME"));
-		this.type(PasswordFld,System.getenv("RP_ACCOUNT_PASSWORD"));
-		this.click(login_button);
-		Thread.sleep(4000);
-		assertTrue("Failed to signIn",this.IsElementDisplayed(signOut_link));
-		  }
-	}
-	
 
+		if (this.IsElementDisplayed(signInLink)) {
+			this.click(signInLink);
+			this.type(usernameField, username);
+			this.type(passwordField, password);
+			this.click(loginButton);
+			Thread.sleep(4000);
+		}
+
+		assertTrue("Failed to sign in", this.IsElementDisplayed(signOutLink));
+	}
+
+	public void login_as_responsible_person() throws InterruptedException
+	{
+		login_as(EnvironmentProperties.getResponsiblePersonUsername(), EnvironmentProperties.getResponsiblePersonPassword());
+	}
+
+	public void login_as_poison_centre() throws InterruptedException
+	{
+		login_as(EnvironmentProperties.getPoisonCentreUsername(), EnvironmentProperties.getPoisonCentrePassword());
+	}
+}

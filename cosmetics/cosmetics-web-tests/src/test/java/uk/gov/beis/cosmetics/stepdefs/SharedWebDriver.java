@@ -9,13 +9,12 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import uk.gov.beis.cosmetics.Utils.AppProperties;
+import uk.gov.beis.cosmetics.Utils.EnvironmentProperties;
 
 public class SharedWebDriver extends EventFiringWebDriver {
 	// private static AndroidDriver driver1;
@@ -31,11 +30,8 @@ public class SharedWebDriver extends EventFiringWebDriver {
 
 		try {
 			String browser = AppProperties.get("browser");
-			String env = AppProperties.get("environment");
 			String platform = AppProperties.get("platform");
-			//String envUrl = AppProperties.get("envurl");
-			
-			String envUrl = System.getenv("COSMETICS_URL");
+			String envUrl = EnvironmentProperties.getServiceUrl();
 
 			String OS = AppProperties.get("OS").toLowerCase();
 			if (OS.length() == 0 || "detect".equals(OS.toLowerCase())) {
@@ -94,10 +90,12 @@ public class SharedWebDriver extends EventFiringWebDriver {
 			 * To run tests in chrome
 			 */
 			else if (browser.equalsIgnoreCase("chrome")) {
-				System.setProperty("webdriver.chrome.driver",
-						System.getProperty("user.dir") + "/src/test/resources/chromedriver");
+				System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+
 				ChromeOptions options = new ChromeOptions();
-				// options.addArguments("headless");
+				options.setHeadless(true);
+				options.addArguments("--no-sandbox");
+				options.addArguments("--disable-dev-shm-usage");
 				options.addArguments("window-size=1024x768");
 				driver = new ChromeDriver(options);
 
