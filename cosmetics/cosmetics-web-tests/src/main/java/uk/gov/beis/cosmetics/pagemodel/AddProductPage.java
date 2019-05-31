@@ -155,6 +155,29 @@ public class AddProductPage extends BasePage {
 	      this.click_continue();  
 	}
 	
+	
+	public void notify_manually()
+	{
+		this.click_by_text("Add cosmetic products");
+		  this.select_radio_button_by_text("No, they have not been notified in the EU");
+		  this.click_continue();
+	      this.select_radio_button_by_text("No");
+	      this.click_continue();
+	      this.enter_productname("TestManual-Prod");
+	      this.enter_reference_number("TestRef-2003");
+	      this.select_radio_button_by_text("Yes");
+		  this.click_continue();
+	      this.enter_country_imported_from("India");
+	      this.click_continue();
+	      this.select_radio_button_by_text("The cosmetic product is a single item");
+	      this.click_continue();
+	      this.select_radio_button_by_text("No");
+	      this.click_continue();
+	      this.select_radio_button_by_text("Loose powder");
+	      this.click_continue();
+	      this.click_continue();
+	}
+	
 	public void verify_trigger_rule_error(String error)
 	{
 	   By trigger_rule_summary_error = By.xpath("//a[contains(text(),'"+error+"')]");
