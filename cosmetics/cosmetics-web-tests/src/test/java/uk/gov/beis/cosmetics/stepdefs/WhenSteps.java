@@ -13,8 +13,8 @@ public class WhenSteps extends SharedWebDriver {
 	private static WebDriver driver;
 	LoginPage loginPge;
 	AddProductPage addProd;
-	String env = System.getenv("COSMETICS_URL");
-	//String env = AppProperties.get("envurl");
+	//String env = System.getenv("COSMETICS_URL");
+	String env = AppProperties.get("envurl");
 
 	public WhenSteps(SharedWebDriver driver) {
 		this.driver = driver;
@@ -88,4 +88,24 @@ public class WhenSteps extends SharedWebDriver {
 	@Then("^I should be asked if the product contains anti-dandruff agents$")
 	public void i_should_be_asked_if_the_product_contains_anti_dandruff_agents() throws Throwable {   
 	}
+	
+	@When("^I select notify product manually$")
+	public void i_select_notify_product_manually() throws Throwable {
+	    addProd.notify_manually();
+	    
+	}
+
+	@When("^I select Yes it contains nano material$")
+	public void i_select_Yes_it_contains_nano_material() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    addProd.select_radio_button_by_text("Yes");
+	}
+
+	@Then("^I should see further nano material questions to capture correct info$")
+	public void i_should_see_further_nano_material_questions_to_capture_correct_info() throws Throwable {
+	   addProd.verify_cosmetics_trigger_rules_question("Is the cosmetic product intended to be rinsed off or left on?");
+
+	}
+
+
 }
