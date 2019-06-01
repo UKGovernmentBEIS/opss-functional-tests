@@ -39,11 +39,11 @@ And I select cosmetic sold as more than one shade "No"
 #And I should see manual-journey step "What is the physical form of the cosmetic product?"
 And I select physical form as "Loose powder"
 
-And I should see manual-journey step "Does the cosmetic product contain substances that are known or presumed to be carcinogenic, mutagenic or toxic for reproduction?"
-And I click on continue
+#And I should see manual-journey step "Does the cosmetic product contain substances listed as Category 1A or 1B mutagens, carcinogens or reproductive toxicants (CMRs)?"
+And I select "No"
 
 #And I should see manual-journey step "Does the cosmetic product contain nanomaterials?"
-And I select nanomaterials as "No"
+And I select "No"
 
 #And I should see manual-journey step "What category of cosmetic is the product?"
 And I select product category"<prod-category>"

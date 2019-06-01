@@ -103,6 +103,12 @@ public class GivenSteps extends SharedWebDriver {
 	  Thread.sleep(3000);
 	}
 
+	@When("^I select \"(.*?)\"$")
+	public void i_select(String option) throws Throwable {
+		addProductPage.select_radio_button_by_text(option);
+		addProductPage.click_continue();
+	}
+
 	@Given("^I login as responsible person user$")
 	public void i_login_as_responsible_person_user() throws Throwable {
 		loginPage.launch_app(EnvironmentProperties.getServiceUrl());
