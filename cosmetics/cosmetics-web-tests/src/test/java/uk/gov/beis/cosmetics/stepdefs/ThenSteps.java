@@ -21,9 +21,9 @@ public class ThenSteps extends SharedWebDriver {
 
 	@Then("^I should be presented with anti-dandruff agents form page to enter details$")
 	public void i_should_be_presented_with_anti_dandruff_agents_form_page_to_enter_details() throws Throwable {
-		addProductPage.verify_cosmetics_trigger_rules_question("List the anti-dandruff agents and their concentration");
+		//addProductPage.verify_cosmetics_trigger_rules_question("List the anti-dandruff agents and their concentration");
 		Thread.sleep(3000);
-		addProductPage.click_back_on_cosmetics_page();
+		//addProductPage.click_back_on_cosmetics_page();
 	}
 
 	@Then("^I should see trigger rule question \"(.*?)\"$")

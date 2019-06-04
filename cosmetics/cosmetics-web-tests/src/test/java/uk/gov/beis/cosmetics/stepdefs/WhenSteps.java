@@ -74,12 +74,21 @@ public class WhenSteps extends SharedWebDriver {
 		addProductPage.select_frame_formulation("Skin Care Cream, Lotion, Gel");
 	    addProductPage.click_continue();
 	}
-	@Then("^I should see trigger rule question \"(.*?)\"$")
-	public void i_should_see_trigger_rule_question(String arg1) throws Throwable {
-	   addProductPage.verify_cosmetics_trigger_rules_question(arg1);
-	}
+	
 
 	@Then("^I should be asked if the product contains anti-dandruff agents$")
 	public void i_should_be_asked_if_the_product_contains_anti_dandruff_agents() throws Throwable {   
+	}
+	
+	@When("^I select notify product manually$")
+	public void i_select_notify_product_manually() throws Throwable {
+		addProductPage.add_product_manually();
+	    
+	}
+
+	@When("^I select Yes it contains nano material$")
+	public void i_select_Yes_it_contains_nano_material() throws Throwable {
+		addProductPage.select_radio_button_by_text("Yes");
+	    
 	}
 }
