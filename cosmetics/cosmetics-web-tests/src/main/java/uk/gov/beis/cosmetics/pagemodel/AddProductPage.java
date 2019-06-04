@@ -147,6 +147,7 @@ public class AddProductPage extends BasePage {
 	      this.click_continue();
 	      this.select_radio_button_by_text("Loose powder");
 	      this.click_continue();
+	      this.select_radio_button_by_text("No");
 	      this.click_continue();
 	      this.select_radio_button_by_text("No");
 	      this.click_continue();

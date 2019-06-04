@@ -61,6 +61,7 @@ public class WhenSteps extends SharedWebDriver {
 	      addProductPage.click_continue();
 	      addProductPage.select_radio_button_by_text("Loose powder");
 	      addProductPage.click_continue();
+	      addProductPage.select_radio_button_by_text("No");
 	      addProductPage.click_continue();
 	      addProductPage.select_radio_button_by_text("No");
 	      addProductPage.click_continue();
