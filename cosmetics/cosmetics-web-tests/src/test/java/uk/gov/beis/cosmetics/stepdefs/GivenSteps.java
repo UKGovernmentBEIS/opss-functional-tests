@@ -113,8 +113,8 @@ public class GivenSteps extends SharedWebDriver {
 
 	@Given("^I login as responsible person user$")
 	public void i_login_as_responsible_person_user() throws Throwable {
-		loginPage.launch_app(AppProperties.get("envurl"));
-		//loginPage.launch_app(EnvironmentProperties.getServiceUrl());
+		//loginPage.launch_app(AppProperties.get("envurl"));
+		loginPage.launch_app(EnvironmentProperties.getServiceUrl());
 		Thread.sleep(3000);
 		loginPage.verifyPageTitle("Landing Page - Submit cosmetic product notifications");
 	    loginPage.login_as_responsible_person();
