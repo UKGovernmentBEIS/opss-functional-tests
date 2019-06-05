@@ -30,6 +30,10 @@ And I should see manual-journey step "Is the cosmetic product imported into the 
 And I select imported into UK "Yes"
 And I enter country imported from"<country>"
 
+And I should see "Is the product intended for children under 3?"
+And I click "Yes"
+And I click on continue
+
 And I should see manual-journey step "Is the cosmetic product available as single item or as a kit?"
 And I select sold as single component "The cosmetic product is a single item"
 
