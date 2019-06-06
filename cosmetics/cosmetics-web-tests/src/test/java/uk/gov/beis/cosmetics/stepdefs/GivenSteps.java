@@ -23,7 +23,6 @@ public class GivenSteps extends SharedWebDriver {
 	private WebDriver driver;
 	private LoginPage loginPage;
 	private AddProductPage addProductPage;
-	//String env = AppProperties.get("envurl");
 
 	public GivenSteps(SharedWebDriver driver) {
 		this.driver = driver;
@@ -33,7 +32,6 @@ public class GivenSteps extends SharedWebDriver {
 
 	@Given("^I upload a valid file$")
 	public void i_upload_a_valid_file() throws Throwable {
-		//loginPage.launch_app(env);
 		loginPage.launch_app(EnvironmentProperties.getServiceUrl());
 		loginPage.verifyPageTitle("Landing Page - Cosmetics Portal");
 		loginPage.login_as_responsible_person();
@@ -114,8 +112,8 @@ public class GivenSteps extends SharedWebDriver {
 
 	@Given("^I login as responsible person user$")
 	public void i_login_as_responsible_person_user() throws Throwable {
-		loginPage.launch_app(AppProperties.get("envurl"));
-		//loginPage.launch_app(EnvironmentProperties.getServiceUrl());
+		//loginPage.launch_app(AppProperties.get("envurl"));
+		loginPage.launch_app(EnvironmentProperties.getServiceUrl());
 		Thread.sleep(3000);
 		loginPage.verifyPageTitle("Landing Page - Submit cosmetic product notifications");
 	    loginPage.login_as_responsible_person();
