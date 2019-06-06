@@ -140,9 +140,7 @@ public class AddProductPage extends BasePage {
 		this.click_continue();
 	}
 
-	public void verify_trigger_rule_error(String error) {
-		By trigger_rule_summary_error = By.xpath("//a[contains(text(),'" + error + "')]");
-
+	
 
 	public void notify_manually()
 	{
