@@ -20,9 +20,9 @@ public class AddProductPage extends BasePage {
 	By login_button = By.cssSelector("#kc-login");
 	By signOut_link = By.xpath("//a[contains(text(),'Sign out')]");
 	By signIn_link = By.xpath("//a[text()='Sign in']");
-	By reason_error = By.xpath("(//td[contains(@class,'govuk-table__cell')])[2]");
+	By reason_error = By.xpath("//tbody[@class='govuk-table__body']//tr[1]//td[2]");
 	By notification_check_status = By.xpath("//a[contains(.,'Refresh the browser to see uploaded products')]");
-	By dismiss_error = By.xpath("(//input[@type='submit'])[2]");
+	By dismiss_error = By.xpath("//input[contains(@value,'Dismiss all error messages')]");
 	By page_header = By.xpath("//h1[@class='govuk-fieldset__heading']");
 	By prod_name = By.xpath("//input[contains(@type,'text')]");
 	By prod_import_country = By.xpath("//input[@id='location-autocomplete']");
@@ -140,8 +140,33 @@ public class AddProductPage extends BasePage {
 		this.click_continue();
 	}
 
-	public void verify_trigger_rule_error(String error) {
-		By trigger_rule_summary_error = By.xpath("//a[contains(text(),'" + error + "')]");
+	
+
+	public void notify_manually()
+	{
+		this.click_by_text("Add cosmetic products");
+		  this.select_radio_button_by_text("No, they have not been notified in the EU");
+		  this.click_continue();
+	      this.select_radio_button_by_text("No");
+	      this.click_continue();
+	      this.enter_productname("TestManual-Prod");
+	      this.enter_reference_number("TestRef-2003");
+	      this.select_radio_button_by_text("Yes");
+		  this.click_continue();
+	      this.enter_country_imported_from("India");
+	      this.click_continue();
+	      this.select_radio_button_by_text("The cosmetic product is a single item");
+	      this.click_continue();
+	      this.select_radio_button_by_text("No");
+	      this.click_continue();
+	      this.select_radio_button_by_text("Loose powder");
+	      this.click_continue();
+	      this.click_continue();
+	}
+
+	public void verify_trigger_rule_error(String error)
+	{
+	   By trigger_rule_summary_error = By.xpath("//a[contains(text(),'"+error+"')]");
 		assertTrue(this.getText(trigger_rule_summary_error).equals(error));
 	}
 
@@ -152,6 +177,11 @@ public class AddProductPage extends BasePage {
 		}
 		System.out.println(this.getText(reason_error));
 		assertTrue(this.getText(reason_error).contains(error));
+
+	}
+
+	public void dismiss_error()
+	{
 		this.click(dismiss_error);
 	}
 

@@ -21,9 +21,9 @@ public class ThenSteps extends SharedWebDriver {
 
 	@Then("^I should be presented with anti-dandruff agents form page to enter details$")
 	public void i_should_be_presented_with_anti_dandruff_agents_form_page_to_enter_details() throws Throwable {
-		addProductPage.verify_cosmetics_trigger_rules_question("List the anti-dandruff agents and their concentration");
+		//addProductPage.verify_cosmetics_trigger_rules_question("List the anti-dandruff agents and their concentration");
 		Thread.sleep(3000);
-		addProductPage.click_back_on_cosmetics_page();
+		//addProductPage.click_back_on_cosmetics_page();
 	}
 
 	@Then("^I should see trigger rule question \"(.*?)\"$")
@@ -61,5 +61,9 @@ public class ThenSteps extends SharedWebDriver {
 	@Then("^I should see free text to enter amount contains in product$")
 	public void i_should_see_free_text_to_enter_amount_contains_in_product() throws Throwable {
 		addProductPage.Is_trigger_rule_question_displayed();
+	}
+	@Then("^I dismiss any existing errors from error tab$")
+	public void i_dismiss_any_existing_errors_from_error_tab() throws Throwable {
+	    addProductPage.dismiss_error();
 	}
 }

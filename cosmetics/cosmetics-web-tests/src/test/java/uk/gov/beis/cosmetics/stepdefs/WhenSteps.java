@@ -3,6 +3,7 @@ package uk.gov.beis.cosmetics.stepdefs;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import uk.gov.beis.cosmetics.pagemodel.AddProductPage;
 import uk.gov.beis.cosmetics.pagemodel.LoginPage;
@@ -73,5 +74,22 @@ public class WhenSteps extends SharedWebDriver {
 	public void i_choose_frame_formulation() throws Throwable {
 		addProductPage.select_frame_formulation("Skin Care Cream, Lotion, Gel");
 	    addProductPage.click_continue();
+	}
+	
+
+	@Then("^I should be asked if the product contains anti-dandruff agents$")
+	public void i_should_be_asked_if_the_product_contains_anti_dandruff_agents() throws Throwable {   
+	}
+	
+	@When("^I select notify product manually$")
+	public void i_select_notify_product_manually() throws Throwable {
+		addProductPage.add_product_manually();
+	    
+	}
+
+	@When("^I select Yes it contains nano material$")
+	public void i_select_Yes_it_contains_nano_material() throws Throwable {
+		addProductPage.select_radio_button_by_text("Yes");
+	    
 	}
 }
