@@ -2,7 +2,15 @@ package uk.gov.beis.cosmetics.pagemodel;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+
+import com.assertthat.selenium_shutterbug.core.Shutterbug;
+import com.assertthat.selenium_shutterbug.utils.web.ScrollStrategy;
+
+import cucumber.api.Scenario;
+
 import static org.junit.Assert.assertTrue;
 import uk.gov.beis.digital.*;
 
@@ -46,6 +54,7 @@ public class AddProductPage extends BasePage {
 
 	public void enter_productname(String name) {
 		this.type(prod_name, name);
+		this.takeScreenshot();
 		this.click_continue();
 	}
 
@@ -68,10 +77,12 @@ public class AddProductPage extends BasePage {
 
 	public void enter_country_imported_from(String country) {
 		this.type(prod_import_country, country);
+		this.takeScreenshot();
 		find(prod_import_country).sendKeys(Keys.ENTER);
 	}
 
 	public void select_frame_formulation(String formulation) {
+		this.takeScreenshot();
 		this.type(frame_formulation, "Skin");
 		find(frame_formulation).sendKeys(Keys.ENTER);
 	}
@@ -82,15 +93,19 @@ public class AddProductPage extends BasePage {
 
 	public void Is_trigger_rule_question_displayed() throws InterruptedException {
 		this.IsElementDisplayed(trigger_rule_question_1);
+		this.takeScreenshot();
 	}
 
 	public void select_prod_category(String cat) {
 		this.select_radio_button_by_text("Skin products");
 		this.click_continue();
+		this.takeScreenshot();
 		this.select_radio_button_by_text("Skin care products");
 		this.click_continue();
+		this.takeScreenshot();
 		this.select_radio_button_by_text("Hand care products");
 		this.click_continue();
+		this.takeScreenshot();
 
 	}
 
@@ -112,32 +127,48 @@ public class AddProductPage extends BasePage {
 
 	public void add_product_manually() throws InterruptedException {
 		Thread.sleep(3000);
+		this.takeScreenshot();
 		this.click_by_text("Add cosmetic products");
+		this.takeScreenshot();
 		this.select_radio_button_by_text("No, they have not been notified in the EU");
 		this.click_continue();
+		this.takeScreenshot();
 		this.select_radio_button_by_text("No");
 		this.click_continue();
+		this.takeScreenshot();
 		this.enter_productname("TestManual-Prod");
+		this.takeScreenshot();
 		this.enter_reference_number("TestRef-2003");
+		this.takeScreenshot();
 		this.select_radio_button_by_text("Yes");
 		this.click_continue();
+		this.takeScreenshot();
 		this.enter_country_imported_from("India");
 		this.click_continue();
+		this.takeScreenshot();
 		this.select_radio_button_by_text("No");
 		this.click_continue();
+		this.takeScreenshot();
 		this.select_radio_button_by_text("The cosmetic product is a single item");
 		this.click_continue();
+		this.takeScreenshot();
 		this.select_radio_button_by_text("No");
 		this.click_continue();
+		this.takeScreenshot();
 		this.select_radio_button_by_text("Loose powder");
 		this.click_continue();
+		this.takeScreenshot();
 		this.select_radio_button_by_text("No");
 		this.click_continue();
+		this.takeScreenshot();
 		this.select_radio_button_by_text("No");
 		this.click_continue();
+		this.takeScreenshot();
 		this.select_prod_category("Skin care products - Hand care products");
+		this.takeScreenshot();
 		this.select_radio_button_by_text("Choose a predefined frame formulation");
 		this.click_continue();
+		this.takeScreenshot();
 	}
 
 	public void verify_trigger_rule_error(String error) {
@@ -145,6 +176,12 @@ public class AddProductPage extends BasePage {
 		assertTrue(this.getText(trigger_rule_summary_error).equals(error));
 	}
 
+	public void takeScreenshot()
+	{
+		Shutterbug.shootPage(driver, ScrollStrategy.WHOLE_PAGE_CHROME).save("src/test/resources/screen-grabs/");
+		 
+		}
+	
 	public void validate_notification_error(String error) {
 
 		if (driver.getPageSource().contains("Refresh the browser to see uploaded products")) {
@@ -154,5 +191,4 @@ public class AddProductPage extends BasePage {
 		assertTrue(this.getText(reason_error).contains(error));
 		this.click(dismiss_error);
 	}
-
 }

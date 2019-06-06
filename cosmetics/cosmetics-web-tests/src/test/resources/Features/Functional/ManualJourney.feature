@@ -4,7 +4,7 @@ In order to notify product on cosmetic service
 As a User
 I should be able add product manually
 	
-@regression
+@regression @manual-journey
 Scenario: Validate manual journey screens
 Given I login as responsible person user
 When I click on "Add cosmetic products"
@@ -16,7 +16,7 @@ Then I should see "Will these cosmetic products be notified in the EU?"
 When I click "No"
 Then I should see manual journey "Cosmetic product name"
 
-@regression
+@regression @manual-journey
 Scenario Outline: notify product manually
 Given I login as responsible person user
 When I click on "Add cosmetic products"

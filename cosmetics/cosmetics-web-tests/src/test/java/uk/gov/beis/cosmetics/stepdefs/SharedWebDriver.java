@@ -31,7 +31,8 @@ public class SharedWebDriver extends EventFiringWebDriver {
 		try {
 			String browser = AppProperties.get("browser");
 			String platform = AppProperties.get("platform");
-			String envUrl = EnvironmentProperties.getServiceUrl();
+			String env = AppProperties.get("envurl");
+			//String envUrl = EnvironmentProperties.getServiceUrl();
 
 			String OS = AppProperties.get("OS").toLowerCase();
 			if (OS.length() == 0 || "detect".equals(OS.toLowerCase())) {
@@ -62,12 +63,11 @@ public class SharedWebDriver extends EventFiringWebDriver {
 				String AUTOMATE_KEY = AppProperties.get("bsUserkey");
 
 				String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub.browserstack.com/wd/hub";
-
 				DesiredCapabilities caps = new DesiredCapabilities();
 				caps.setCapability("os", "Windows");
 				caps.setCapability("os_version", "10");
-				caps.setCapability("browser", "IE");
-				caps.setCapability("browser_version", "11.0");
+				caps.setCapability("browser", "Chrome");
+				caps.setCapability("browser_version", "75.0 beta");
 				caps.setCapability("browserstack.local", "false");
 				caps.setCapability("browserstack.selenium_version", "3.5.2");
 				caps.setCapability("browserstack.debug", "true");
@@ -83,24 +83,26 @@ public class SharedWebDriver extends EventFiringWebDriver {
 				FirefoxProfile prof = new FirefoxProfile();
 				driver = new FirefoxDriver();
 
-				System.out.println("#####Started test run on  " + envUrl + "  on " + browser + " browser #####");
+				System.out.println("#####Started test run on  " + env + "  on " + browser + " browser #####");
 				driver.manage().window().maximize();
 			} 
 			/*
 			 * To run tests in chrome
 			 */
 			else if (browser.equalsIgnoreCase("chrome")) {
-				System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+				//System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+				System.setProperty("webdriver.chrome.driver",
+						System.getProperty("user.dir") + "/src/test/resources/chromedriver");
 
 				ChromeOptions options = new ChromeOptions();
-				options.setHeadless(true);
+				//options.setHeadless(true);
 				options.addArguments("--no-sandbox");
 				options.addArguments("--disable-dev-shm-usage");
 				options.addArguments("window-size=1024x768");
 				driver = new ChromeDriver(options);
 
 				driver.manage().window().maximize();
-				System.out.println("#####Started test run on  " + envUrl + "  on " + browser + " browser #####");
+				System.out.println("#####Started test run on  " + env + "  on " + browser + " browser #####");
 			} 
 			/*
 			 * to run tests in IE
@@ -109,7 +111,7 @@ public class SharedWebDriver extends EventFiringWebDriver {
 				System.setProperty("webdriver.ie.driver",
 						System.getProperty("user.dir") + "/src/test/resources/IEDriverServer.exe");
 				driver = new InternetExplorerDriver();
-				System.out.println("#####Started test run on  " + envUrl + "  on " + browser + " browser #####");
+				//System.out.println("#####Started test run on  " + envUrl + "  on " + browser + " browser #####");
 
 				driver.manage().window().maximize();
 			}

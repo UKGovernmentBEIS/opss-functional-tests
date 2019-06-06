@@ -2,6 +2,10 @@ package uk.gov.beis.cosmetics.pagemodel;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import com.assertthat.selenium_shutterbug.core.Shutterbug;
+import com.assertthat.selenium_shutterbug.utils.web.ScrollStrategy;
+
 import uk.gov.beis.cosmetics.Utils.EnvironmentProperties;
 import uk.gov.beis.digital.BasePage;
 
@@ -39,6 +43,7 @@ public class LoginPage extends BasePage {
 	}
 
 	public void login_as_responsible_person() throws InterruptedException {
+		this.takeScreenshot();
 		login_as(EnvironmentProperties.getResponsiblePersonUsername(),
 				EnvironmentProperties.getResponsiblePersonPassword());
 	}
@@ -46,4 +51,10 @@ public class LoginPage extends BasePage {
 	public void login_as_poison_centre() throws InterruptedException {
 		login_as(EnvironmentProperties.getPoisonCentreUsername(), EnvironmentProperties.getPoisonCentrePassword());
 	}
+	
+	public void takeScreenshot()
+	{
+		Shutterbug.shootPage(driver, ScrollStrategy.WHOLE_PAGE_CHROME).save("src/test/resources/screen-grabs/");
+		 
+		}
 }

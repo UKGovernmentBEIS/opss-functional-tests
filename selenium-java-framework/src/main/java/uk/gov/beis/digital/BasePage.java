@@ -15,6 +15,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.assertthat.selenium_shutterbug.core.Shutterbug;
+import com.assertthat.selenium_shutterbug.utils.web.ScrollStrategy;
+
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -43,7 +46,9 @@ public class BasePage {
 
 		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 		driver.navigate().to(url);
-		driver.manage().window().maximize();
+		this.takeScreenshot();
+		//driver.manage().window().maximize();
+		
 	}
 	
 	public void got_to(String page_url)
@@ -284,5 +289,12 @@ public class BasePage {
 		js.executeScript("arguments[0].style.border='3px solid red'", element);
 		Thread.sleep(3000);
 	}
+	
+	public void takeScreenshot()
+	{
+		Shutterbug.shootPage(driver, ScrollStrategy.WHOLE_PAGE_CHROME).save("src/test/resources/screen-grabs/");
+		 
+		}
+	
 
 }

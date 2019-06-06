@@ -1,8 +1,14 @@
 package uk.gov.beis.cosmetics.stepdefs;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.assertthat.selenium_shutterbug.core.Shutterbug;
+import com.assertthat.selenium_shutterbug.utils.web.ScrollStrategy;
+
+import cucumber.api.Scenario;
 import cucumber.api.java.en.When;
 import uk.gov.beis.cosmetics.pagemodel.AddProductPage;
 import uk.gov.beis.cosmetics.pagemodel.LoginPage;
@@ -22,28 +28,35 @@ public class WhenSteps extends SharedWebDriver {
 	@When("^I enter internal reference number \"(.*?)\"$")
 	public void i_enter_internal_reference_number(String arg1) throws Throwable {
 		addProductPage.enter_reference_number(arg1);
+		this.takeScreenshot();
 	}
 	
 	@When("^I select physical form as \"(.*?)\"$")
 	public void i_select_physical_form_as(String arg1) throws Throwable {
+		this.takeScreenshot();
 	    addProductPage.select_radio_button_by_text(arg1);
 	    addProductPage.click_continue();
+	    this.takeScreenshot();
 	}
 
 	@When("^I click on continue$")
 	public void i_click_on_continue() throws Throwable {
 		Thread.sleep(2000);
 	    addProductPage.click_continue();
+	    
 	}
 
 	@When("^I should see manual-journey step \"(.*?)\"$")
 	public void i_should_see_manual_journey_step(String arg1) throws Throwable {
 	   addProductPage.verify_cosmetics_page_headers(arg1);
+	   this.takeScreenshot();
 	}
 
 	@When("^I notify product manually$")
 	public void i_notify_product_manually() throws Throwable {
+		  this.takeScreenshot();
 		  loginPage.click_by_text("Add cosmetic products");
+		  this.takeScreenshot();
 		  addProductPage.select_radio_button_by_text("No, they have not been notified in the EU");
 		  addProductPage.click_continue();
 	      addProductPage.select_radio_button_by_text("No");
@@ -73,5 +86,13 @@ public class WhenSteps extends SharedWebDriver {
 	public void i_choose_frame_formulation() throws Throwable {
 		addProductPage.select_frame_formulation("Skin Care Cream, Lotion, Gel");
 	    addProductPage.click_continue();
+	    this.takeScreenshot();
 	}
+	
+	
+	public void takeScreenshot()
+	{
+		Shutterbug.shootPage(driver, ScrollStrategy.WHOLE_PAGE_CHROME).save("src/test/resources/screen-grabs/");
+		 
+		}
 }
