@@ -155,12 +155,15 @@ public class AddProductPage extends BasePage {
 		  this.click_continue();
 	      this.enter_country_imported_from("India");
 	      this.click_continue();
+	      this.select_radio_button_by_text("No");
+	      this.click_continue();
 	      this.select_radio_button_by_text("The cosmetic product is a single item");
 	      this.click_continue();
 	      this.select_radio_button_by_text("No");
 	      this.click_continue();
 	      this.select_radio_button_by_text("Loose powder");
 	      this.click_continue();
+	      this.select_radio_button_by_text("No");
 	      this.click_continue();
 	}
 
