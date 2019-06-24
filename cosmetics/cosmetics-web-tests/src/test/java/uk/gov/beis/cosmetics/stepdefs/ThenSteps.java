@@ -45,7 +45,8 @@ public class ThenSteps extends SharedWebDriver {
 
 	@Then("^I should see manual journey \"(.*?)\"$")
 	public void i_should_see_manual_journey(String arg1) throws Throwable {
-	    addProductPage.verify_cosmetics_page_headers(arg1);
+	   addProductPage.verify_cosmetics_page_headers(arg1);
+	    //addProductPage.verify_cosmetics_trigger_rules_question(arg1);
 	}
 
 	@Then("^I click back$")
