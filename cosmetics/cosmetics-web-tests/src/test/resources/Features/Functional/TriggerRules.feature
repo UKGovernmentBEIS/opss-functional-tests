@@ -291,7 +291,7 @@ Then I should see free text to enter amount contains in product
 When I click on continue
 Then I should see error message "Answer can not be blank"
 When I click "No"
-Then I should see manual-journey step "Upload an image of the product label"
+#Then I should see manual-journey step "Upload an image of the product label"
 
 
 

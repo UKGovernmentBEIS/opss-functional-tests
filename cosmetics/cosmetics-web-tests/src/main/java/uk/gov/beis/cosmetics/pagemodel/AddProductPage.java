@@ -135,6 +135,8 @@ public class AddProductPage extends BasePage {
 		this.click_continue();
 		this.select_radio_button_by_text("No");
 		this.click_continue();
+		this.select_radio_button_by_text("No");
+		this.click_continue();
 		this.select_prod_category("Skin care products - Hand care products");
 		this.select_radio_button_by_text("Choose a predefined frame formulation");
 		this.click_continue();
