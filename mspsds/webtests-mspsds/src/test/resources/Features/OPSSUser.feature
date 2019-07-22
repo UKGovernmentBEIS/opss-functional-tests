@@ -43,8 +43,8 @@ Then I should see "Allegation was successfully created"
 
 Examples:
 |Prod_cat								|Hazard-type					|
-|Furniture & Furnishings|Asphyxiation					|
-|Fancy Dress						|Penetrating force		|
+|Furniture & furnishings|Asphyxiation					|
+|Fancy dress						|Penetrating force		|
 
 
 
