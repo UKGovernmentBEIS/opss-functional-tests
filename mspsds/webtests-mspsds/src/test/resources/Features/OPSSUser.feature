@@ -42,9 +42,8 @@ And I enter hazard type as "<Hazard-type>"
 Then I should see "Allegation was successfully created"
 
 Examples:
-|Prod_cat								|Hazard-type					|
-|Furniture & Furnishings|Asphyxiation					|
-|Fancy Dress						|Penetrating force		|
-
+|Prod_cat								 |Hazard-type					|
+|Fancy Dress						 |Penetrating force		|
+|Furniture and furnishings|Asphyxiation					|
 
 
