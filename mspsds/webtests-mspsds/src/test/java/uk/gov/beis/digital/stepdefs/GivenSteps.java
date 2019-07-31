@@ -39,7 +39,7 @@ public class GivenSteps {
 
 	@When("^I want to assign any case$")
 	public void i_want_to_assign_any_case() throws Throwable {
-		loginPage.open_mspsds_case("Fancy Dress – Penetrating force (no product specified)");
+		loginPage.open_mspsds_case("Fancy dress – Penetrating force (no product specified)");
 		Thread.sleep(4000);
 
 		assigneePage.click_change_assign();
