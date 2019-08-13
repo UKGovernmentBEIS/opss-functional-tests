@@ -60,7 +60,7 @@ public class AddProductPage extends BasePage {
 
 	public void enter_reference_number(String refer_numb) {
 
-		this.select_radio_button_by_text("Yes, add an internal reference");
+		this.select_radio_button_by_text("Yes");
 		this.type(prod_reference_field, refer_numb);
 		this.click_continue();
 
@@ -113,7 +113,7 @@ public class AddProductPage extends BasePage {
 	public void add_product_manually() throws InterruptedException {
 		Thread.sleep(3000);
 		this.click_by_text("Add cosmetic products");
-		this.select_radio_button_by_text("No, they have not been notified in the EU");
+		this.select_radio_button_by_text("No");
 		this.click_continue();
 		this.select_radio_button_by_text("No");
 		this.click_continue();
@@ -147,7 +147,7 @@ public class AddProductPage extends BasePage {
 	public void notify_manually()
 	{
 		this.click_by_text("Add cosmetic products");
-		  this.select_radio_button_by_text("No, they have not been notified in the EU");
+		  this.select_radio_button_by_text("No");
 		  this.click_continue();
 	      this.select_radio_button_by_text("No");
 	      this.click_continue();
