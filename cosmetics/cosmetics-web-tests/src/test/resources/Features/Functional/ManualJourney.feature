@@ -8,15 +8,15 @@ I should be able add product manually
 Scenario: Validate manual journey screens
 Given I login as responsible person user
 When I click on "Add cosmetic products"
-Then I should see "Have the cosmetic products been notified in the EU?"
+Then I should see "Have the cosmetic products been notified on CPNP?"
 
-When I click "No, they have not been notified in the EU"
+When I click "No"
 Then I should see "Will these cosmetic products be notified in the EU?"
 
 When I click "No"
 #Then I should see manual journey "Cosmetic product name"
 
-@regression @manual-journey
+@nasir @regression @manual-journey
 Scenario Outline: notify product manually
 Given I login as responsible person user
 When I click on "Add cosmetic products"
