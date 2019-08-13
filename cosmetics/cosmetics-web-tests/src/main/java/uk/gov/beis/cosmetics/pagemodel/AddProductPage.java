@@ -187,7 +187,10 @@ public class AddProductPage extends BasePage {
 
 	public void dismiss_error()
 	{
+		if(driver.getPageSource().contains("Dismiss all error messages"))
+		{
 		this.click(dismiss_error);
+		}
 	}
 
 }

@@ -16,7 +16,7 @@ Then I should see "Will these cosmetic products be notified in the EU?"
 When I click "No"
 #Then I should see manual journey "Cosmetic product name"
 
-@nasir @regression @manual-journey
+ @regression @manual-journey
 Scenario Outline: notify product manually
 Given I login as responsible person user
 When I click on "Add cosmetic products"
