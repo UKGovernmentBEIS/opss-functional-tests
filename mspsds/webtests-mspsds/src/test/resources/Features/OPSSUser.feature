@@ -1,3 +1,4 @@
+
 Feature: Opss user
 	As an opss user
 	In order to create a case
@@ -45,7 +46,4 @@ Examples:
 |Prod_cat								  |Hazard-type					|
 |Furniture and furnishings|Asphyxiation					|
 |Fancy Dress						  |Penetrating force		|
-
-
-
 
