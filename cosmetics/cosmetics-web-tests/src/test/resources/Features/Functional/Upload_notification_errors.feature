@@ -4,10 +4,10 @@ Feature: Notification file upload error handling
 
 @regression
 Scenario Outline: Verify correct correct is displayed for
-Given I login user as notify user
+Given I login as responsible person user
 And I dismiss any existing errors from error tab
 And I click on "Add cosmetic products"
-And I click "Yes, they are already notified in the EU"
+And I click "Yes"
 And I click "Yes, I have ZIP files containing XML to upload"
 When I upload "<Invalid-file>"
 Then I should see respective error"<Error>"
