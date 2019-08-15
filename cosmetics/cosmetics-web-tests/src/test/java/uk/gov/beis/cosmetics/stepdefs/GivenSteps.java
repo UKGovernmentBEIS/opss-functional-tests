@@ -112,7 +112,12 @@ public class GivenSteps extends SharedWebDriver {
 		addProductPage.Is_trigger_rule_displayed();
 		assertTrue("Failed: Not on expected page", addProductPage.verify_cosmetics_trigger_rules_question(arg1));
 	}
-
+	@Then("^I should see regulation \"(.*?)\"$")
+	public void i_should_see_regulation(String arg1) throws Throwable {
+		addProductPage.Is_trigger_rule_displayed();
+		assertTrue("Failed: Not on expected page", addProductPage.verify_cosmetics_annexes_rule(arg1));
+	}
+	
 	@When("^I click \"(.*?)\"$")
 	public void i_click(String arg1) throws Throwable {
 		addProductPage.select_radio_button_by_text(arg1);
@@ -297,7 +302,7 @@ public class GivenSteps extends SharedWebDriver {
 
 	@Given("^I select purpose for nanomaterial \"(.*?)\"$")
 	public void i_select_purpose_for_nanomaterial(String arg1) throws Throwable {
-		nanoMaterialPage.select_radio_button_by_text(arg1);
+		nanoMaterialPage.choose_expose_to(arg1);
 	}
 
 	@After()
