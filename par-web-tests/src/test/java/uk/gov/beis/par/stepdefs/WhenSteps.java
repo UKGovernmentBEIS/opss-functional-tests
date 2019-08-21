@@ -8,6 +8,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import uk.gov.beis.par.pagemodel.CreatePartnershipPage;
 import uk.gov.beis.par.pagemodel.LoginPage;
+import uk.gov.beis.par.pagemodel.SearchPartnershipPage;
 
 public class WhenSteps extends SharedWebDriver
 {
@@ -15,12 +16,14 @@ public class WhenSteps extends SharedWebDriver
 	private WebDriver driver;
 	LoginPage loginPage;
 	CreatePartnershipPage createPartnership;
+	SearchPartnershipPage searchPartnership;
 	
 	
  public WhenSteps(SharedWebDriver driver) {
 	 this.driver = driver;
 	 loginPage = PageFactory.initElements(driver, LoginPage.class);
 	 createPartnership = PageFactory.initElements(driver,CreatePartnershipPage.class);
+	 searchPartnership = PageFactory.initElements(driver, SearchPartnershipPage.class);
  }
  @When("^I accept terms and conditions$")
  public void i_accept_terms_and_conditions() throws Throwable {
@@ -50,6 +53,16 @@ public class WhenSteps extends SharedWebDriver
      
  }
 
+ @When("^I enter search term \"(.*?)\"$")
+ public void i_enter_search_term(String arg1) throws Throwable {
+    searchPartnership.search_by_keyword(arg1); 
+ }
+
+ @Then("^I should be able to find partnerships related to search term \"(.*?)\"$")
+ public void i_should_be_able_to_find_partnerships_related_to_search_term(String arg1) throws Throwable {
+	 searchPartnership.search_results(arg1);
+     
+ }
  
 
 	}
