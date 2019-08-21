@@ -2,6 +2,8 @@ package uk.gov.beis.digital;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -45,6 +47,12 @@ public class BasePage {
 		driver.navigate().to(url);
 		driver.manage().window().maximize();
 	}
+	public String generate_string(int len)
+	{
+		String generated_string;
+		return  generated_string=RandomStringUtils.randomAlphanumeric(len).toLowerCase();
+	}
+	
 	
 	public void got_to(String page_url)
 	{
@@ -181,6 +189,33 @@ public class BasePage {
 			return flag=false;
 		}
    }
+   
+   
+   public boolean verify_par_page_header1(String title)
+   {
+
+		boolean flag= false;
+		if(driver.findElement(By.cssSelector("h1.heading-xlarge")).getText().equals(title))
+		return flag=true;
+		else 
+		{
+			return flag=false;
+		}
+   }
+   
+   
+   public boolean verify_page_contains(String text)
+   {
+	   boolean flag= false;
+	   if(driver.getPageSource().contains(text))
+		   {return flag=true;}
+	   else {
+		   return flag=false;
+	   }
+		   
+   }
+   
+  
    
    public boolean verify_cosmetics_page_headers(String title)
    {
