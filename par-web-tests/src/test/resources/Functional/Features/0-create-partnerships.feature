@@ -48,5 +48,30 @@ Scenario: New Co-ordinated Partnership
 	
 @wip
 Scenario: Verify notification is sent out when partnership is created
+@wip
 Scenario: Verify authority user can confirm org details
+	Given I login as "par_authority@example.com"
+	When I click on "See your partnerships"
+	And I click on "ABCD Mart"
+	And I confirm on behalf organisation
+	Then I should see "Confirm the details about the organisation"
+	
+	
+	When I click continue
+	Then I should see "Confirm the primary address details"
+	
+	When I click continue
+	Then I should see "Confirm the primary contact details"
+	
+	When I click continue
+	Then I should see "Confirm the SIC code"
+	
+	When I select sic code  "8.0  -  Property sale, letting and estate agency"
+	And I click continue
+	Then I should see "Confirm number of employee"
+	
+	When I select employee band "10 to 49"
+  And I click continue
+  Then I should see "Confirm the trading name"
+  
 

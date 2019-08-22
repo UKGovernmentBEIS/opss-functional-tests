@@ -34,7 +34,8 @@ public class CreatePartnershipPage extends BasePage {
 	private By save_button =  By.cssSelector("#edit-save");
 	
 	private String email = "Auto-test"+this.generate_string(8)+"@test.com";
-	
+	private By select_sic = By.id("edit-sic-code");
+	private By select_employee_band = By.id("edit-employees-band");
 
 	
 	public CreatePartnershipPage(WebDriver driver) {
@@ -91,6 +92,21 @@ public class CreatePartnershipPage extends BasePage {
 		}
 	}
 	
+	public void click_confirm_org_checkbox() throws InterruptedException
+	{
+		this.click(confirm_checkbox);
+		this.click_continue();
+		Thread.sleep(4000);
+		if(driver.getPageSource().contains("Please confirm that you have been given permission."))
+		{
+			this.click(confirm_checkbox);
+			this.click_continue();
+			
+		}
+	}
+
+	
+	
 	public void confirm_terms_conditions()
 	{
 		this.click(terms_conditions);
@@ -105,4 +121,13 @@ public class CreatePartnershipPage extends BasePage {
 		
 	}
 	
+	public void select_sic_code(String item)
+	{
+		this.SelectItem(select_sic,item);
+	}
+	
+	public void select_employee_band(String item)
+	{
+		this.SelectItem(select_employee_band, item);
+	}
 }
