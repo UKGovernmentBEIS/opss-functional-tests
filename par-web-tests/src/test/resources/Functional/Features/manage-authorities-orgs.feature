@@ -1,11 +1,11 @@
 
 Feature: Manage authorities and organisations
+In order update authorities or organisations details
 As a helpdek user 
-In order update authories or organisations details
 I should be able to manage authorities and organisations
  
 @regression
-Scenario: Verify only help desk user can see manage organisations
+Scenario: Verify only help desk user can see manage organisations/authorities
 Given I login as "par_helpdesk@example.com"
 When I click on dashboard link "par_helpdesk@example.com"
 Then I should see "Manage authorities" link
@@ -39,14 +39,3 @@ When I click on dashboard link "par_helpdesk@example.com"
 And I click on "Manage organisations"
 Then I should see "Organisation Dashboard"
 And I should see "Manage organisation" against each organisation
-
-
-Scenario: Verify only help desk user can see manage authorities
-
-Scenario: Verify when help desk user click on manage authorities then It should display list of authorities 
-
-Verify pagination the list page works fine as expected.
-
-Verify when help desk user click on manage organisations then it should display list of organisations
-
-Verify pagination works as expected on organisation list page.
