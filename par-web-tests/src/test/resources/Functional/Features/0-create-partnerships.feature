@@ -1,11 +1,14 @@
-Feature: New Direct Partnership For PA To Approve
-
+Feature: Create new Partnership journey
 
 
 @nasir @regression
-Scenario: Create a new direct partnership
+Scenario: Verify primary authority can see your partnerships
    Given I login as "par_authority@example.com"
    Then I should be able to see "See your partnerships"
+@regression   
+Scenario: Verify primary authority has permission to create new partnership
+   Given I login as "par_authority@example.com"
+   Then I should be able to see "Apply for a new partnership"
 
 
 @nasir @regression
@@ -46,9 +49,9 @@ Scenario: New Co-ordinated Partnership
   When I click send invite
   Then I should see "Partnership application completed"
 	
-@wip
+
 Scenario: Verify notification is sent out when partnership is created
-@wip @regression
+@regression
 Scenario: Verify authority user can confirm org details
 	Given I login as "par_authority@example.com"
 	When I click on "See your partnerships"
