@@ -2,13 +2,13 @@ Feature: New Direct Partnership For PA To Approve
 
 
 
-@nasir
+@nasir @regression
 Scenario: Create a new direct partnership
    Given I login as "par_authority@example.com"
    Then I should be able to see "See your partnerships"
 
 
-@nasir
+@nasir @regression
 Scenario: New direct Partnership
 	Given I login as "par_authority@example.com"
 	When I click on "Apply for a new partnership"
@@ -27,7 +27,7 @@ Scenario: New direct Partnership
   When I click send invite
   Then I should see "Partnership application completed"
 	
-@nasir
+@nasir @regression
 Scenario: New Co-ordinated Partnership
 	Given I login as "par_authority@example.com"
 	When I click on "Apply for a new partnership"
@@ -48,7 +48,7 @@ Scenario: New Co-ordinated Partnership
 	
 @wip
 Scenario: Verify notification is sent out when partnership is created
-@wip
+@wip @regression
 Scenario: Verify authority user can confirm org details
 	Given I login as "par_authority@example.com"
 	When I click on "See your partnerships"
