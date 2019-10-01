@@ -59,7 +59,7 @@ And I select product category"<prod-category>"
 And I select formulation"Choose a predefined frame formulation"
 And I select frame formulation"<frame-formulation>"
 And I click on continue
-Then I should see trigger rule question "Does the cosmetic product contain anti-dandruff agents?"
+Then I should see manual-journey step "Poisonous ingredients"
 Examples:
 |product-name		|country|prod-category													|type												 |frame-formulation						|
 |AutoTestProduct|China	|Skin care products - Hand care products|Predefined frame formulation|Skin Care Cream, Lotion, Gel|

@@ -10,28 +10,27 @@ Scenario: Verify anti-dandruff trigger question for manual journey
 Given I login as responsible person user
 And I select manually to notify product with single component
 When I choose frame formulation 
-Then I should see trigger rule question "Does the cosmetic product contain anti-dandruff agents?"
+Then I should see manual journey "Poisonous ingredients"
 
 
-@regression @trigger-rules
+
 Scenario: Verify anti-dandruff agents 
 Given I select "Yes" product contains anti-dandruff agents
 Then I should be presented with anti-dandruff agents form page to enter details
 And I select "No" product contains anti-dandruff agents
 Then I should be presented with trigger rule question "What is the pH of the cosmetic product?"
 
-@regression @trigger-rules
+
 Scenario: Verify validations on anti-dandruff agents questions
 Given I select "Yes" product contains anti-dandruff agents
 When I click on continue
 Then I should see error message "No substance added"
 
 
-#Validate anti-dandruf agents
+
 @regression @trigger-rules
 Scenario: Verify list anti-dandruff agents and concentration
-Given I enter agents substance "test"
-And I enter substance value "10.22"
+Given I select "Yes" contains poisonous ingredients
 When I click on continue
 Then I should see "Is the pH between 3 and 10?"
 

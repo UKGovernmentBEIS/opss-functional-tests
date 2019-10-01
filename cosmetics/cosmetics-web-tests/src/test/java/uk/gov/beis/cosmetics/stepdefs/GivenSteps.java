@@ -251,6 +251,13 @@ public class GivenSteps extends SharedWebDriver {
 		addProductPage.select_radio_button_by_text(arg1);
 		addProductPage.click_continue();
 	}
+	@Given("^I select \"(.*?)\" contains poisonous ingredients$")
+	public void i_select_contains_poisonous_ingredients(String arg1) throws Throwable {
+		addProductPage.select_radio_button_by_text(arg1);
+		addProductPage.click_continue();
+	}
+
+	
 
 	@Given("^I enter agents substance \"(.*?)\"$")
 	public void i_enter_agents_substance(String arg1) throws Throwable {
@@ -299,6 +306,8 @@ public class GivenSteps extends SharedWebDriver {
 	public void i_select_purpose_for_nanomaterial(String arg1) throws Throwable {
 		nanoMaterialPage.select_radio_button_by_text(arg1);
 	}
+	
+	
 
 	@After()
 	/*
