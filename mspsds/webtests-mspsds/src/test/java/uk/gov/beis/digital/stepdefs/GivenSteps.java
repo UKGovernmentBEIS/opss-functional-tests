@@ -64,7 +64,7 @@ public class GivenSteps {
 	public void i_login_as_keycloack_Admin_user() throws Throwable {
 		loginPage.launch_app(kc_url);
 		Thread.sleep(3000);
-		loginPage.login_as_kc_admin("Admin",kc_pwd);
+		loginPage.login_as_kc_admin("ed@nearfutureservices.com",kc_pwd);
 	    
 	}
 
