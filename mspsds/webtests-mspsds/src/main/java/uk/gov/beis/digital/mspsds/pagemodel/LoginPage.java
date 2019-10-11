@@ -48,7 +48,7 @@ public void login_as_kc_admin(String username, String password) throws Interrupt
 	this.type(usernameField, username);
 	this.type(passwordField, password);
 	this.click(loginButton);
-	Thread.sleep(4000);
+	Thread.sleep(50000);
 	}
 }
 
@@ -151,6 +151,7 @@ public void invite_user() throws InterruptedException
 
 public void select_user_role(String role) throws InterruptedException
 {
+	Thread.sleep(3000);
 	this.driver.findElement(By.xpath("//a[contains(text(),'Role Mappings')]")).click();
 	Thread.sleep(3000);
 	this.SelectItem(client_app, "psd-app");
