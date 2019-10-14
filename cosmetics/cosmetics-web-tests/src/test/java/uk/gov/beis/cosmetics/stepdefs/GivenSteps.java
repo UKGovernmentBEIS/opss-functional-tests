@@ -307,6 +307,17 @@ public class GivenSteps extends SharedWebDriver {
 		nanoMaterialPage.select_radio_button_by_text(arg1);
 	}
 	
+	@Given("^I enter min pH value \"(.*?)\"$")
+	public void i_enter_min_pH_value(String arg1) throws Throwable {
+	   addProductPage.enter_min_ph_value(arg1);
+	}
+
+	@Given("^I enter max pH value \"(.*?)\"$")
+	public void i_enter_max_pH_value(String arg1) throws Throwable {
+	    addProductPage.enter_max_ph_value(arg1);
+	}
+
+	
 	
 
 	@After()

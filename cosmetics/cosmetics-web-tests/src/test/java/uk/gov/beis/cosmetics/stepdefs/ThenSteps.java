@@ -1,5 +1,7 @@
 package uk.gov.beis.cosmetics.stepdefs;
 
+import static org.junit.Assert.assertTrue;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -67,4 +69,16 @@ public class ThenSteps extends SharedWebDriver {
 	public void i_dismiss_any_existing_errors_from_error_tab() throws Throwable {
 	    addProductPage.dismiss_error();
 	}
+
+@Then("^I should see min pH free text field$")
+public void i_should_see_min_pH_free_text_field() throws Throwable {
+    
+}
+
+@Then("^I should see max pH free text field$")
+public void i_should_see_max_pH_free_text_field() throws Throwable {
+	addProductPage.verify_element_present();
+   
+}
+
 }

@@ -46,11 +46,14 @@ And I click back
 Scenario: Select pH value not between 3 and 10 
 Given I select pH between three and ten as "No"
 And I click on continue
-#Then I should see "What is the pH of the cosmetic product?"
+Then I should see min pH free text field
+And I should see max pH free text field 
+
 
 @regression @trigger-rules
-Scenario: enter pH value less than 3
-Given I enter ph value as "2.99"
+Scenario: pH happy path
+Given I enter min pH value "2.0"
+And I enter max pH value "3.0"
 And I click on continue 
 Then I should see "Does the cosmetic product contain anti-hair loss agents?"
 And I click back
@@ -58,15 +61,32 @@ And I click on continue
 
 
 @regression @trigger-rules
-Scenario: Validate error message when pH value <3 and >10
-
-Given I enter ph value as "4"
+Scenario: Error message on invalid pH values
+Given I enter min pH value "56"
+And I enter max pH value "56"
 And I click on continue 
-Then I should see error message "pH must be below 3 or above 10"
+Then I should see error message "Enter a value of 14 or lower for minimum pH"
 
 @regression @trigger-rules
-Scenario: Validate no error when pH value >10 
-Given I enter ph value as "11.40"
+Scenario: Error message on negative pH values
+Given I enter min pH value "-5"
+And I enter max pH value "-6"
+And I click on continue 
+Then I should see error message "Enter a maximum pH"
+Then I should see error message "Enter a minimum pH"
+
+@regression @trigger-rules
+Scenario: verify error message max pH is left empty
+Given I enter min pH value "5"
+And I enter max pH value " "
+And I click on continue 
+Then I should see error message "Enter a maximum pH"
+
+
+@regression @trigger-rules
+Scenario: Validate alkaline page when pH more than 10
+Given I enter min pH value "10"
+And I enter max pH value "11"
 And I click on continue 
 Then I should see "List the alkaline agents (including ammonium hydroxide liberators) and their concentration"
 
@@ -282,7 +302,7 @@ And I click on continue
 Then I should see "Does the cosmetic product contain isopropanols?"
 
 
-@regression @trigger-rules
+@regression @trigger-rules 
 Scenario: Verify isopropanols trigger rule question
 Given I click "Yes"
 Then I should see free text to enter amount contains in product
