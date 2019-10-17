@@ -36,6 +36,8 @@ public class AddProductPage extends BasePage {
 	By trigger_rule_question_2 = By.cssSelector("#trigger_question_trigger_question_elements_attributes_1_answer");
 
 	By trigger_rule_question_header = By.xpath("//h1[@class='govuk-fieldset__heading']");
+	By pH_min_field = By.cssSelector("#component_minimum_ph");
+	By pH_max_field = By.cssSelector("#component_maximum_ph");
 
 	public void login_as(String user, String pwd) throws InterruptedException {
 		this.click(signIn_link);
@@ -47,6 +49,14 @@ public class AddProductPage extends BasePage {
 	public void enter_productname(String name) {
 		this.type(prod_name, name);
 		this.click_continue();
+	}
+	public void enter_min_ph_value(String value)
+	{
+		this.type(pH_min_field, value);
+	}
+	public void enter_max_ph_value(String value)
+	{
+		this.type(pH_max_field, value);
 	}
 
 	public void enter_trigger_rule1(String text) {
@@ -191,6 +201,12 @@ public class AddProductPage extends BasePage {
 		{
 		this.click(dismiss_error);
 		}
+	}
+	
+	public void verify_element_present() throws InterruptedException
+	{
+		assertTrue("Failed: min pH not displayed",this.IsElementDisplayed(pH_min_field));
+		assertTrue("Failed:max pH not displayed",this.IsElementDisplayed(pH_max_field));
 	}
 
 }
