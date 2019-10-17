@@ -251,6 +251,13 @@ public class GivenSteps extends SharedWebDriver {
 		addProductPage.select_radio_button_by_text(arg1);
 		addProductPage.click_continue();
 	}
+	@Given("^I select \"(.*?)\" contains poisonous ingredients$")
+	public void i_select_contains_poisonous_ingredients(String arg1) throws Throwable {
+		addProductPage.select_radio_button_by_text(arg1);
+		addProductPage.click_continue();
+	}
+
+	
 
 	@Given("^I enter agents substance \"(.*?)\"$")
 	public void i_enter_agents_substance(String arg1) throws Throwable {
@@ -299,6 +306,19 @@ public class GivenSteps extends SharedWebDriver {
 	public void i_select_purpose_for_nanomaterial(String arg1) throws Throwable {
 		nanoMaterialPage.select_radio_button_by_text(arg1);
 	}
+	
+	@Given("^I enter min pH value \"(.*?)\"$")
+	public void i_enter_min_pH_value(String arg1) throws Throwable {
+	   addProductPage.enter_min_ph_value(arg1);
+	}
+
+	@Given("^I enter max pH value \"(.*?)\"$")
+	public void i_enter_max_pH_value(String arg1) throws Throwable {
+	    addProductPage.enter_max_ph_value(arg1);
+	}
+
+	
+	
 
 	@After()
 	/*
