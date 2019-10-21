@@ -316,6 +316,20 @@ public class GivenSteps extends SharedWebDriver {
 	public void i_enter_max_pH_value(String arg1) throws Throwable {
 	    addProductPage.enter_max_ph_value(arg1);
 	}
+	@Given("^I select The minimum pH is lower than three \"(.*?)\"$")
+	public void i_select_The_minimum_pH_is_lower_than_three(String arg1) throws Throwable {
+		nanoMaterialPage.select_radio_button_by_text(arg1);
+	}
+	@Given("^I select The maximum pH is higher than ten\"(.*?)\"$")
+	public void i_select_The_maximum_pH_is_higher_than_ten(String arg1) throws Throwable {
+		nanoMaterialPage.select_radio_button_by_text(arg1);
+	}
+	
+
+	@Given("^I select product doesnt have pH \"(.*?)\"$")
+	public void i_select_product_doesnt_have_pH(String arg1) throws Throwable {
+		nanoMaterialPage.select_radio_button_by_text(arg1);
+	}
 
 	
 	
