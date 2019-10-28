@@ -1,5 +1,7 @@
 package uk.gov.beis.par.stepdefs;
 
+import static org.junit.Assert.assertTrue;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -8,6 +10,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import uk.gov.beis.par.pagemodel.CreatePartnershipPage;
 import uk.gov.beis.par.pagemodel.LoginPage;
+import uk.gov.beis.par.pagemodel.SearchPartnershipPage;
 
 public class GivenSteps extends SharedWebDriver
 {
@@ -15,6 +18,7 @@ public class GivenSteps extends SharedWebDriver
 	private WebDriver driver;
 	LoginPage loginPage;
 	CreatePartnershipPage createPartnership;
+	SearchPartnershipPage searchPartnerships;
 	
 	
  public GivenSteps(SharedWebDriver driver) {
@@ -74,6 +78,8 @@ public class GivenSteps extends SharedWebDriver
 		   createPartnership.fill_org_mem_details();
 		}
 
+		
+		
 	}
 
 

@@ -1,6 +1,6 @@
 Feature: Search Partnerships
 
-@test1
+@test1 @regression
 Scenario Outline: Search Partnerships
    Given I login as "par_authority@example.com"
    When I click on "Search for a partnership"

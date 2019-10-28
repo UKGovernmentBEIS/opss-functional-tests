@@ -173,6 +173,7 @@ public class BasePage {
 		}
 		return flag;
 	}
+	
  /**
   * @param text
   * @return

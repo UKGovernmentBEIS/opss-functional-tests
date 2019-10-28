@@ -1,5 +1,7 @@
 package uk.gov.beis.par.stepdefs;
 
+import static org.junit.Assert.assertTrue;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -64,7 +66,32 @@ public class WhenSteps extends SharedWebDriver
      
  }
  
+ @When("^I confirm on behalf organisation$")
+ public void i_confirm_on_behalf_organisation() throws Throwable {
+	 Thread.sleep(2000);
+	// assertTrue("Failed:Not on confirmation page",createPartnership.verify_par_page_header1("Declaration for completion by proxy"));
+     createPartnership.click_confirm_org_checkbox();
+ }
 
-	}
+ @When("^I select sic code  \"(.*?)\"$")
+ public void i_select_sic_code(String arg1) throws Throwable {
+     createPartnership.select_sic_code(arg1);;
+ }
+
+	
+
+@When("^I select employee band \"(.*?)\"$")
+public void i_select_employee_band(String arg1) throws Throwable {
+	createPartnership.select_employee_band(arg1);
+    
+}
+@When("^I click on dashboard link \"(.*?)\"$")
+public void i_click_on_dashboard_link(String arg1) throws Throwable {
+	createPartnership.click_by_text(arg1);
+}
+
+
+
+}
 
 
