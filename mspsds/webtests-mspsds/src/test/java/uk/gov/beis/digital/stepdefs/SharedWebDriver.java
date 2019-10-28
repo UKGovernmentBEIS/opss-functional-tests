@@ -100,10 +100,16 @@ public class SharedWebDriver extends EventFiringWebDriver {
 			 * To run tests in chrome
 			 */
 			else if (browser.equalsIgnoreCase("chrome")) {
+				if(platform.equalsIgnoreCase("local"))
+				{
+				 System.setProperty("webdriver.chrome.driver", 
+						 System.getProperty("user.dir") + "/src/test/resources/chromedriver");
+				}
+				else {
 				System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-
+				}
 				ChromeOptions options = new ChromeOptions();
-				options.setHeadless(true);
+				//options.setHeadless(true);
 				options.addArguments("no-sandbox");
 				options.addArguments("disable-dev-shm-usage");
 				options.addArguments("window-size=1024x768");

@@ -94,7 +94,7 @@ public void add_team_mail_box(String mail_box) throws InterruptedException
 	Thread.sleep(3000);
 	this.driver.findElement(By.xpath("//a[contains(text(),'Attributes')]")).click();
 	Thread.sleep(2000);
-	this.driver.findElement(By.xpath("//input[@id='newAttributeKey']")).sendKeys("teamrecepientEmail");
+	this.driver.findElement(By.xpath("//input[@id='newAttributeKey']")).sendKeys("teamRecipientEmail");
 	this.driver.findElement(By.xpath("//input[@id='newAttributeValue']")).sendKeys(mail_box);
 	this.driver.findElement(By.xpath("//td[@class='kc-action-cell ng-binding']")).click();
 	Thread.sleep(2000);
