@@ -62,13 +62,26 @@ public class GivenSteps extends SharedWebDriver {
 	public void i_login_user_as() throws Throwable {
 		if (platform.equals("local")) {
 			loginPage.launch_app(AppProperties.get("envurl"));
-		} else {
+		} else if(platform.equals("docker")) {
+			loginPage.launch_app(System.getenv("envurl"));
+		}
+		
+		else 
+		{
 			loginPage.launch_app(EnvironmentProperties.getServiceUrl());
 
 		}
 		Thread.sleep(3000);
 		loginPage.verifyPageTitle("Landing Page - Submit cosmetic product notifications");
+		if(platform.equals("docker")) 
+		{
+			loginPage.login_as(System.getenv("rp.username"),System.getenv("rp.password"));
+			
+		}
+		else 
+		{
 		loginPage.login_as_responsible_person();
+		}
 	}
 
 	@Given("^I click on \"(.*?)\"$")
