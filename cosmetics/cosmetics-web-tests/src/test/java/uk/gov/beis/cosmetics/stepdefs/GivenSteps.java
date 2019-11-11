@@ -245,7 +245,12 @@ public class GivenSteps extends SharedWebDriver {
 	public void i_select_manually_to_notify_product_with_single_component() throws Throwable {
 		addProductPage.add_product_manually();
 	}
-
+	@Given("^I select manually to notify pre-brexit product with single component$")
+	public void i_select_manually_to_notify_pre_brexit_product_with_single_component() throws Throwable {
+	   addProductPage.add_product_manually_prebrexit();
+	}
+	
+	
 	@Given("^I select \"(.*?)\" product contains anti-dandruff agents$")
 	public void i_select_product_contains_anti_dandruff_agents(String arg1) throws Throwable {
 		addProductPage.select_radio_button_by_text(arg1);

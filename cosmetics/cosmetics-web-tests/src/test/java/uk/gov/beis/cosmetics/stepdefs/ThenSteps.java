@@ -50,6 +50,11 @@ public class ThenSteps extends SharedWebDriver {
 	   addProductPage.verify_cosmetics_page_headers(arg1);
 	    //addProductPage.verify_cosmetics_trigger_rules_question(arg1);
 	}
+	
+	@Then("^I should see check your answer page \"(.*?)\"$")
+	public void i_should_see_check_your_answer_page(String arg1) throws Throwable {
+		addProductPage.verify_cosmetics_page_headers(arg1); 
+	}
 
 	@Then("^I click back$")
 	public void i_click_back() throws Throwable {
