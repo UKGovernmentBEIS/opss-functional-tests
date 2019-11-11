@@ -152,6 +152,41 @@ public class AddProductPage extends BasePage {
 		this.click_continue();
 	}
 
+	public void add_product_manually_prebrexit() throws InterruptedException {
+		Thread.sleep(3000);
+		this.click_by_text("Add cosmetic products");
+		this.select_radio_button_by_text("Yes");
+		this.click_continue();
+		this.select_radio_button_by_text("No, I will enter the information manually");
+		this.click_continue();
+		this.select_radio_button_by_text("Yes, the cosmetic product was notified before 31 October 2019");
+		this.click_continue();	
+		this.enter_productname("TestManual-Prod");
+		this.enter_reference_number("TestRef-2003");
+		this.select_radio_button_by_text("Yes");
+		this.click_continue();
+		this.enter_country_imported_from("India");
+		this.click_continue();
+		this.select_radio_button_by_text("No");
+		this.click_continue();
+		this.select_radio_button_by_text("The cosmetic product is a single item");
+		this.click_continue();
+		this.select_radio_button_by_text("No");
+		this.click_continue();
+		this.select_radio_button_by_text("Loose powder");
+		this.click_continue();
+		this.select_radio_button_by_text("No");
+		this.click_continue();
+		this.select_radio_button_by_text("No");
+		this.click_continue();
+		this.select_radio_button_by_text("No");
+		this.click_continue();
+		this.select_prod_category("Skin care products - Hand care products");
+		this.select_radio_button_by_text("Choose a predefined frame formulation");
+		this.click_continue();
+	}
+
+	
 	
 
 	public void notify_manually()

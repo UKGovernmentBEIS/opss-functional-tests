@@ -5,6 +5,14 @@ as a user
 I should be able to see trigger rules
 
 #Validate trigger rules 
+
+@regression @trigger-rules @pre-brexit
+Scenario: Verify anti-dandruff trigger question for manual journey
+Given I login as responsible person user
+And I select manually to notify pre-brexit product with single component
+When I choose frame formulation 
+Then I should see manual journey "Poisonous ingredients"
+
 @regression @trigger-rules
 Scenario: Verify anti-dandruff trigger question for manual journey
 Given I login as responsible person user
