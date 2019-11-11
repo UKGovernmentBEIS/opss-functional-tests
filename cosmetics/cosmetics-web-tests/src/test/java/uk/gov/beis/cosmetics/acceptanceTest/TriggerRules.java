@@ -12,5 +12,5 @@ import cucumber.api.junit.Cucumber;
 	tags = { "@trigger-rules","~@ignore,@Pending" },
 	glue="uk.gov.beis.cosmetics.stepdefs"
 )
-public class TriggerRulesTest {
+public class TriggerRules {
 }
