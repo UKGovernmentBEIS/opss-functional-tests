@@ -108,6 +108,7 @@ public class SharedWebDriver extends EventFiringWebDriver {
 				else {
 				System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 				}
+
 				ChromeOptions options = new ChromeOptions();
 				//options.setHeadless(true);
 				options.addArguments("no-sandbox");

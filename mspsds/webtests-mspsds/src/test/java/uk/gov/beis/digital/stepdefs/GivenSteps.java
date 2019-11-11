@@ -16,8 +16,10 @@ public class GivenSteps {
 	private LoginPage loginPage;
 	private AssigneePage assigneePage;
 	private String platform=AppProperties.get("platform");
+
 	private String kc_url = AppProperties.get("KC_URL");
 	private String kc_pwd = AppProperties.get("KC_password");
+
 
 	public GivenSteps(SharedWebDriver driver) {
 		loginPage = PageFactory.initElements(driver, LoginPage.class);
@@ -32,6 +34,7 @@ public class GivenSteps {
 		loginPage.launch_app(EnvironmentProperties.getServiceUrl());
 		}
 		Thread.sleep(5000);
+		}
 		
 		loginPage.login_as_opss();
 		loginPage.verifyPageTitle("Cases - Product safety database - GOV.UK");
@@ -42,12 +45,14 @@ public class GivenSteps {
 	public void i_login_as_Trading_standard_user() throws Throwable {
 		if (platform.equals("local")) {
 			loginPage.launch_app(AppProperties.get("envurl"));
-			
+
 		} else {
 		loginPage.launch_app(EnvironmentProperties.getServiceUrl());
 		}
 		Thread.sleep(5000);
-		
+
+		}
+
 
 		loginPage.login_as_ts();
 		loginPage.verifyPageTitle("Home Page - Product safety database - GOV.UK");
