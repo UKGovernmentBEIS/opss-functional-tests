@@ -9,8 +9,8 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 	format = { "html:target/cucumber-reports/html", "json:target/cucumber-reports/cucumber.json" },
 	features = { "src/test/resources/Features" },
-	tags = { "@smoke","~@ignore,@Pending" },
+	tags = { "@trigger-rules","~@ignore,@Pending" },
 	glue="uk.gov.beis.cosmetics.stepdefs"
 )
-public class Regression {
+public class TriggerRulesTest {
 }
