@@ -1,20 +1,12 @@
 
-Feature: Trigger rules
-In order to add product with right information
+Feature: Manual post brexit product notification
+In order to notifiy post-brexit product manualluy
 as a user
-I should be able to see trigger rules
-
+I should be able notify with required information for post-brexit notification
 #Validate trigger rules 
 
-@regression @trigger-rules @pre-brexit
-Scenario: Verify anti-dandruff trigger question for manual journey
-Given I login as responsible person user
-And I select manually to notify pre-brexit product with single component
-When I choose frame formulation 
-Then I should see manual journey "Poisonous ingredients"
-
-@regression @trigger-rules
-Scenario: Verify harmful ingredients question for manual journey
+@regression @trigger-rules 
+Scenario: Verify harmful ingredients question for post-brexit notification
 Given I login as responsible person user
 And I select manually to notify product with single component
 When I choose frame formulation 

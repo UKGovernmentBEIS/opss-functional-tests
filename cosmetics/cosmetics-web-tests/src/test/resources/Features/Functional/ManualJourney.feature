@@ -11,7 +11,7 @@ When I click on "Add cosmetic products"
 Then I should see "Have the cosmetic products been notified on CPNP?"
 
 When I click "No"
-Then I should see "Will these cosmetic products be notified in the EU?"
+Then I should see "Will these products be notified in the EU?"
 
 When I click "No"
 #Then I should see manual journey "Cosmetic product name"
