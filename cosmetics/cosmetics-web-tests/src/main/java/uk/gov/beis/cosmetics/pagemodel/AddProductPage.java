@@ -16,6 +16,7 @@ public class AddProductPage extends BasePage {
 	}
 
 	By ele_fileupload = By.xpath("//input[@multiple='multiple'][contains(@id,'files')]");
+	By ingredients_upload = By.xpath("//input[@id='component_formulation_file']");
 	By upload_button = By.xpath("//input[contains(@type,'submit')]");
 	By login_button = By.cssSelector("#kc-login");
 	By signOut_link = By.xpath("//a[contains(text(),'Sign out')]");
@@ -119,6 +120,14 @@ public class AddProductPage extends BasePage {
 		click(upload_button);
 		Thread.sleep(3000);
 	}
+	
+	public void add_ingredients_file(String file) throws InterruptedException
+	{
+		this.file_upload(ingredients_upload, file);
+		click(upload_button);
+		Thread.sleep(3000);	
+	}
+	
 
 	public void add_product_manually() throws InterruptedException {
 		Thread.sleep(3000);

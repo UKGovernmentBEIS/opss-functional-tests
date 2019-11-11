@@ -110,4 +110,10 @@ public class WhenSteps extends SharedWebDriver {
 	public void i_should_see_multi_selectable_exposure_route(String arg1) throws Throwable {
 
 	}
+	
+	@When("^I upload poisonous ingredients file \"(.*?)\"$")
+	public void i_upload_poisonous_ingredients_file(String arg1) throws Throwable {
+	  addProductPage.add_ingredients_file(arg1);
+	}
+
 }
