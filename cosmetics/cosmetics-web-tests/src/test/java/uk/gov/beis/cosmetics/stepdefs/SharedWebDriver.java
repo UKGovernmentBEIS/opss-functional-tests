@@ -59,18 +59,20 @@ public class SharedWebDriver extends EventFiringWebDriver {
 			 * will be provided in env file(not in GIT)
 			 */
 			else if (platform.equalsIgnoreCase("browserstack")) {
-				String USERNAME = AppProperties.get("bsUsername");
-				String AUTOMATE_KEY = AppProperties.get("bsUserkey");
+//				String USERNAME = AppProperties.get("bsUsername");
+//				String AUTOMATE_KEY = AppProperties.get("bsUserkey");
+				String USERNAME = System.getenv("BSUSERNAME");
+				String AUTOMATE_KEY = System.getenv("BSUSERKEY");
 
-				String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub.browserstack.com/wd/hub";
+				String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 
 				DesiredCapabilities caps = new DesiredCapabilities();
-				caps.setCapability("os", "Windows");
-				caps.setCapability("os_version", "10");
+				 
 				caps.setCapability("browser", "IE");
 				caps.setCapability("browser_version", "11.0");
-				caps.setCapability("browserstack.local", "false");
-				caps.setCapability("browserstack.selenium_version", "3.5.2");
+				caps.setCapability("os", "Windows");
+				caps.setCapability("os_version", "10");
+				caps.setCapability("resolution", "1024x768");;
 				caps.setCapability("browserstack.debug", "true");
 
 				driver = new RemoteWebDriver(new URL(URL), caps);
