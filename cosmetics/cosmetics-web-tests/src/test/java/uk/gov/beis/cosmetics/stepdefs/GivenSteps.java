@@ -63,6 +63,7 @@ public class GivenSteps extends SharedWebDriver {
 		if (platform.equals("local")) {
 			loginPage.launch_app(AppProperties.get("envurl"));
 		} else if(platform.equals("docker")) {
+			System.out.println("Env to run test on "+ System.getenv("ENVURL"));
 			loginPage.launch_app(System.getenv("envurl"));
 		}
 		
@@ -144,6 +145,11 @@ public class GivenSteps extends SharedWebDriver {
 		if (platform.equals("local")) {
 			loginPage.launch_app(AppProperties.get("envurl"));
 		} 
+		else if(platform.equals("docker")) {
+			System.out.println("Env to run test on "+ System.getenv("ENVURL"));
+			loginPage.launch_app(System.getenv("ENVURL"));
+		}
+		
 		else {
 			loginPage.launch_app(EnvironmentProperties.getServiceUrl());
 		}
