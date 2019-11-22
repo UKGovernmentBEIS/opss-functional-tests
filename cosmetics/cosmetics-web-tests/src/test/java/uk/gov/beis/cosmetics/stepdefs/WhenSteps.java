@@ -1,8 +1,13 @@
 package uk.gov.beis.cosmetics.stepdefs;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.PageFactory;
 
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import uk.gov.beis.cosmetics.pagemodel.AddProductPage;
@@ -114,6 +119,22 @@ public class WhenSteps extends SharedWebDriver {
 	@When("^I upload poisonous ingredients file \"(.*?)\"$")
 	public void i_upload_poisonous_ingredients_file(String arg1) throws Throwable {
 	  addProductPage.add_ingredients_file(arg1);
+	}
+	@After()
+	/*
+	 * Embed a screenshot in test report if test is marked as failed
+	 */
+	public void embedScreenshot(Scenario scenario) {
+		if (scenario.isFailed()) {
+			try {
+				scenario.write("Current Page URL is " + driver.getCurrentUrl());
+				// byte[] screenshot = getScreenshotAs(OutputType.BYTES);
+				byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+				scenario.embed(screenshot, "image/png");
+			} catch (WebDriverException somePlatformsDontSupportScreenshots) {
+				System.err.println(somePlatformsDontSupportScreenshots.getMessage());
+			}
+		}
 	}
 
 }
