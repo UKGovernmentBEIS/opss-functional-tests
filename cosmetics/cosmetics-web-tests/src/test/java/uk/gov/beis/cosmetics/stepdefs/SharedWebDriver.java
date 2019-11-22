@@ -97,7 +97,7 @@ public class SharedWebDriver extends EventFiringWebDriver {
 						 System.getProperty("user.dir") + "/src/test/resources/chromedriver");
 				}
 				else {
-				System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+				System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 				}
 
 				ChromeOptions options = new ChromeOptions();
