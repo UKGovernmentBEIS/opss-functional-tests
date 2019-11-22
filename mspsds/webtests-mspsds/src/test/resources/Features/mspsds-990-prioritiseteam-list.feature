@@ -9,5 +9,4 @@ Given I login as OPSS user
 When I want to assign any case
 Then I should see team "OPSS Processing"
 And I should see team "OPSS Trading Standards Co-ordination"
-And I should see team "OPSS Incident Management"
-
+And I should see team "OPSS Incident Management" 
