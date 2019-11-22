@@ -26,7 +26,7 @@ public class GivenSteps extends SharedWebDriver {
 	private LoginPage loginPage;
 	private AddProductPage addProductPage;
 	private NanoMaterialPage nanoMaterialPage;
-	private String platform=AppProperties.get("platform");
+	private String platform = AppProperties.get("platform");
 
 	public GivenSteps(SharedWebDriver driver) {
 		this.driver = driver;
@@ -62,27 +62,21 @@ public class GivenSteps extends SharedWebDriver {
 	public void i_login_user_as() throws Throwable {
 		if (platform.equals("local")) {
 			loginPage.launch_app(AppProperties.get("envurl"));
-		} else if(platform.equals("docker")) {
-			System.out.println("Env to run test on "+ System.getenv("ENVURL"));
-			loginPage.launch_app(System.getenv("envurl"));
+			loginPage.login_as_responsible_person();
+		} else if (platform.equals("docker")) {
+			System.out.println("Env to run test on " + System.getenv("ENVURL"));
+			loginPage.launch_app(System.getenv("ENVURL"));
+			Thread.sleep(2000);
+			loginPage.login_as(System.getenv("USERNAME"), System.getenv("PASSWORD"));
 		}
-		
-		else 
-		{
+		else {
 			loginPage.launch_app(EnvironmentProperties.getServiceUrl());
+			loginPage.login_as_responsible_person();
 
 		}
 		Thread.sleep(3000);
 		loginPage.verifyPageTitle("Landing Page - Submit cosmetic product notifications");
-		if(platform.equals("docker")) 
-		{
-			loginPage.login_as(System.getenv("rp.username"),System.getenv("rp.password"));
-			
-		}
-		else 
-		{
-		loginPage.login_as_responsible_person();
-		}
+		
 	}
 
 	@Given("^I click on \"(.*?)\"$")
@@ -144,18 +138,23 @@ public class GivenSteps extends SharedWebDriver {
 	public void i_login_as_responsible_person_user() throws Throwable {
 		if (platform.equals("local")) {
 			loginPage.launch_app(AppProperties.get("envurl"));
-		} 
-		else if(platform.equals("docker")) {
-			System.out.println("Env to run test on "+ System.getenv("ENVURL"));
+			Thread.sleep(2000);
+			loginPage.login_as_responsible_person();
+		} else if (platform.equals("docker")) {
+			System.out.println("Env to run test on " + System.getenv("ENVURL"));
 			loginPage.launch_app(System.getenv("ENVURL"));
+			Thread.sleep(2000);
+			loginPage.login_as(System.getenv("USERNAME"), System.getenv("PASSWORD"));
 		}
-		
+
 		else {
 			loginPage.launch_app(EnvironmentProperties.getServiceUrl());
+			Thread.sleep(2000);
+			loginPage.login_as_responsible_person();
 		}
 		Thread.sleep(3000);
 		loginPage.verifyPageTitle("Landing Page - Submit cosmetic product notifications");
-		loginPage.login_as_responsible_person();
+
 	}
 
 	@Given("^I login as poison centre user$")
@@ -264,24 +263,23 @@ public class GivenSteps extends SharedWebDriver {
 	public void i_select_manually_to_notify_product_with_single_component() throws Throwable {
 		addProductPage.add_product_manually();
 	}
+
 	@Given("^I select manually to notify pre-brexit product with single component$")
 	public void i_select_manually_to_notify_pre_brexit_product_with_single_component() throws Throwable {
-	   addProductPage.add_product_manually_prebrexit();
+		addProductPage.add_product_manually_prebrexit();
 	}
-	
-	
+
 	@Given("^I select \"(.*?)\" product contains anti-dandruff agents$")
 	public void i_select_product_contains_anti_dandruff_agents(String arg1) throws Throwable {
 		addProductPage.select_radio_button_by_text(arg1);
 		addProductPage.click_continue();
 	}
+
 	@Given("^I select \"(.*?)\" contains poisonous ingredients$")
 	public void i_select_contains_poisonous_ingredients(String arg1) throws Throwable {
 		addProductPage.select_radio_button_by_text(arg1);
 		addProductPage.click_continue();
 	}
-
-	
 
 	@Given("^I enter agents substance \"(.*?)\"$")
 	public void i_enter_agents_substance(String arg1) throws Throwable {
@@ -330,33 +328,31 @@ public class GivenSteps extends SharedWebDriver {
 	public void i_select_purpose_for_nanomaterial(String arg1) throws Throwable {
 		nanoMaterialPage.select_radio_button_by_text(arg1);
 	}
-	
+
 	@Given("^I enter min pH value \"(.*?)\"$")
 	public void i_enter_min_pH_value(String arg1) throws Throwable {
-	   addProductPage.enter_min_ph_value(arg1);
+		addProductPage.enter_min_ph_value(arg1);
 	}
 
 	@Given("^I enter max pH value \"(.*?)\"$")
 	public void i_enter_max_pH_value(String arg1) throws Throwable {
-	    addProductPage.enter_max_ph_value(arg1);
+		addProductPage.enter_max_ph_value(arg1);
 	}
+
 	@Given("^I select The minimum pH is lower than three \"(.*?)\"$")
 	public void i_select_The_minimum_pH_is_lower_than_three(String arg1) throws Throwable {
 		nanoMaterialPage.select_radio_button_by_text(arg1);
 	}
+
 	@Given("^I select The maximum pH is higher than ten\"(.*?)\"$")
 	public void i_select_The_maximum_pH_is_higher_than_ten(String arg1) throws Throwable {
 		nanoMaterialPage.select_radio_button_by_text(arg1);
 	}
-	
 
 	@Given("^I select product doesnt have pH \"(.*?)\"$")
 	public void i_select_product_doesnt_have_pH(String arg1) throws Throwable {
 		nanoMaterialPage.select_radio_button_by_text(arg1);
 	}
-
-	
-	
 
 	@After()
 	/*
