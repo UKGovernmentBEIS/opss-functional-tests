@@ -153,7 +153,7 @@ public class GivenSteps extends SharedWebDriver {
 			loginPage.login_as_responsible_person();
 		}
 		Thread.sleep(3000);
-		loginPage.verifyPageTitle("Landing Page - Submit cosmetic product notifications");
+		loginPage.verifyPageTitle("Your cosmetic products - Submit cosmetic product notifications");
 
 	}
 
