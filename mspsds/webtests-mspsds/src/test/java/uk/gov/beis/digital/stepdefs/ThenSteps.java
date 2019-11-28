@@ -1,11 +1,16 @@
 package uk.gov.beis.digital.stepdefs;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.PageFactory;
 import static org.junit.Assert.assertTrue;
 
 import cucumber.api.DataTable;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.java.en.Then;
 import uk.gov.beis.digital.mspsds.pagemodel.AssigneePage;
 import uk.gov.beis.digital.mspsds.pagemodel.DashboardPage;
@@ -60,6 +65,21 @@ public class ThenSteps {
 	public void i_should_see_team_member(String arg1) throws Throwable {
 	   assertTrue("Failed:team member not displayed",dashpge.IsElementDisplayed(driver.findElement(By.xpath("//span[contains(text(),'"+arg1+"')]"))));
 	}
-
+	@After()
+	/*
+	 * Embed a screenshot in test report if test is marked as failed
+	 */
+	public void embedScreenshot(Scenario scenario) {
+		if (scenario.isFailed()) {
+			try {
+				scenario.write("Current Page URL is " + driver.getCurrentUrl());
+				// byte[] screenshot = getScreenshotAs(OutputType.BYTES);
+				byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+				scenario.embed(screenshot, "image/png");
+			} catch (WebDriverException somePlatformsDontSupportScreenshots) {
+				System.err.println(somePlatformsDontSupportScreenshots.getMessage());
+			}
+		}
+	}
 	
 }
