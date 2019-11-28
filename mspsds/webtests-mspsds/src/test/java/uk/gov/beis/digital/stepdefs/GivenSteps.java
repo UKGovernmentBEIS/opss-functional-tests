@@ -37,15 +37,6 @@ public class GivenSteps {
 
 	@Given("^I login as OPSS user$")
 	public void i_login_as_OPSS_user() throws Throwable {
-		if (platform.equals("browserstack")) {
-			loginPage.launch_app(AppProperties.get("envurl"));
-		} else {
-			System.out.println("Started test run on "+ EnvironmentProperties.getServiceUrl());
-		loginPage.launch_app(EnvironmentProperties.getServiceUrl());
-		
-		Thread.sleep(5000);
-		}
-		
 		loginPage.login_as_opss();
 		//loginPage.verifyPageTitle("Cases - Product safety database - GOV.UK");
 		
@@ -53,17 +44,6 @@ public class GivenSteps {
 
 	@Given("^I login as Trading standard user$")
 	public void i_login_as_Trading_standard_user() throws Throwable {
-		if (platform.equals("browserstack")) {
-			loginPage.launch_app(AppProperties.get("envurl"));
-
-		} else {
-		loginPage.launch_app(EnvironmentProperties.getServiceUrl());
-		
-		Thread.sleep(5000);
-
-		}
-
-
 		loginPage.login_as_ts();
 		//loginPage.verifyPageTitle("Home Page - Product safety database - GOV.UK");
 	}
