@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y \
   google-chrome-stable \
   unzip
 
-RUN apt-get install -y libnss3 libgconf-2-4
+RUN apt-get update && apt-get install -y libnss3 libgconf-2-4
+RUN apt-get update && apt-get install -y libxss1 libappindicator1 libindicator7
 
 RUN curl -o /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/$CHROMIUM_DRIVER_VERSION/chromedriver_linux64.zip \
   && unzip /tmp/chromedriver.zip chromedriver -d /usr/bin/ \
