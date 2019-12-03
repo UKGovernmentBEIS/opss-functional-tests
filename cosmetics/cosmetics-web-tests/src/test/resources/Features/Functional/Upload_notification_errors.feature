@@ -1,14 +1,12 @@
-#Sample Feature Definition Template
-@tag
 Feature: Notification file upload error handling
 
-@regression
+@regression @notifications
 Scenario Outline: Verify correct correct is displayed for
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
 And I click on "Add cosmetic products"
 And I click "Yes"
-And I click "Yes, I have ZIP files containing XML to upload"
+And I click "Yes"
 When I upload "<Invalid-file>"
 Then I should see respective error"<Error>"
 
