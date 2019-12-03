@@ -1,6 +1,7 @@
 package uk.gov.beis.cosmetics.stepdefs;
 
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.SystemUtils;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +32,9 @@ public class SharedWebDriver extends EventFiringWebDriver {
 		try {
 			String browser = AppProperties.get("browser");
 			String platform = AppProperties.get("platform");
-			String envUrl = EnvironmentProperties.getServiceUrl();
+			String Envurl = EnvironmentProperties.getServiceUrl();
+			String envurl = AppProperties.get("envurl");
+			String env =null;
 			
 
 			String OS = AppProperties.get("OS").toLowerCase();
@@ -44,85 +47,77 @@ public class SharedWebDriver extends EventFiringWebDriver {
 					OS = _OS_LINUX;
 			}
 
-			if (platform.equalsIgnoreCase("Remote")) {
-				if (browser.equalsIgnoreCase("firefox")) {
-					DesiredCapabilities cap = DesiredCapabilities.firefox();
-					cap.setBrowserName("firefox");
-					cap.setPlatform(org.openqa.selenium.Platform.ANY);
-
-					driver = new RemoteWebDriver(new URL("remote host ip"), cap);
-				}
-
-			} 
 			/**
-			 * browser stack integration- Please note user name/pwd for browserstack
-			 * will be provided in env file(not in GIT)
+			 * browser stack integration- Please note user name/pwd for browserstack should
+			 * be provided as environment(not in GIT)
 			 */
-			else if (platform.equalsIgnoreCase("browserstack")) {
-//				String USERNAME = AppProperties.get("bsUsername");
-//				String AUTOMATE_KEY = AppProperties.get("bsUserkey");
-				String USERNAME = System.getenv("BSUSERNAME");
-				String AUTOMATE_KEY = System.getenv("BSUSERKEY");
+			if (platform.equalsIgnoreCase("browserstack")) {
+				if(OS.equals(_OS_LINUX))
+				{
+					env = Envurl;
+				}
+				else {
+					env = envurl;
+				}
+				DesiredCapabilities caps = new DesiredCapabilities();
+				String USERNAME = AppProperties.get("bsUsername");
+				String AUTOMATE_KEY = AppProperties.get("bsUserkey");
+
+//				String USERNAME = System.getenv("BSUSERNAME");
+//				String AUTOMATE_KEY = System.getenv("BSUSERKEY");
 
 				String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
-
-				DesiredCapabilities caps = new DesiredCapabilities();
-				 
 				caps.setCapability("browser", "IE");
 				caps.setCapability("browser_version", "11.0");
 				caps.setCapability("os", "Windows");
 				caps.setCapability("os_version", "10");
-				caps.setCapability("resolution", "1024x768");;
+				caps.setCapability("resolution", "1024x768");
+				;
 				caps.setCapability("browserstack.debug", "true");
-
 				driver = new RemoteWebDriver(new URL(URL), caps);
+				
+
+				driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+				driver.navigate().to(env);
+				driver.manage().window().maximize();
+				
 
 			} 
-			/*
-			 * To run tests in FF
-			 */
-			else if (browser.equalsIgnoreCase("firefox")) {
-				System.out.println("shared webdriver");
-				FirefoxProfile prof = new FirefoxProfile();
-				driver = new FirefoxDriver();
+			//local test to run in chrome by default
+			else if (platform.equalsIgnoreCase("local")) {
+				System.setProperty("webdriver.chrome.driver",
+						System.getProperty("user.dir") + "/src/test/resources/chromedriver");
+				ChromeOptions options = new ChromeOptions();
+				//options.setHeadless(true);
+				options.addArguments("no-sandbox");
+				options.addArguments("disable-dev-shm-usage");
+				options.addArguments("window-size=1024x768");
 
-				System.out.println("#####Started test run on  " + envUrl + "  on " + browser + " browser #####");
+				driver = new ChromeDriver(options);
+				System.out.println("#####Started test run on  " + envurl + "  on " + browser + " browser #####");
+		
+				driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+				driver.navigate().to(envurl);
 				driver.manage().window().maximize();
 			} 
-			/*
-			 * To run tests in chrome
-			 */
-			else if (browser.equalsIgnoreCase("chrome")) {
-				if(platform.equalsIgnoreCase("local"))
-				{
-				 System.setProperty("webdriver.chrome.driver", 
-						 System.getProperty("user.dir") + "/src/test/resources/chromedriver");
-				}
-				else {
+			else {
 				System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-				}
 
 				ChromeOptions options = new ChromeOptions();
 				options.setHeadless(true);
-				options.addArguments("--no-sandbox");
-				options.addArguments("--disable-dev-shm-usage");
+				options.addArguments("no-sandbox");
+				options.addArguments("disable-dev-shm-usage");
 				options.addArguments("window-size=1024x768");
+
 				driver = new ChromeDriver(options);
 
 				driver.manage().window().maximize();
-				System.out.println("#####Started test run on  " + envUrl + "  on " + browser + " browser #####");
-			} 
-			/*
-			 * to run tests in IE
-			 */
-			else if (browser.equalsIgnoreCase("ie")) {
-				System.setProperty("webdriver.ie.driver",
-						System.getProperty("user.dir") + "/src/test/resources/IEDriverServer.exe");
-				driver = new InternetExplorerDriver();
-				System.out.println("#####Started test run on  " + envUrl + "  on " + browser + " browser #####");
-
+				System.out.println("#####Started test run on  " + Envurl + "  on " + browser + " browser #####");
+				driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+				driver.navigate().to(Envurl);
 				driver.manage().window().maximize();
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -138,7 +133,6 @@ public class SharedWebDriver extends EventFiringWebDriver {
 			}
 
 		});
-
 	}
 
 	public SharedWebDriver() {

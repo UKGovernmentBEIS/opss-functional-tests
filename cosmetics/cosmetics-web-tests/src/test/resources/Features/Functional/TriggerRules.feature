@@ -5,7 +5,7 @@ as a user
 I should be able notify with required information for post-brexit notification
 #Validate trigger rules 
 
-@regression @trigger-rules 
+@regression @trigger-rules @harmful-ingredients
 Scenario: Verify harmful ingredients question for post-brexit notification
 Given I login as responsible person user
 And I select manually to notify product with single component
