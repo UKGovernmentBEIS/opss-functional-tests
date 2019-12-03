@@ -136,24 +136,9 @@ public class GivenSteps extends SharedWebDriver {
 
 	@Given("^I login as responsible person user$")
 	public void i_login_as_responsible_person_user() throws Throwable {
-		if (platform.equals("local")) {
-			loginPage.launch_app(AppProperties.get("envurl"));
-			Thread.sleep(2000);
+		
 			loginPage.login_as_responsible_person();
-		} else if (platform.equals("docker")) {
-			System.out.println("Env to run test on " + System.getenv("ENVURL"));
-			loginPage.launch_app(System.getenv("ENVURL"));
-			Thread.sleep(2000);
-			loginPage.login_as(System.getenv("USERNAME"), System.getenv("PASSWORD"));
-		}
-
-		else {
-			loginPage.launch_app(EnvironmentProperties.getServiceUrl());
-			Thread.sleep(2000);
-			loginPage.login_as_responsible_person();
-		}
-		Thread.sleep(3000);
-		loginPage.verifyPageTitle("Your cosmetic products - Submit cosmetic product notifications");
+		    loginPage.verifyPageTitle("Your cosmetic products - Submit cosmetic product notifications");
 
 	}
 

@@ -144,13 +144,13 @@ public class AddProductPage extends BasePage {
 		this.click_continue();
 		this.select_radio_button_by_text("No");
 		this.click_continue();
-		this.select_radio_button_by_text("The cosmetic product is a single item");
+		this.select_radio_button_by_text("No, this is a single product");
 		this.click_continue();
 		this.select_radio_button_by_text("No");
 		this.click_continue();
 		this.select_radio_button_by_text("Loose powder");
 		this.click_continue();
-		this.select_radio_button_by_text("No");
+		this.select_radio_button_by_text("A typical non-pressurised bottle, jar, sachet or other package");
 		this.click_continue();
 		this.select_radio_button_by_text("No");
 		this.click_continue();
@@ -166,9 +166,9 @@ public class AddProductPage extends BasePage {
 		this.click_by_text("Add cosmetic products");
 		this.select_radio_button_by_text("Yes");
 		this.click_continue();
-		this.select_radio_button_by_text("No, I will enter the information manually");
+		this.select_radio_button_by_text("No, I’ll enter information manually");
 		this.click_continue();
-		this.select_radio_button_by_text("Yes, the cosmetic product was notified before 31 October 2019");
+		this.select_radio_button_by_text("Yes");
 		this.click_continue();	
 		this.enter_productname("TestManual-Prod");
 		this.enter_reference_number("TestRef-2003");
@@ -184,7 +184,7 @@ public class AddProductPage extends BasePage {
 		this.click_continue();
 		this.select_radio_button_by_text("Loose powder");
 		this.click_continue();
-		this.select_radio_button_by_text("No");
+		this.select_radio_button_by_text("A typical non-pressurised bottle, jar, sachet or other package");
 		this.click_continue();
 		this.select_radio_button_by_text("No");
 		this.click_continue();
@@ -213,7 +213,7 @@ public class AddProductPage extends BasePage {
 	      this.click_continue();
 	      this.select_radio_button_by_text("No");
 	      this.click_continue();
-	      this.select_radio_button_by_text("The cosmetic product is a single item");
+	      this.select_radio_button_by_text("No, this is a single product");
 	      this.click_continue();
 	      this.select_radio_button_by_text("No");
 	      this.click_continue();
