@@ -1,4 +1,3 @@
-
 Feature: Manual post brexit product notification
 In order to notifiy post-brexit product manualluy
 as a user
@@ -41,9 +40,9 @@ Scenario: Validate pH is asked for all manual product notifications
 Given I select pH between three and ten as "The minimum pH is 3 or higher, and the maximum pH is 10 or lower"
 And I click on continue
 Then I should see manual journey "Upload an image of the product label"
-And I click back
+#And I click back
 
-@regression @trigger-rules
+
 Scenario: Select min pH lower than 3 
 Given I select The minimum pH is lower than three "The minimum pH is lower than 3"
 And I click on continue
@@ -52,7 +51,7 @@ And I should see max pH free text field
 And I click back
 
 
-@regression @trigger-rules
+
 Scenario: Select min pH lower than 3 
 Given I select The maximum pH is higher than ten"The maximum pH is higher than 10"
 And I click on continue
@@ -60,7 +59,7 @@ Then I should see min pH free text field
 And I should see max pH free text field 
 And I click back
 
-@regression @trigger-rules
+
 Scenario: product does not have pH
 Given I select product doesnt have pH "It does not have a pH"
 And I click on continue
@@ -68,7 +67,7 @@ Then I should see manual journey "Upload an image of the product label"
 And I click back
 
 
-@regression @trigger-rules
+
 Scenario: pH happy path
 Given I select The maximum pH is higher than ten"The maximum pH is higher than 10"
 And I click on continue 
@@ -80,7 +79,7 @@ And I click back
 
 
 
-@regression @trigger-rules
+
 Scenario: Error message on invalid pH values
 Given I select The maximum pH is higher than ten"The maximum pH is higher than 10"
 And I click on continue 
@@ -89,7 +88,7 @@ And I enter max pH value "56"
 And I click on continue 
 Then I should see error message "Enter a value of 14 or lower for minimum pH"
 
-@regression @trigger-rules
+
 Scenario: Error message on negative pH values
 Given I enter min pH value "-5"
 And I enter max pH value "-6"
@@ -97,7 +96,7 @@ And I click on continue
 Then I should see error message "Enter a maximum pH"
 Then I should see error message "Enter a minimum pH"
 
-@regression @trigger-rules
+
 Scenario: verify error message max pH is left empty
 Given I enter min pH value "5"
 And I enter max pH value " "
@@ -105,7 +104,7 @@ And I click on continue
 Then I should see error message "Enter a maximum pH"
 
 
-@regression @trigger-rules
+
 Scenario: Validate alkaline page when pH more than 10
 Given I enter min pH value "10"
 And I enter max pH value "11"
