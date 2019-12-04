@@ -243,6 +243,22 @@ public class BasePage {
 		}
    }
    
+   public boolean verify_annexes(String question)
+   
+   {
+
+		boolean flag= false;
+		if(driver.findElement(By.xpath("//h1[@class='govuk-fieldset__heading govuk-label--xl']")).getText().equals(question))
+		return flag=true;
+		else 
+		{
+			return flag=false;
+		}
+   }
+   
+   
+   
+   
    public void click_back_on_cosmetics_page()
    {
 	   driver.findElement(By.xpath("//a[@class='govuk-back-link']")).click();
