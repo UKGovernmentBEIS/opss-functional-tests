@@ -230,6 +230,15 @@ public class AddProductPage extends BasePage {
 	   By trigger_rule_summary_error = By.xpath("//a[contains(text(),'"+error+"')]");
 		assertTrue(this.getText(trigger_rule_summary_error).equals(error));
 	}
+	
+	public void verify_no_error() throws InterruptedException
+	{
+		if (driver.getPageSource().contains("Refresh the browser to see uploaded products")) {
+			this.click(notification_check_status);
+		}
+		Thread.sleep(3000);
+		assertTrue(!driver.getPageSource().contains("Something went wrong"));
+	}
 
 	public void validate_notification_error(String error) {
 
