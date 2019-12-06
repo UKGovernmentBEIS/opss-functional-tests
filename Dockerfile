@@ -41,8 +41,8 @@ RUN curl -O -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfi
   && curl -O -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/SingleItem-Nano-Only  \
   && curl -O -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/SingleItem-Rangeformulation-Nanomaterial \
 
-COPY ./Multi-componentFrameformulationNano-notification.zip ./cosmetics/cosmetics-web-tests/src/resources/testdata
-COPY ./SingleItem-RangeFormulation-harmful-Ingredients.zip ./cosmetics/cosmetics-web-tests/src/resources/testdata
-COPY ./multi-components-nano-materials.zip ./cosmetics/cosmetics-web-tests/src/resources/testdata
-COPY ./SingleItem-CMRs-Nano.zip ./cosmetics/cosmetics-web-tests/src/resources/testdata
+COPY  Multi-componentFrameformulationNano-notification.zip ./cosmetics/cosmetics-web-tests/src/resources/testdata
+COPY  SingleItem-RangeFormulation-harmful-Ingredients.zip ./cosmetics/cosmetics-web-tests/src/resources/testdata
+COPY  multi-components-nano-materials.zip ./cosmetics/cosmetics-web-tests/src/resources/testdata
+COPY  SingleItem-CMRs-Nano.zip ./cosmetics/cosmetics-web-tests/src/resources/testdata
 
