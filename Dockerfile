@@ -32,17 +32,6 @@ RUN mvn --quiet --file ./cosmetics/pom.xml compile test -Dcucumber.options="--ta
 COPY ./mspsds/webtests-mspsds ./psd
 RUN mvn --quiet --file ./psd/pom.xml compile test -Dcucumber.options="--tags @none"
 
-RUN curl -O -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/Multi-componentFrameformulationNano-notification \
-  && curl -O -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/SingleItem-RangeFormulation-harmful-Ingredients  \
-  && curl -O -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/multi-components-nano-materials \
-  && curl -O -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/SingleItem-CMRs-Nano  \
-  && curl -O -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/SingleItem-Nano-ExactFormulation-pHRange  \
-  && curl -O -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/Multi-Item-NanoOnly \
-  && curl -O -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/SingleItem-Nano-Only  \
-  && curl -O -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/SingleItem-Rangeformulation-Nanomaterial \
+RUN curl -o  ./cosmetics/cosmetics-web-tests/src/resources/testdata/Multi-componentFrameformulationNano-notification.zip -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/Multi-componentFrameformulationNano-notification 
 
-COPY  Multi-componentFrameformulationNano-notification.zip ./cosmetics/cosmetics-web-tests/src/resources/testdata
-COPY  SingleItem-RangeFormulation-harmful-Ingredients.zip ./cosmetics/cosmetics-web-tests/src/resources/testdata
-COPY  multi-components-nano-materials.zip ./cosmetics/cosmetics-web-tests/src/resources/testdata
-COPY  SingleItem-CMRs-Nano.zip ./cosmetics/cosmetics-web-tests/src/resources/testdata
 
