@@ -22,7 +22,7 @@ WORKDIR /opss-functional-tests
 
 RUN curl -O -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/single_item
 
-COPY ./SingleItem-Nano-Only-*.zip ./cosmetics/cosmetics-web-tests/src/resources/test-data
+COPY ./SingleItem-Nano-Only-* ./cosmetics/cosmetics-web-tests/src/resources/testdata
 
 COPY ./selenium-java-framework ./selenium-java-framework
 RUN mvn --quiet --file ./selenium-java-framework/pom.xml install
