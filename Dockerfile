@@ -20,6 +20,10 @@ RUN curl -o /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/$CH
 
 WORKDIR /opss-functional-tests
 
+RUN curl -O -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/single_item
+
+COPY ./SingleItem-Nano-Only-*.zip ./cosmetics/cosmetics-web-tests/src/resources/test-data
+
 COPY ./selenium-java-framework ./selenium-java-framework
 RUN mvn --quiet --file ./selenium-java-framework/pom.xml install
 
@@ -28,3 +32,5 @@ RUN mvn --quiet --file ./cosmetics/pom.xml compile test -Dcucumber.options="--ta
 
 COPY ./mspsds/webtests-mspsds ./psd
 RUN mvn --quiet --file ./psd/pom.xml compile test -Dcucumber.options="--tags @none"
+
+

@@ -90,6 +90,18 @@ public void i_should_see_min_pH_free_text_field() throws Throwable {
     
 }
 
+
+@Then("^I should not see any error in error tab$")
+public void i_should_not_see_any_error_in_error_tab() throws Throwable {
+	addProductPage.verify_no_error();
+    
+}
+
+@Then("^I should see notification in incomplete tab$")
+public void i_should_see_notification_in_incomplete_tab() throws Throwable {
+    
+}
+
 @Then("^I should see max pH free text field$")
 public void i_should_see_max_pH_free_text_field() throws Throwable {
 	addProductPage.verify_element_present();
