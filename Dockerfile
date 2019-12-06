@@ -32,6 +32,6 @@ RUN mvn --quiet --file ./cosmetics/pom.xml compile test -Dcucumber.options="--ta
 COPY ./mspsds/webtests-mspsds ./psd
 RUN mvn --quiet --file ./psd/pom.xml compile test -Dcucumber.options="--tags @none"
 
-RUN curl -o  ./cosmetics/cosmetics-web-tests/src/resources/testdata/Multi-componentFrameformulationNano-notification.zip -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/Multi-componentFrameformulationNano-notification 
+RUN curl -o  ./cosmetics/src/resources/testdata/Multi-componentFrameformulationNano-notification.zip -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/Multi-componentFrameformulationNano-notification 
 
 
