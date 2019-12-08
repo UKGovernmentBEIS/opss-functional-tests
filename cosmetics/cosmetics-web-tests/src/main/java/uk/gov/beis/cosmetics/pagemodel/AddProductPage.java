@@ -39,6 +39,7 @@ public class AddProductPage extends BasePage {
 	By trigger_rule_question_header = By.xpath("//h1[@class='govuk-fieldset__heading']");
 	By pH_min_field = By.cssSelector("#component_minimum_ph");
 	By pH_max_field = By.cssSelector("#component_maximum_ph");
+	By incomplete_tab = By.xpath("//a[@id='tab_incomplete']");
 
 	public void login_as(String user, String pwd) throws InterruptedException {
 		this.click(signIn_link);
@@ -237,7 +238,14 @@ public class AddProductPage extends BasePage {
 			this.click(notification_check_status);
 		}
 		Thread.sleep(3000);
-		assertTrue(!driver.getPageSource().contains("Something went wrong"));
+		assertTrue("Failed:Notification didn't uploaded propertly",!driver.getPageSource().contains("Try again or manually enter the production notification data"));
+		assertTrue("Failed:notification already exist",!driver.getPageSource().contains("A notification for this product already exists for this responsible person"));
+	}
+	
+	public void verify_incomplete_tab(String filename)
+	{
+		this.click(incomplete_tab);
+		assertTrue("Failed:notification didn't landed in incomplete-tab",driver.getPageSource().contains(filename));
 	}
 
 	public void validate_notification_error(String error) {
