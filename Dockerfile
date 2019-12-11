@@ -32,7 +32,6 @@ RUN mvn --quiet --file ./cosmetics/pom.xml compile test -Dcucumber.options="--ta
 COPY ./mspsds/webtests-mspsds ./psd
 RUN mvn --quiet --file ./psd/pom.xml compile test -Dcucumber.options="--tags @none"
 
-RUN ./cosmetics/setup-testdata.sh 
 
 RUN curl -o  ./cosmetics/src/test/resources/testdata/Multi-componentFrameformulationNano-notification.zip -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/Multi-componentFrameformulationNano-notification \
  	&& curl -o  ./cosmetics/src/test/resources/testdata/SingleItem-RangeFormulation-harmful-Ingredients.zip -J -L https://opss-zipfile-generator.london.cloudapps.digital/testfiles/SingleItem-RangeFormulation-harmful-Ingredients \
