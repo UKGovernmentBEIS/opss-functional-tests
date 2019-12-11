@@ -25,7 +25,7 @@ I should be able to upload cpnp extract zip file
 #And I should see notification in incomplete tab
 
 
-@regression
+@regression @bulk-upload
 Scenario: Single-item notification upload with range formulation
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
@@ -36,7 +36,7 @@ When I upload "SingleItem-RangeFormulation-harmful-Ingredients.zip"
 Then I should not see any error in error tab
 And I should see notification in incomplete tab
 
-@regression
+@regression @bulk-upload
 Scenario: Single-item notificaiton upload with nano and cmr only
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
@@ -47,7 +47,7 @@ When I upload "SingleItem-CMRs-Nano.zip"
 Then I should not see any error in error tab
 And I should see notification in incomplete tab
 
-@regression
+@regression @bulk-upload
 Scenario: Single-item notification upload with nano-material only
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
@@ -58,7 +58,7 @@ When I upload "SingleItem-Nano-Only.zip"
 Then I should not see any error in error tab
 And I should see notification in incomplete tab
 
-@regression
+@regression @bulk-upload
 Scenario: Verify single item notification upload with exact concentration formulation and nano-materials
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
@@ -69,7 +69,7 @@ When I upload "SingleItem-Nano-ExactFormulation-pHRange.zip"
 Then I should not see any error in error tab
 And I should see notification in incomplete tab
 
-@regression
+@regression @bulk-upload
 Scenario: Verify single item file upload with range formulation and nano-materials
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
@@ -80,7 +80,7 @@ When I upload "SingleItem-Rangeformulation-Nanomaterial.zip"
 Then I should not see any error in error tab
 And I should see notification in incomplete tab
 
-@regression
+@regression @bulk-upload
 Scenario: Verify multi item file upload with frameformulation and nano-materials
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
@@ -92,7 +92,7 @@ Then I should not see any error in error tab
 And I should see notification in incomplete tab
 
 
-@regression
+@regression @bulk-upload
 Scenario: Single multi-item upload with nano-materials only
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
