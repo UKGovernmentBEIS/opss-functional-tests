@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.PageFactory;
 
+import cucumber.api.PendingException;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
@@ -15,12 +16,14 @@ import cucumber.api.java.en.When;
 import uk.gov.beis.digital.mspsds.Utils.AppProperties;
 import uk.gov.beis.digital.mspsds.Utils.EnvironmentProperties;
 import uk.gov.beis.digital.mspsds.pagemodel.AssigneePage;
+import uk.gov.beis.digital.mspsds.pagemodel.CasesPage;
 import uk.gov.beis.digital.mspsds.pagemodel.LoginPage;
 
 public class GivenSteps {
 
 	private LoginPage loginPage;
 	private AssigneePage assigneePage;
+	private CasesPage casesPage;
 	private String platform=AppProperties.get("platform");
 	private WebDriver driver;
 	
@@ -32,13 +35,14 @@ public class GivenSteps {
 		this.driver=driver;
 		loginPage = PageFactory.initElements(driver, LoginPage.class);
 		assigneePage = PageFactory.initElements(driver, AssigneePage.class);
+		casesPage = PageFactory.initElements(driver,CasesPage.class);
 		
 	}
 
 	@Given("^I login as OPSS user$")
 	public void i_login_as_OPSS_user() throws Throwable {
 		loginPage.login_as_opss();
-		//loginPage.verifyPageTitle("Cases - Product safety database - GOV.UK");
+		loginPage.verifyPageTitle("Cases - Product safety database - GOV.UK");
 		
 }
 
@@ -67,6 +71,11 @@ public class GivenSteps {
 	@When("^I go to users$")
 	public void i_go_to_users() throws Throwable {
 		loginPage.go_to_users();
+	}
+	
+	@Given("^I open case \"(.*?)\"$")
+	public void i_open_case(String arg1) throws Throwable {
+		casesPage.open_a_case(arg1);
 	}
 
 	
