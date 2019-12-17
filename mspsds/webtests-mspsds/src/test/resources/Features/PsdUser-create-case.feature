@@ -3,7 +3,7 @@ Feature: PSD user
 	In order to create a case
 	I should have expected permissions
 	
-@regression
+@regression @ts-user
 Scenario: As Trading standard user, I should be able to create a case
 Given I login as Trading standard user
 When I click button "Open a new case"
@@ -38,7 +38,7 @@ When I click "No"
 And I click create case
 Then I should see page "Case created"
 
-@ts-user
+@ts-user @regression
 Scenario: Add comment activity
 Given I login as Trading standard user
 And I open case "Auto-test Testproduct, Auto-test dishwasher – Chemical"

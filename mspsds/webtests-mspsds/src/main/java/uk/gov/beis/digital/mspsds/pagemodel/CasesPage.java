@@ -33,6 +33,7 @@ public class CasesPage extends BasePage {
 	By ts_case_page = By.xpath("//h1[@class='govuk-heading-l']");
 	By ts_activity = By.xpath("//a[@id='Activity_id']");
 	By case_add_activity = By.xpath("//a[contains(text(),'Add activity')]");
+	By case_comment = By.cssSelector("#comment_activity_body");
 	
 	
 	
@@ -100,10 +101,16 @@ public class CasesPage extends BasePage {
 		
 	}
 	
-	public void add_comment_activity()
+	public void add_comment_activity() throws InterruptedException
 	{
 		this.click(this.ts_activity);
 		this.click(this.case_add_activity);
+		this.select_radio_button_by_text("Add a comment");
+		this.click_continue();
+		this.type(this.case_comment,"Automated test-comment1");
+		this.click_continue();
+		Thread.sleep(2000);
+		this.verify_banner_message("Comment was successfully added.");	
 		
 	}
 }
