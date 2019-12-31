@@ -13,18 +13,21 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Then;
 import uk.gov.beis.digital.mspsds.pagemodel.AssigneePage;
+import uk.gov.beis.digital.mspsds.pagemodel.CasesPage;
 import uk.gov.beis.digital.mspsds.pagemodel.DashboardPage;
 
 public class ThenSteps {
 	private WebDriver driver;
 	AssigneePage assignpge;
 	DashboardPage dashpge;
+	CasesPage casesPage;
 	
 	public ThenSteps(SharedWebDriver driver)
 	{
 		this.driver= driver;
 		assignpge = PageFactory.initElements(driver,AssigneePage.class);
 		dashpge = PageFactory.initElements(driver,DashboardPage.class);
+		casesPage = PageFactory.initElements(driver, CasesPage.class);
 		
 	}
 
@@ -65,6 +68,13 @@ public class ThenSteps {
 	public void i_should_see_team_member(String arg1) throws Throwable {
 	   assertTrue("Failed:team member not displayed",dashpge.IsElementDisplayed(driver.findElement(By.xpath("//span[contains(text(),'"+arg1+"')]"))));
 	}
+	
+	@Then("^I should see page \"(.*?)\"$")
+	public void i_should_see_page(String arg1) throws Throwable {
+		casesPage.verify_on_correct_page(arg1); 
+	}
+	
+	
 	@After()
 	/*
 	 * Embed a screenshot in test report if test is marked as failed

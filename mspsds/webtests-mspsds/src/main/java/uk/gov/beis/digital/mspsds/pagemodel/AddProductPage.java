@@ -1,5 +1,91 @@
 package uk.gov.beis.digital.mspsds.pagemodel;
 
-public class AddProductPage {
+import java.util.Iterator;
+import java.util.List;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import cucumber.api.DataTable;
+import uk.gov.beis.digital.BasePage;
+
+import static org.junit.Assert.assertTrue;
+
+public class AddProductPage extends BasePage {
+
+	
+	By ts_prod_category = By.cssSelector("#product_category");
+	By ts_product_type = By.cssSelector("#product_product_type");
+	By ts_product_name = By.cssSelector("#product_name");
+	By ts_product_description = By.cssSelector("#product_description");
+	By ts_continue = By.xpath("//input[@name='commit']");
+	By ts_page_heading = By.xpath("//h1[@class='govuk-heading-l']");
+	By ts_hazard_type = By.cssSelector("#investigation_hazard_type");
+	By ts_hazard_description = By.cssSelector("#investigation_hazard_description");
+	By ts_hazard_non_compliant_reason = By.cssSelector("#investigation_non_compliant_reason");
+	By ts_business_name = By.cssSelector("#business_trading_name");
+	By ts_business_legalname = By.cssSelector("#business_legal_name");
+	By ts_create_case = By.xpath("//input[@name='commit']");
+	
+	private WebDriver driver;
+	
+	public AddProductPage(WebDriver driver) {
+		
+		super(driver);
+		this.driver=driver;
+	}
+		
+
+	
+public void enter_product_details(String category) throws InterruptedException
+{
+	this.type(this.ts_prod_category,category);
+	find(this.ts_prod_category).sendKeys(Keys.ENTER);
+	this.type(this.ts_product_type,"Auto-test dishwasher");
+	this.type(this.ts_product_name,"Auto-test Testproduct");
+	this.type(this.ts_product_description,"This is a auto test product");
+	
+	
 }
+
+public void select_compliance(String compliant_type) throws InterruptedException
+{
+	if(compliant_type.equalsIgnoreCase("unsafe"))
+	{
+	this.driver.findElement(By.cssSelector("#investigation_"+compliant_type)).click();
+	this.type(this.ts_hazard_type,"Chemical");
+	find(this.ts_hazard_type).sendKeys(Keys.ENTER);
+	this.type(this.ts_hazard_description,"Automated-test");
+	}
+	else 
+	{
+		this.driver.findElement(By.cssSelector("#investigation_"+compliant_type)).click();
+		this.type(this.ts_hazard_non_compliant_reason,"Automated test");
+	}
+	Thread.sleep(2000);
+	
+}
+		
+
+public void enter_retailer_business(String name)
+{
+	this.type(this.ts_business_name,name);
+	this.type(this.ts_business_legalname,"automated test - legal name");
+	
+}
+public void ts_click_continue() throws InterruptedException
+{
+	this.click(this.ts_continue);
+	Thread.sleep(2000);
+}
+
+
+public void create_case() throws InterruptedException
+{
+	this.click(this.ts_create_case);
+	Thread.sleep(1000);
+}
+
+	}

@@ -7,10 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.PageFactory;
 
+import cucumber.api.PendingException;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import uk.gov.beis.digital.mspsds.pagemodel.AddProductPage;
 import uk.gov.beis.digital.mspsds.pagemodel.CasesPage;
 import uk.gov.beis.digital.mspsds.pagemodel.DashboardPage;
 import uk.gov.beis.digital.mspsds.pagemodel.LoginPage;
@@ -21,12 +23,14 @@ public class WhenSteps extends SharedWebDriver{
 	DashboardPage dashpge;
 	CasesPage casepge;
 	private LoginPage loginPage;
+	private AddProductPage addProductPage;
 	public WhenSteps(SharedWebDriver driver)
 	{
 		this.driver = driver;
 		dashpge = PageFactory.initElements(driver, DashboardPage.class);
 		casepge = PageFactory.initElements(driver, CasesPage.class);
 		loginPage = PageFactory.initElements(driver, LoginPage.class);
+		addProductPage = PageFactory.initElements(driver, AddProductPage.class);
 	}
 
 	
@@ -198,6 +202,97 @@ public class WhenSteps extends SharedWebDriver{
 	   loginPage.add_team_mail_box(arg1);
 	    
 	}
+	
+	
+	
+	@When("^I enter product details for product category \"(.*?)\"$")
+	public void i_enter_product_details_for_product_category(String arg1) throws Throwable {
+	   addProductPage.enter_product_details(arg1);
+	}
+
+
+
+@When("^I enter product name$")
+public void i_enter_product_name() throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+}
+
+@When("^I enter description of the product \"(.*?)\"$")
+public void i_enter_description_of_the_product(String arg1) throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+}
+
+@When("^I click continue$")
+public void i_click_continue() throws Throwable {
+   addProductPage.click_continue();
+   Thread.sleep(2000);
+}
+
+@When("^I select compliance type \"(.*?)\"$")
+public void i_select_compliance_type(String arg1) throws Throwable {
+   addProductPage.select_compliance(arg1);
+}
+
+@When("^I enter hazard details \"(.*?)\"$")
+public void i_enter_hazard_details(String arg1) throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    throw new PendingException();
+}
+
+@When("^I select which parts of chain do you know as \"(.*?)\"$")
+public void i_select_which_parts_of_chain_do_you_know_as(String arg1) throws Throwable {
+    // Write code here that turns the phrase above into concrete actions
+    addProductPage.select_radio_button_by_text(arg1);
+    Thread.sleep(2000);
+}
+
+@When("^I click on continue$")
+public void i_click_on_continue() throws Throwable {
+    
+}
+
+@When("^I enter business tradign name \"(.*?)\"$")
+public void i_enter_business_tradign_name(String arg1) throws Throwable {
+    addProductPage.enter_retailer_business(arg1);
+}
+
+@When("^I enter legal name \"(.*?)\"$")
+public void i_enter_legal_name(String arg1) throws Throwable {
+    
+}
+
+@When("^I select corrective action \"(.*?)\"$")
+public void i_select_corrective_action(String arg1) throws Throwable {
+    addProductPage.select_radio_button_by_text(arg1);
+}
+
+@When("^I click \"(.*?)\"$")
+public void i_click(String arg1) throws Throwable {
+	addProductPage.select_radio_button_by_text(arg1); 
+}
+
+@When("^I click create case$")
+public void i_click_create_case() throws Throwable {
+addProductPage.create_case();   
+
+}
+
+
+
+@When("^I go to activity log$")
+public void i_go_to_activity_log() throws Throwable {
+    
+}
+
+@Then("^I should be able to add activity \"(.*?)\"$")
+public void i_should_be_able_to_add_activity(String arg1) throws Throwable {
+	casepge.add_comment_activity();
+}
+
+
+	
 	@After()
 	/*
 	 * Embed a screenshot in test report if test is marked as failed

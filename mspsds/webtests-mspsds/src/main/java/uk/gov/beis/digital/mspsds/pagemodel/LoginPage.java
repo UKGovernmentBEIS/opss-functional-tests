@@ -33,7 +33,7 @@ public class LoginPage extends BasePage {
 		if (this.IsElementDisplayed(signOutLink)) {
 			this.click(signOutLink);
 		}
-
+        this.click_by_text("Sign in to your account");
 		this.type(usernameField, username);
 		this.type(passwordField, password);
 		this.click(loginButton);

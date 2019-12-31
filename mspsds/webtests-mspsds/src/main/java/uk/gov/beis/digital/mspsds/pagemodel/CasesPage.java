@@ -1,5 +1,7 @@
 package uk.gov.beis.digital.mspsds.pagemodel;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,6 +30,11 @@ public class CasesPage extends BasePage {
 	By Prod_Category = By.cssSelector("#allegation_product_category");
 	By Hazard_type = By.cssSelector("#allegation_hazard_type");
 	By create_allegation = By.xpath("//input[@value='Create allegation']");
+	By ts_case_page = By.xpath("//h1[@class='govuk-heading-l']");
+	By ts_activity = By.xpath("//a[@id='Activity_id']");
+	By case_add_activity = By.xpath("//a[contains(text(),'Add activity')]");
+	By case_comment = By.cssSelector("#comment_activity_body");
+	
 	
 	
 	
@@ -41,6 +48,11 @@ public class CasesPage extends BasePage {
 	public void open_case_page()
 	{
 	this.got_to(env+"casses");
+	}
+	
+	public void verify_on_correct_page(String page_name)
+	{
+		assertTrue("Failed:not on the correct page",find(this.ts_case_page).getText().contains(page_name));
 	}
 	
 	public void open_case(String case_title)
@@ -74,12 +86,31 @@ public class CasesPage extends BasePage {
 		
 	}
 	
+	public void open_a_case(String case_title)
+	{
+		this.click_by_text("Your cases");
+		this.click_by_text(case_title);
+	}
+	
 	
 	public void select_hazard_type(String type) throws InterruptedException{
 		this.type(Hazard_type,type);
 		driver.findElement(By.cssSelector("#allegation_hazard_type")).sendKeys(Keys.RETURN);
 		Thread.sleep(2000);
 		this.click(create_allegation);
+		
+	}
+	
+	public void add_comment_activity() throws InterruptedException
+	{
+		this.click(this.ts_activity);
+		this.click(this.case_add_activity);
+		this.select_radio_button_by_text("Add a comment");
+		this.click_continue();
+		this.type(this.case_comment,"Automated test-comment1");
+		this.click_continue();
+		Thread.sleep(2000);
+		this.verify_banner_message("Comment was successfully added.");	
 		
 	}
 }
