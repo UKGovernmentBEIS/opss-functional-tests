@@ -44,7 +44,14 @@ public class CasesPage extends BasePage {
 	By geographic_scope = By.cssSelector("#corrective_action_geographic_scope");
 	By files_related = By.cssSelector("#corrective_action_related_file_no");
 	
-	
+	//Enquiry page elements
+	By enquiry_date_day = By.xpath("//input[@name='enquiry[date_received][day]']");
+	By enquiry_date_month = By.xpath("//input[@name='enquiry[date_received][month]']");
+	By enquiry_date_year = By.xpath("//input[@name='enquiry[date_received][year]']");
+	By enquiry_complainant_name = By.xpath("//input[contains(@name,'complainant[name]')]");
+	By enquiry_description =  By.xpath("//textarea[contains(@id,'enquiry_description')]");
+	By enquiry_title = By.xpath("//input[contains(@id,'enquiry_user_title')]");
+	By create_enquiry = By.xpath("//input[contains(@type,'submit')]");
 	
 	public CasesPage(WebDriver driver) {
 		
@@ -143,4 +150,23 @@ public class CasesPage extends BasePage {
 		this.click_continue();
 		Thread.sleep(2000);
 	}
+	
+	public void enter_date_enquiry_form()
+	{
+		this.type(this.enquiry_date_day,"12");
+		this.type(this.enquiry_date_month,"12");
+		this.type(this.enquiry_date_year,"2019");
+	}
+	public void enter_complainant_name(String name)
+	{
+		this.type(this.enquiry_complainant_name,name);
+	}
+	
+	public void enter_enquiry_details()
+	{
+		this.type(this.enquiry_description,"This is an auto test enquiry");
+		this.type(this.enquiry_title,"Auto Test enquiry title-test");
+		this.click(this.create_enquiry);
+	}
+	
 }

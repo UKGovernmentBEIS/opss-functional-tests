@@ -299,6 +299,46 @@ public void i_should_be_able_to_add_activity(String arg1) throws Throwable {
 }
 
 
+@When("^I enter a date as when it was received$")
+public void i_enter_a_date_as_when_it_was_received() throws Throwable {
+	casepge.enter_date_enquiry_form();
+	
+}
+
+@When("^I select how it was received \"(.*?)\"$")
+public void i_select_how_it_was_received(String arg1) throws Throwable {
+	casepge.select_radio_button_by_text(arg1);
+    
+}
+
+@When("^I select source \"(.*?)\"$")
+public void i_select_source(String arg1) throws Throwable {
+	casepge.select_radio_button_by_text(arg1);
+	
+}
+
+@When("^I enter contact person name \"(.*?)\"$")
+public void i_enter_contact_person_name(String arg1) throws Throwable {
+	casepge.enter_complainant_name(arg1);
+   
+}
+
+@When("^I enter enquriy details$")
+public void i_enter_enquriy_details() throws Throwable {
+	casepge.enter_enquiry_details();
+}
+
+@When("^I click create enquiry$")
+public void i_click_create_enquiry() throws Throwable {
+  
+}
+
+@Then("^I should be able to create enquiry$")
+public void i_should_be_able_to_create_enquiry() throws Throwable {
+
+}
+
+
 	
 	@After()
 	/*
