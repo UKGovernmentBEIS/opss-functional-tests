@@ -288,7 +288,14 @@ public void i_go_to_activity_log() throws Throwable {
 
 @Then("^I should be able to add activity \"(.*?)\"$")
 public void i_should_be_able_to_add_activity(String arg1) throws Throwable {
+	if(arg1.equalsIgnoreCase("Add a comment"))
+	{
 	casepge.add_comment_activity();
+	}
+	else if(arg1.equalsIgnoreCase("Record corrective action")) {
+		casepge.add_corrective_action();
+		
+	}
 }
 
 
