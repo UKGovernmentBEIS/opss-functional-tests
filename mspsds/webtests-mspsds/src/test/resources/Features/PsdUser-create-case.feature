@@ -45,7 +45,13 @@ And I open case "Auto-test Testproduct, Auto-test dishwasher – Chemical"
 When I go to activity log
 Then I should be able to add activity "Comment"
 
-
+@ts-user  @wip
+Scenario: Add comment activity
+Given I login as Trading standard user
+And I open case "Auto-test Testproduct, Auto-test dishwasher – Chemical"
+When I go to activity log
+Then I should be able to add activity "Record corrective action"
+And I should see page ""
 
 
 Scenario: Add email via activity
