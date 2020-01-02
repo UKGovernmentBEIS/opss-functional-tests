@@ -36,9 +36,9 @@ public class CasesPage extends BasePage {
 	By case_comment = By.cssSelector("#comment_activity_body");
 	By corrective_summary = By.cssSelector("#corrective_action_summary");
 	
-	By date_day = By.xpath("//div[@class='govuk-date-input']//div[1]//div[1]");
-	By date_month = By.xpath("//div[@id='corrective_action_date_decided']//div[2]");
-	By date_year = By.xpath("//div[@id='corrective_action_date_decided']//div[3]");
+	By date_day = By.xpath("//input[@name='corrective_action[date_decided][day]']");
+	By date_month = By.xpath("//input[@name='corrective_action[date_decided][month]']");
+	By date_year = By.xpath("//input[@name='corrective_action[date_decided][year]']");
 	By legislation = By.xpath("	//input[@id='corrective_action_legislation']");
 	By action_mandatory = By.cssSelector("#corrective_action_measure_type_mandatory");
 	By geographic_scope = By.cssSelector("#corrective_action_geographic_scope");
@@ -129,14 +129,14 @@ public class CasesPage extends BasePage {
 		this.select_radio_button_by_text("Record corrective action");
 		this.click_continue();
 		this.type(this.corrective_summary,"Auto test corrective action");
-		this.driver.findElement(this.date_day).sendKeys("12");
+		//this.driver.findElement(this.date_day).sendKeys("12");
 		this.type(this.date_day,"12");
 		this.type(this.date_month,"12");
 		this.type(this.date_year,"2019");
 		this.type(this.legislation,"Aerosol Dispensers Regulations 2009");
 		this.driver.findElement(this.legislation).sendKeys(Keys.ENTER);
 		this.click(this.action_mandatory);
-		this.click_by_text("Permanent");
+		this.select_radio_button_by_text("Permanent");
 		this.type(this.geographic_scope,"Local");
 		this.driver.findElement(this.geographic_scope).sendKeys(Keys.ENTER);
 		this.click(this.files_related);
