@@ -337,7 +337,38 @@ public void i_click_create_enquiry() throws Throwable {
 public void i_should_be_able_to_create_enquiry() throws Throwable {
 
 }
+@When("^I Keep attachment title field empty$")
+public void i_Keep_attachment_title_field_empty() throws Throwable {
+	casepge.type(casepge.attachment_title, "");
+}
 
+@When("^I submit the form$")
+public void i_submit_the_form() throws Throwable {
+	casepge.click(casepge.submit);
+   
+}
+
+@Then("^I should see error \"(.*?)\"$")
+public void i_should_see_error(String arg1) throws Throwable {
+	casepge.verify_error(arg1);
+}
+
+@When("^I fill in attachment title$")
+public void i_fill_in_attachment_title() throws Throwable {
+	casepge.type(casepge.attachment_title, "Auto test attachment");
+	Thread.sleep(2000);
+	casepge.click(casepge.submit);
+    
+}
+@When("^I click back$")
+public void i_click_back() throws Throwable {
+	casepge.click(casepge.back_link);
+}
+
+@When("^I click cancel$")
+public void i_click_cancel() throws Throwable {
+	casepge.click(casepge.cancel_link);
+}
 
 	
 	@After()

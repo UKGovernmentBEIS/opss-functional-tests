@@ -77,6 +77,26 @@ public class GivenSteps {
 	public void i_open_case(String arg1) throws Throwable {
 		casesPage.open_a_case(arg1);
 	}
+	@Given("^I add attachment to the case$")
+	public void i_add_attachment_to_the_case() throws Throwable {
+		casesPage.add_file_case();
+	}
+	
+	@Given("^I go to attachment tab$")
+	public void i_go_to_attachment_tab() throws Throwable {
+		casesPage.click(casesPage.attachment_tab);
+	}
+
+	@Then("^I should see error message \"(.*?)\"$")
+	public void i_should_see_error_message(String arg1) throws Throwable {
+		Thread.sleep(2000);
+		casesPage.verify_error(arg1);
+	}
+	
+	@Given("^I click link \"(.*?)\"$")
+	public void i_click_link(String arg1) throws Throwable {
+		casesPage.click_by_text(arg1);
+	}
 
 	
 	@After()

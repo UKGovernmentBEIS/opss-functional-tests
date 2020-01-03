@@ -50,8 +50,19 @@ public class CasesPage extends BasePage {
 	By enquiry_date_year = By.xpath("//input[@name='enquiry[date_received][year]']");
 	By enquiry_complainant_name = By.xpath("//input[contains(@name,'complainant[name]')]");
 	By enquiry_description =  By.xpath("//textarea[contains(@id,'enquiry_description')]");
-	By enquiry_title = By.xpath("//input[contains(@id,'enquiry_user_title')]");
-	By create_enquiry = By.xpath("//input[contains(@type,'submit')]");
+	public By enquiry_title = By.xpath("//input[contains(@id,'enquiry_user_title')]");
+	public By submit = By.xpath("//input[contains(@type,'submit')]");
+	
+	//Attachment page objects
+	public By attachment_tab = By.xpath("//a[contains(@id,'Attachments_id')]");
+	public By attachment_title = By.xpath("//input[contains(@id,'title')]");
+	public By file_upload = By.xpath("//input[@id='document_file_file']");
+	public By back_link = By.xpath("//a[contains(@class,'govuk-back-link')]");
+	public By cancel_link = By.xpath("//a[contains(.,'Cancel')]");
+	
+	//summary error 
+	public By page_error = By.xpath("//div[@class='govuk-error-summary']");
+	
 	
 	public CasesPage(WebDriver driver) {
 		
@@ -166,7 +177,20 @@ public class CasesPage extends BasePage {
 	{
 		this.type(this.enquiry_description,"This is an auto test enquiry");
 		this.type(this.enquiry_title,"Auto Test enquiry title-test");
-		this.click(this.create_enquiry);
+		this.click(this.submit);
+	}
+	
+	public void add_file_case()
+	{
+//		this.click(this.attachment_tab);
+//		this.click_by_text("Add attachment");
+		this.file_upload(this.file_upload, "dishwasher.jpg");
+		this.click(this.submit);
+	}
+	
+	public void verify_error(String error)
+	{
+		assertTrue("Failed:error not shown",this.find(this.page_error).getText().contains(error));
 	}
 	
 }
