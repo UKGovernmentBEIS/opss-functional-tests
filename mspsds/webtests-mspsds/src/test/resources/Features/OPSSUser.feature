@@ -48,6 +48,40 @@ Examples:
 |Cosmetics						  						 |Burns		   |
 
 
+@regression
+Scenario: As opss user, I should be able to create an enquiry
+Given I login as OPSS user
+When I click button "Create new"
+And I select case type "Enquiry"
+And I enter a date as when it was received
+And I select how it was received "Email"
+And I click continue 
+Then I should see page "New enquiry"
+
+When I select source "A consumer"
+And I click continue
+And I enter contact person name "Auto test -Contact person"
+And I click continue
+And I enter enquriy details
+Then I should see "Enquiry was successfully created."
+
+@regression
+Scenario: As opss user, I should be able to create an enquiry
+Given I login as OPSS user
+When I click button "Create new"
+And I select case type "Enquiry"
+And I enter a date as when it was received
+And I select how it was received "Phone"
+And I click continue 
+Then I should see page "New enquiry"
+
+When I select source "Local authority (Trading Standards)"
+And I click continue
+And I enter contact person name "Auto test -Contact person"
+And I click continue
+And I enter enquriy details
+Then I should see "Enquiry was successfully created."
+
 
 
 

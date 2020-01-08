@@ -46,7 +46,7 @@ When I go to activity log
 Then I should be able to add activity "Comment"
 
 @ts-user @regression
-Scenario: Add comment activity
+Scenario: Add corrective action
 Given I login as Trading standard user
 And I open case "Auto-test Testproduct, Auto-test dishwasher – Chemical"
 When I go to activity log
@@ -54,7 +54,6 @@ Then I should be able to add activity "Record corrective action"
 And I should see page "Confirm corrective action details"
 And I click continue
 And I should see "Corrective action was successfully recorded."
-
 
 
 Scenario: Add email via activity
