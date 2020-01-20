@@ -52,7 +52,7 @@ public class WhenSteps extends SharedWebDriver {
 
 	@When("^I notify product manually$")
 	public void i_notify_product_manually() throws Throwable {
-		loginPage.click_by_text("Add cosmetic products");
+		addProductPage.click_add_cosmetics_product();
 		addProductPage.select_radio_button_by_text("No, they have not been notified in the EU");
 		addProductPage.click_continue();
 		addProductPage.select_radio_button_by_text("No");

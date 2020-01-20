@@ -29,7 +29,7 @@ I should be able to upload cpnp extract zip file
 Scenario: Single-item notification upload with range formulation
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
-And I click on "Add cosmetic products"
+And I click add comsetics product
 And I click "Yes"
 And I click "Yes"
 When I upload "SingleItem-RangeFormulation-harmful-Ingredients.zip"
@@ -40,7 +40,7 @@ And I should see notification in incomplete tab
 Scenario: Single-item notificaiton upload with nano and cmr only
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
-And I click on "Add cosmetic products"
+And I click add comsetics product
 And I click "Yes"
 And I click "Yes"
 When I upload "SingleItem-CMRs-Nano.zip"
@@ -51,7 +51,7 @@ And I should see notification in incomplete tab
 Scenario: Single-item notification upload with nano-material only
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
-And I click on "Add cosmetic products"
+And I click add comsetics product
 And I click "Yes"
 And I click "Yes"
 When I upload "SingleItem-Nano-Only.zip"
@@ -62,7 +62,7 @@ And I should see notification in incomplete tab
 Scenario: Verify single item notification upload with exact concentration formulation and nano-materials
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
-And I click on "Add cosmetic products"
+And I click add comsetics product
 And I click "Yes"
 And I click "Yes"
 When I upload "SingleItem-Nano-ExactFormulation-pHRange.zip"
@@ -73,7 +73,7 @@ And I should see notification in incomplete tab
 Scenario: Verify single item file upload with range formulation and nano-materials
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
-And I click on "Add cosmetic products"
+And I click add comsetics product
 And I click "Yes"
 And I click "Yes"
 When I upload "SingleItem-Rangeformulation-Nanomaterial.zip"
@@ -87,7 +87,7 @@ And I click select notification "SingleItem-Rangeformulation-Nanomaterial"
 
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
-And I click on "Add cosmetic products"
+And I click add comsetics product
 And I click "Yes"
 And I click "Yes"
 When I upload "SingleItem-Rangeformulation-Nanomaterial.zip"
@@ -99,7 +99,7 @@ And I should see notification in incomplete tab
 Scenario: Verify multi item file upload with frameformulation and nano-materials
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
-And I click on "Add cosmetic products"
+And I click add comsetics product
 And I click "Yes"
 And I click "Yes"
 When I upload "Multi-componentFrameformulationNano-notification.zip"
@@ -111,7 +111,7 @@ And I should see notification in incomplete tab
 Scenario: Single multi-item upload with nano-materials only
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
-And I click on "Add cosmetic products"
+And I click add comsetics product
 And I click "Yes"
 And I click "Yes"
 When I upload "Multi-Item-NanoOnly.zip"
