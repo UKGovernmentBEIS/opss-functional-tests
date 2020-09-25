@@ -7,7 +7,7 @@ I should be able add product manually
 @regression @manual-journey
 Scenario: Validate manual journey screens
 Given I login as responsible person user
-When I click on "Add cosmetic products"
+When I click add comsetics product
 Then I should see "Has the EU been notified about these products using CPNP?"
 
 When I click "No"
@@ -19,7 +19,7 @@ Then I should see manual journey "Are you likely to notify the EU about these pr
  @regression @manual-journey
 Scenario Outline: notify product manually
 Given I login as responsible person user
-When I click on "Add cosmetic products"
+When I click add comsetics product
 And I select to manual journey
 And I enter product name"<product-name>"
 
@@ -68,7 +68,7 @@ Examples:
 Scenario: Validate bulk upload journey screens
 Given I login as responsible person user
 And I click on "Your cosmetic products"
-When I click on "Add cosmetic products"
+When I click add comsetics product
 Then I should see "Have the cosmetic products been notified in the EU?"
 
 When I click "Yes, they are already notified in the EU"

@@ -3,7 +3,7 @@ Feature: Notification file upload error handling
 Scenario Outline: Verify correct correct is displayed for
 Given I login as responsible person user
 And I dismiss any existing errors from error tab
-And I click on "Add cosmetic products"
+And I click add comsetics product
 And I click "Yes"
 And I click "Yes"
 When I upload "<Invalid-file>"
