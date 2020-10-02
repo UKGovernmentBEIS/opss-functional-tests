@@ -11,11 +11,12 @@ public class LoginPage extends BasePage {
 
 	private WebDriver driver;
 
-	private By usernameField = By.cssSelector("#username");
-	private By passwordField = By.cssSelector("#password");
-	private By loginButton = By.cssSelector("#kc-login");
+	private By usernameField = By.xpath("//input[@name='submit_user[email]']");
+	private By passwordField = By.xpath("//input[contains(@name,'submit_user[password]')]");
+	private By loginButton = By.xpath("//button[contains(@class,'govuk-button ')]");
 	private By signInLink = By.xpath("//a[text()='Sign in']");
 	private By signOutLink = By.xpath("//a[text()='Sign out']");
+	private By otp_code = By.id("otp_code");
 
 	public LoginPage(WebDriver driver) {
 		super(driver);
@@ -32,6 +33,13 @@ public class LoginPage extends BasePage {
 			this.type(usernameField, username);
 			this.type(passwordField, password);
 			this.click(loginButton);
+			if (this.IsElementDisplayed(otp_code)) {
+				System.out.println("Found 2fa");
+			this.type(otp_code, "11222");
+			Thread.sleep(2000);
+			this.click(loginButton);
+			}
+			
 			Thread.sleep(4000);
 		}
 

@@ -16,6 +16,7 @@ public class AddProductPage extends BasePage {
 	}
 
 	By ele_fileupload = By.xpath("//input[@multiple='multiple'][contains(@id,'files')]");
+	By add_product = By.xpath("//a[contains(@href,'notification/new')]");
 	By ingredients_upload = By.xpath("//input[@id='component_formulation_file']");
 	By upload_button = By.xpath("//input[contains(@type,'submit')]");
 	By login_button = By.cssSelector("#kc-login");
@@ -129,9 +130,15 @@ public class AddProductPage extends BasePage {
 		Thread.sleep(3000);	
 	}
 	
+	public void click_add_cosmetics_product()
+	{
+		this.click(add_product);
+	}
+	
 
 	public void add_product_manually() throws InterruptedException {
 		Thread.sleep(3000);
+		this.click_add_cosmetics_product();
 		this.click_by_text("Add cosmetic products");
 		this.select_radio_button_by_text("No");
 		this.click_continue();

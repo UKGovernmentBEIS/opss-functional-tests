@@ -338,6 +338,11 @@ public class GivenSteps extends SharedWebDriver {
 	public void i_select_product_doesnt_have_pH(String arg1) throws Throwable {
 		nanoMaterialPage.select_radio_button_by_text(arg1);
 	}
+	
+	@Given("^I click add comsetics product$")
+	public void i_click_add_comsetics_product() throws Throwable {
+	 addProductPage.click_add_cosmetics_product();
+	}
 
 	@After()
 	/*
