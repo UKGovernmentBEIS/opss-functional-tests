@@ -54,10 +54,10 @@ public class GivenSteps {
 
 	@When("^I want to assign any case$")
 	public void i_want_to_assign_any_case() throws Throwable {
-		loginPage.open_mspsds_case("Cosmetics – Burns (no product specified)");
+		loginPage.open_mspsds_case("Cosmetics – burns hazard (no product specified)");
 		Thread.sleep(4000);
 
-		assigneePage.click_change_assign();
+		assigneePage.click_change_owner();
 }
 	@Given("^I login as keycloack Admin user$")
 	public void i_login_as_keycloack_Admin_user() throws Throwable {
@@ -84,7 +84,7 @@ public class GivenSteps {
 	
 	@Given("^I go to attachment tab$")
 	public void i_go_to_attachment_tab() throws Throwable {
-		casesPage.click(casesPage.attachment_tab);
+		casesPage.click(casesPage.supporting_information);
 	}
 
 	@Then("^I should see error message \"(.*?)\"$")

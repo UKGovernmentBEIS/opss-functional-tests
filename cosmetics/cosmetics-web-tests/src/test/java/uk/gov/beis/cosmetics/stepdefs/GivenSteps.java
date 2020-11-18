@@ -124,14 +124,14 @@ public class GivenSteps extends SharedWebDriver {
 	@When("^I click \"(.*?)\"$")
 	public void i_click(String arg1) throws Throwable {
 		addProductPage.select_radio_button_by_text(arg1);
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 		Thread.sleep(3000);
 	}
 
 	@When("^I select \"(.*?)\"$")
 	public void i_select(String option) throws Throwable {
 		addProductPage.select_radio_button_by_text(option);
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 	}
 
 	@Given("^I login as responsible person user$")
@@ -165,35 +165,35 @@ public class GivenSteps extends SharedWebDriver {
 	public void i_select_to_manual_journey() throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
 		addProductPage.select_radio_button_by_text("No");
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 		addProductPage.select_radio_button_by_text("No");
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 	}
 
 	@When("^I select imported into UK \"(.*?)\"$")
 	public void i_select_imported_into_UK(String arg1) throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
 		addProductPage.select_radio_button_by_text("Yes");
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 	}
 
 	@When("^I select sold as single component \"(.*?)\"$")
 	public void i_select_sold_as_single_component(String arg1) throws Throwable {
 		addProductPage.select_radio_button_by_text(arg1);
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 	}
 
 	@When("^I select cosmetic sold as more than one shade \"(.*?)\"$")
 	public void i_select_cosmetic_sold_as_more_than_one_shade(String arg1) throws Throwable {
 		addProductPage.select_radio_button_by_text(arg1);
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 	}
 
 	@When("^I select nanomaterials as \"(.*?)\"$")
 	public void i_select_nanomaterials_as(String arg1) throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
 		addProductPage.select_radio_button_by_text("No");
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 	}
 
 	@When("^I select image to upload$")
@@ -216,7 +216,7 @@ public class GivenSteps extends SharedWebDriver {
 	@When("^I enter country imported from\"(.*?)\"$")
 	public void i_enter_country_imported_from(String arg1) throws Throwable {
 		addProductPage.enter_country_imported_from(arg1);
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 
 	}
 
@@ -230,7 +230,7 @@ public class GivenSteps extends SharedWebDriver {
 	@When("^I select formulation\"(.*?)\"$")
 	public void i_select_formulation(String arg1) throws Throwable {
 		addProductPage.select_radio_button_by_text(arg1);
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 	}
 
 	@When("^I select frame formulation\"(.*?)\"$")
@@ -257,13 +257,13 @@ public class GivenSteps extends SharedWebDriver {
 	@Given("^I select \"(.*?)\" product contains anti-dandruff agents$")
 	public void i_select_product_contains_anti_dandruff_agents(String arg1) throws Throwable {
 		addProductPage.select_radio_button_by_text(arg1);
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 	}
 
 	@Given("^I select \"(.*?)\" contains poisonous ingredients$")
 	public void i_select_contains_poisonous_ingredients(String arg1) throws Throwable {
 		addProductPage.select_radio_button_by_text(arg1);
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 	}
 
 	@Given("^I enter agents substance \"(.*?)\"$")

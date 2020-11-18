@@ -33,7 +33,7 @@ public class ThenSteps {
 
 	@Then("^I should be able to see prioritise team list under teams$")
 	public void i_should_be_able_to_see_prioritise_team_list_under_teams(DataTable arg1) throws Throwable {
-	   assignpge.click_change_assign();
+	   assignpge.click_change_owner();
 	   assignpge.verify_priority_team(arg1);
 	}
 
@@ -71,9 +71,19 @@ public class ThenSteps {
 	
 	@Then("^I should see page \"(.*?)\"$")
 	public void i_should_see_page(String arg1) throws Throwable {
+		Thread.sleep(2000);
 		casesPage.verify_on_correct_page(arg1); 
 	}
 	
+	@Then("^I should see covid badge displayed on the case overview page$")
+	public void i_should_see_covid_badge_displayed_on_the_case_overview_page() throws Throwable {
+		casesPage.verify_covid_badge_displayed();
+	}
+	
+	@Then("^I click continue on corrective action confirm page$")
+	public void i_click_continue_on_corrective_action_confirm_page() throws Throwable {
+		casesPage.click(casesPage.corrective_action_continue);
+	}
 	
 	@After()
 	/*

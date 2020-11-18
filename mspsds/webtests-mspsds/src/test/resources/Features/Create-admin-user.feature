@@ -132,115 +132,26 @@ Scenario Outline: Add new groups and teams in kc
     And I select role as team_admin
     And I should be able to invite user
     Examples:
-    |user-name				  |group-name										|
-    |rob.harvey@merton.gov.uk|Richmond, Merton and Wandsworth Borough|
-		|douglas.dickson@rbkc.gov.uk|Royal Borough of Kensington and Chelsea|
-		|Iain.bailey@kingston.gov.uk|Royal Borough of Kingston upon Thames|
-		|Amanda.Butler@walthamforest.gov.uk|London Borough of Waltham Forest|
-		|Katalin.Morath@towerhamlets.gov.uk|London Borough of Tower Hamlets|
-		|Cenred.Elworthy@lbbd.gov.uk|Barking and Dagenham Borough|
-		|martin.o'brien@lbhf.gov.uk|Hammersmith & Fulham Borough|
-		|kcheung@hillingdon.gov.uk|London Borough of Hillingdon|
-		|Sonita.Singh@islington.gov.uk|London Borough of Islington|
-		|Ian.Tucker@redbridge.gov.uk|London Borough of Redbridge|
-		|hedley.setahul@southwark.gov.uk|London Borough of Southwark|
-		|georgia.forde@haringey.gov.uk|London Borough of Haringey|
-		|josile.munro@havering.gov.uk|London Borough of Havering|
-		|karmveer.johal@hounslow.gov.uk|London Borough of Hounslow|
-		|Nicholas.Stabeler@lewisham.gov.uk|London Borough of Lewisham|
-		|alex.brander@royalgreenwich.gov.uk|Royal Borough of Greenwich|
-		|Matthew.Smith@bromley.gov.uk|London Borough of Bromley|
-		|caroline.dawson@croydon.gov.uk|London Borough of Croydon|
-		|Amanda.Butler@enfield.gov.uk|London Borough of Enfield|
-		|eshe.deodat-hill@hackney.gov.uk|London Borough of Hackney|
-		|Molumese@lambeth.gov.uk|London Borough of Lambeth|
-		|Emma.Phasey@barnet.gov.uk|London Borough of Barnet|
-		|Simon.Ellis@bexley.gov.uk|London Borough of Bexley|
-		|martin.harland@camden.gov.uk|London Borough of Camden|
-		|GlendinningW@ealing.gov.uk|London Borough of Ealing|
-		|meredith.howell-morris@newham.gov.uk|London Borough of Newham|
-		|sarah.littell@sutton.gov.uk|London Borough of Sutton|
-		|Paul.lee@brent.gov.uk|London Borough of Brent|
-		|lolder@westminster.gov.uk|City of Westminster|
-		|Ian.Dobson@cityoflondon.gov.uk|City of London|
-		|Judith.Shewan@southtyneside.gov.uk|South Tyneside Metropolitan Borough Council|
-		|TraceyJohnson@Gateshead.Gov.UK|Gateshead Metropolitan Borough Council|
-		|Julian.Sorrell@redcar-cleveland.gov.uk|Redcar & Cleveland Borough Council|
-		|Jimmy.Jones@stockton.gov.uk|Stockton-on-Tees Borough Council|
-		|david.c.ellerington@newcastle.gov.uk|Newcastle upon Tyne City Council|
-		|darin.wilson@northumberland.gov.uk|Northumberland County Council|
-		|Darren_hull@middlesbrough.gov.uk|Middlesbrough Borough Council|
-		|Dawn.Taylor@darlington.gov.uk|Darlington Borough Council|
-		|rachael.readman@hartlepool.gov.uk|Hartlepool Borough Council|
-		|Andrew.Stephenson@sunderland.gov.uk|Sunderland City Council|
-		|dave.hedley@northtyneside.gov.uk|North Tyneside Council|
-		|craig.hudson@durham.gov.uk|Durham County Council|
-		|michaelreed@sthelens.gov.uk|St Helens Metropolitan Borough Council|
-		|Jason.O'Rourke@blackburn.gov.uk|Blackburn with Darwen Borough Council|
-		|craig.ashton@knowsley.gov.uk|Knowsley Metropolitan Borough Council|
-		|peter.gallagher@rochdale.gov.uk|Rochdale Metropolitan Borough Council|
-		|kevin.welch@trafford.gov.uk|Trafford Metropolitan Borough Council|
-		|melissa.shine@bolton.gov.uk|Bolton Metropolitan Borough Council|
-		|michaela.monk@oldham.gov.uk|Oldham Metropolitan Borough Council|
-		|sean.jones@sefton.gov.uk|Sefton Metropolitan Borough Council|
-		|a.bari@wigan.gov.uk|Wigan Metropolitan Borough Council|
-		|j.h.garland@bury.gov.uk|Bury Metropolitan Borough Council|
-		|genevieve.jenkins@cheshirewestandchester.gov.uk|Cheshire West and Chester Council|
-		|khales@warrington.gov.uk|Warrington Borough Council|
-		|shaun.mckinney@blackpool.gov.uk|Blackpool Borough Council|
-		|steven.brimble@lancashire.gov.uk|Lancashire County Council|
-		|h.raw@manchester.gov.uk|Manchester City Council|
-		|jonathan.west@cumbria.gov.uk|Cumbria County Council|
-		|Chris.Ramsay@halton.gov.uk|Halton Borough Council|
-		|daniel.blowes@liverpool.gov.uk|Liverpool City Council|
-		|nickchesters@wirral.gov.uk|Wirral Borough Council|
-		|jane.longley@cheshireeast.gov.uk|Cheshire East Council|
-		|esther.forbes@salford.gov.uk|Salford City Council|
-		|jo.wilson@stockport.gov.uk|Stockport Council|
-		|carl.jones@tameside.gov.uk|Tameside Council|
-		|andrew.crossen-white@bcpcouncil.gov.uk|Bournemouth, Christchurch and Poole Councils|
-		|Kirsty_Langford@BATHNES.GOV.UK|Bath and North East Somerset Council|
-		|vanessa.daniel@devon.gov.uk|Devon, Somerset and Torbay Councils|
-		|Sarah.WATSON@gloucestershire.gov.uk|Gloucestershire County Council|
-		|charlotte.allard@southglos.gov.uk|South Gloucestershire Council|
-		|Thomas.Hutchinson@wiltshire.gov.uk|Wiltshire County Council|
-		|Gavin.Hill@cornwall.gov.uk|Cornwall County Council|
-		|bdowning@swindon.gov.uk|Swindon Borough Council|
-		|Debbie.Williams@n-somerset.gov.uk|North Somerset Council|
-		|richard.herringshaw@dorsetcouncil.gov.uk|Dorset County Council|
-		|Melanie.Walker@plymouth.gov.uk|Plymouth City Council|
-		|Sarah.davey@bristol.gov.uk|Bristol City Council|
-		|sion.thomas@blaenau-gwent.gov.uk|Blaenau Gwent and Torfaen County Borough Council|
-		|jhotchkiss@valeofglamorgan.gov.uk|Bridgend, Cardiff and the Vale of Glamorgan|
-		|s.burton@npt.gov.uk|Neath Port Talbot County Borough Council|
-		|darran.h.davies@rctcbc.gov.uk|Rhondda Cynon Taf County Borough Council|
-		|craig.rushton@merthyr.gov.uk|Merthyr Tydfil County Borough Council|
-		|willibr@caerphilly.gov.uk|Caerphilly County Borough Council|
-		|EmmaJones@ynysmon.gov.uk|Isle of Anglesey County Council|
-		|rhys.harries@swansea.gov.uk|Swansea City and County Council|
-		|aledthomas@carmarthenshire.gov.uk|Carmarthenshire County Council|
-		|William.jones@wrexham.gov.uk|Wrexham County Borough Council|
-		|Dawn.Bamford@conwy.gov.uk|Conwy County Borough Council|
-		|KeithGardner@monmouthshire.gov.uk|Monmouthshire County Council|
-		|jenny.tree@pembrokeshire.gov.uk|Pembrokeshire County Council|
-		|tracey.heywood@denbighshire.gov.uk|Denbighshire County Council|
-		|Lawrence.Martin@ceredigion.gov.uk|Ceredigion County Council|
-		|margaret.rowlands@flintshire.gov.uk|Flintshire County Council|
-		|endaflloydwilliams@gwynedd.llyw.cymru|Gwynedd County Council|
-		|Alan.buckley@newport.gov.uk|Newport City Council|
-		|jacqui.thomas@powys.gov.uk|Powys County Council|
-		|samantha_parish@sandwell.gov.uk|Sandwell Metropolitan Borough Council|
-		|gbrown@solihull.gov.uk |Solihull Metropolitan Borough Council|
-		|amanda.ross@walsall.gov.uk |Walsall Metropolitan Borough Council|
-		|Marion.wilson@dudley.gov.uk|Dudley Metropolitan Borough Council|
-		|peter.holmes@worcestershirets.gov.uk|Worcestershire County Council|
-		|tony.pugh@staffordshire.gov.uk|Staffordshire County Council|
-		|ianferry@warwickshire.gov.uk|Warwickshire county council|
-		|susan.bellingham@wolverhampton.gov.uk|Wolverhampton City Council|
-		|sally.jones@shropshire.gov.uk |Shropshire County Council|
-		|Alex.Rankin@telford.gov.uk |Telford & Wrekin Council|
-		|Vir.Ahluwalia@birmingham.gov.uk|Birmingham City Council|
-		|sarah.noonan@stoke.gov.uk|City of Stoke on Trent|
-		|Alan.Harwood@coventry.gov.uk|Coventry City Council|
-		|Lynda.Purcell@walsall.gov.uk|Walsall Metropolitan Borough Council|
-    |testuser52@test.com|Southampton Council					|
+    |user-name				  |group-name|
+    |psd-loadtest11@example.com|Trading Standards Southampton|
+    |psd-loadtest12@example.com|Birmingham TS|
+    |psd-loadtest13@example.com|Birmingham TS|
+    |psd-loadtest14@example.com|Birmingham TS|
+    |psd-loadtest15@example.com|Birmingham TS|
+    |psd-loadtest16@example.com|Birmingham TS|
+    |psd-loadtest17@example.com|Birmingham TS|
+    |psd-loadtest18@example.com|Birmingham TS|
+    |psd-loadtest19@example.com|Birmingham TS|
+    |psd-loadtest20@example.com|Birmingham TS|
+    |psd-loadtest21@example.com|Birmingham TS|
+    |psd-loadtest22@example.com|Birmingham TS|
+    |psd-loadtest23@example.com|Birmingham TS|
+    |psd-loadtest24@example.com|Birmingham TS|
+    |psd-loadtest25@example.com|Birmingham TS|
+    |psd-loadtest26@example.com|Birmingham TS|
+    |psd-loadtest27@example.com|Birmingham TS|
+    |psd-loadtest28@example.com|Birmingham TS|
+    |psd-loadtest29@example.com|Birmingham TS|
+    |psd-loadtest30@example.com|Birmingham TS|
+    
+		

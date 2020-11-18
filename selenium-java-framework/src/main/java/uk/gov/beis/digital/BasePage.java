@@ -92,6 +92,11 @@ public class BasePage {
 		find(locator).clear();
 		find(locator).sendKeys(arg1);
 	}
+	
+	public void value(By locator, String value)
+	{
+		find(locator).getAttribute("value").contentEquals(value);
+	}
 
 	public void emptytextbox(By locator) {
 		find(locator).clear();
@@ -195,8 +200,10 @@ public class BasePage {
    public boolean verify_par_page_header1(String title)
    {
 
+	   //System.out.println(driver.findElement(By.cssSelector("h1.heading-xlarge")).getText());
 		boolean flag= false;
 		if(driver.findElement(By.cssSelector("h1.heading-xlarge")).getText().equals(title))
+			
 		return flag=true;
 		else 
 		{
@@ -293,9 +300,39 @@ public class BasePage {
 		}
 	}
 	
+	public void click_continue_on_cos()
+	{
+		//driver.findElement(By.xpath("//input[contains(@type,'submit')]")).click();
+	driver.findElement(By.xpath("//button[contains(.,'Continue')]")).click();
+	}
+	
 	public void click_continue()
 	{
-		driver.findElement(By.xpath("//input[@value='Continue']")).click();
+		driver.findElement(By.xpath("//button[@class='govuk-button ']")).click();
+		
+	//driver.findElement(By.xpath("//button[contains(.,'Continue')]")).click();
+	}
+	
+	public void click_continue_input()
+	{
+		driver.findElement(By.xpath("//input[contains(@type,'submit')]")).click();
+		//driver.findElement(By.xpath("//input[@value='Continue']")).click();
+	}
+			
+			
+	
+	public void click_continue_button()
+	{
+		driver.findElement(By.xpath("//button[contains(.,'Continue')]")).click();
+	}
+	
+	public void click_continue_enforcement() throws InterruptedException
+	{
+		WebElement element = driver.findElement(By.xpath("//input[contains(@id,'edit-next')]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		Thread.sleep(500); 
+		
+		driver.findElement(By.xpath("//input[contains(@id,'edit-next')]")).click();
 	}
 	
 	/**

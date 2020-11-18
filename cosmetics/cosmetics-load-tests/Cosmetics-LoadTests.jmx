@@ -9,22 +9,22 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="number_of_responsible_person_users" elementType="Argument">
             <stringProp name="Argument.name">number_of_responsible_person_users</stringProp>
-            <stringProp name="Argument.value">2</stringProp>
+            <stringProp name="Argument.value">100</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="number_of_poison_centre_users" elementType="Argument">
             <stringProp name="Argument.name">number_of_poison_centre_users</stringProp>
-            <stringProp name="Argument.value">2</stringProp>
+            <stringProp name="Argument.value">1</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="number_of_uploads_per_user" elementType="Argument">
             <stringProp name="Argument.name">number_of_uploads_per_user</stringProp>
-            <stringProp name="Argument.value">2</stringProp>
+            <stringProp name="Argument.value">100</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="ramp_up_time" elementType="Argument">
             <stringProp name="Argument.name">ramp_up_time</stringProp>
-            <stringProp name="Argument.value">2</stringProp>
+            <stringProp name="Argument.value">50</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -46,7 +46,7 @@
           </elementProp>
           <elementProp name="number_of_uploads_per_user" elementType="Argument">
             <stringProp name="Argument.name">number_of_uploads_per_user</stringProp>
-            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.value">100</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -164,8 +164,8 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${number_of_responsible_person_users}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">100</stringProp>
         <longProp name="ThreadGroup.start_time">1370726934000</longProp>
         <longProp name="ThreadGroup.end_time">1370726934000</longProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
@@ -534,6 +534,15 @@ vars.put(&quot;user_number&quot;, Integer.toString(threadNumber));</stringProp>
                 <stringProp name="RegexExtractor.match_number">1</stringProp>
               </RegexExtractor>
               <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="get_secondary_auth" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">secondary_auth</stringProp>
+                <stringProp name="RegexExtractor.regex">form_user_id&quot; value=&quot;(.+?)&quot;</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="40 /dashboard" enabled="false">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -655,7 +664,7 @@ vars.put(&quot;user_number&quot;, Integer.toString(threadNumber));</stringProp>
                   <elementProp name="secondary_authentication_form[user_id]" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">true</boolProp>
                     <stringProp name="Argument.name">secondary_authentication_form[user_id]</stringProp>
-                    <stringProp name="Argument.value">79dfe086-5433-418e-bba6-07e046d63a7b</stringProp>
+                    <stringProp name="Argument.value">${secondary_auth}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   </elementProp>
@@ -1109,7 +1118,7 @@ vars.put(&quot;user_number&quot;, Integer.toString(threadNumber));</stringProp>
               <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
               <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications</stringProp>
+              <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>

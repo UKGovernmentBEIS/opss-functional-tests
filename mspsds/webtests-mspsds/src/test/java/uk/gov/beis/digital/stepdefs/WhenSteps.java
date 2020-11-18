@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import cucumber.api.PendingException;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import uk.gov.beis.digital.mspsds.pagemodel.AddProductPage;
@@ -71,7 +72,7 @@ public class WhenSteps extends SharedWebDriver{
 		Thread.sleep(2000);
 		dashpge.select_radio_button_by_text(arg1);
 	   Thread.sleep(2000);
-	   dashpge.click_continue();
+	   dashpge.click_continue_input();
 	}
 
 	@When("^I select reporter as \"(.*?)\"$")
@@ -79,7 +80,7 @@ public class WhenSteps extends SharedWebDriver{
 	    // Write code here that turns the phrase above into concrete actions
 		Thread.sleep(2000);
 		dashpge.select_radio_button_by_text(arg1);
-		dashpge.click_continue();
+		dashpge.click_continue_input();
 	}
 
 	@When("^I enter contact details$")
@@ -226,8 +227,24 @@ public void i_enter_description_of_the_product(String arg1) throws Throwable {
 
 @When("^I click continue$")
 public void i_click_continue() throws Throwable {
-   addProductPage.click_continue();
+	dashpge.click_continue();
    Thread.sleep(2000);
+}
+@When("^I click continue input$")
+public void i_click_continue_input() throws Throwable {
+   dashpge.click_continue_input();
+}
+
+
+@Given("^I click continue button$")
+public void i_click_continue_button() throws Throwable {
+	 addProductPage.click_continue_button();
+	 Thread.sleep(2000);
+}
+
+@When("^I click continue on coivid page$")
+public void i_click_continue_on_coivid_page() throws Throwable {
+    this.driver.findElement(By.xpath("//button[contains(@class,'govuk-button ')]")).click();
 }
 
 @When("^I select compliance type \"(.*?)\"$")
@@ -263,6 +280,11 @@ public void i_enter_legal_name(String arg1) throws Throwable {
     
 }
 
+@When("^I select \"(.*?)\"$")
+public void i_select(String arg1) throws Throwable {
+   addProductPage.select_radio_button_by_text(arg1);
+}
+
 @When("^I select corrective action \"(.*?)\"$")
 public void i_select_corrective_action(String arg1) throws Throwable {
     addProductPage.select_radio_button_by_text(arg1);
@@ -285,19 +307,29 @@ addProductPage.create_case();
 public void i_go_to_activity_log() throws Throwable {
     
 }
+@When("^I go to supporting information tab$")
+public void i_go_to_supporting_information_tab() throws Throwable {
+	casepge.click(casepge.ts_support_info);
+    
+}
 
 @Then("^I should be able to add activity \"(.*?)\"$")
 public void i_should_be_able_to_add_activity(String arg1) throws Throwable {
-	if(arg1.equalsIgnoreCase("Add a comment"))
+	if(arg1.equalsIgnoreCase("Comment"))
 	{
 	casepge.add_comment_activity();
 	}
 	else if(arg1.equalsIgnoreCase("Record corrective action")) {
-		casepge.add_corrective_action();
+		casepge.add_corrective_action("no");
 		
 	}
 }
 
+@Then("^I should be add \"(.*?)\" with a file$")
+public void i_should_be_add_with_a_file(String arg1) throws Throwable {
+	casepge.add_corrective_action("yes");
+    
+}
 
 @When("^I enter a date as when it was received$")
 public void i_enter_a_date_as_when_it_was_received() throws Throwable {
@@ -348,6 +380,16 @@ public void i_submit_the_form() throws Throwable {
    
 }
 
+@When("^I click continue on ts case creation page$")
+public void i_click_continue_on_ts_case_creation_page() throws Throwable {
+	this.driver.findElement(By.xpath("//input[contains(@type,'submit')]")).click();
+}
+
+@When("^I submit file upload$")
+public void i_submit_file_upload() throws Throwable {
+	casepge.click(casepge.file_upload_submit);
+}
+
 @Then("^I should see error \"(.*?)\"$")
 public void i_should_see_error(String arg1) throws Throwable {
 	casepge.verify_error(arg1);
@@ -356,9 +398,12 @@ public void i_should_see_error(String arg1) throws Throwable {
 @When("^I fill in attachment title$")
 public void i_fill_in_attachment_title() throws Throwable {
 	casepge.type(casepge.attachment_title, "Auto test attachment");
-	Thread.sleep(2000);
-	casepge.click(casepge.submit);
     
+}
+
+@When("^I click save attachment$")
+public void i_click_save_attachment() throws Throwable {
+    this.driver.findElement(By.xpath("//input[contains(@type,'submit')]")).click();
 }
 @When("^I click back$")
 public void i_click_back() throws Throwable {
@@ -368,6 +413,22 @@ public void i_click_back() throws Throwable {
 @When("^I click cancel$")
 public void i_click_cancel() throws Throwable {
 	casepge.click(casepge.cancel_link);
+}
+
+@When("^I enter project title$")
+public void i_enter_project_title() throws Throwable {
+	casepge.type(casepge.project_title, "Automated test- project title");
+   
+}
+
+@When("^I enter project summary$")
+public void i_enter_project_summary() throws Throwable {
+	casepge.type(casepge.project_summary, "Automated tests -project description");
+}
+
+@When("^I click create project$")
+public void i_click_create_project() throws Throwable {
+   
 }
 
 	

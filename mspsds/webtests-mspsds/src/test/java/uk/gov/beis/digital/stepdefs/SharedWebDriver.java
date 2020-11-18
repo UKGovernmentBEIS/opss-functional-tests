@@ -93,6 +93,7 @@ public class SharedWebDriver extends EventFiringWebDriver {
 				options.addArguments("no-sandbox");
 				options.addArguments("disable-dev-shm-usage");
 				options.addArguments("window-size=1024x768");
+				
 
 				driver = new ChromeDriver(options);
 				System.out.println("#####Started test run on  " + envurl + "  on " + browser + " browser #####");
@@ -100,6 +101,7 @@ public class SharedWebDriver extends EventFiringWebDriver {
 				driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 				driver.navigate().to(envurl);
 				driver.manage().window().maximize();
+				//driver.manage().deleteAllCookies();
 			} 
 			else {
 				System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");

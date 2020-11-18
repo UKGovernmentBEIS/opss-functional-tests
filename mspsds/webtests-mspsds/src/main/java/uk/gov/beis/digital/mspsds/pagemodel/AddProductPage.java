@@ -16,14 +16,14 @@ import static org.junit.Assert.assertTrue;
 public class AddProductPage extends BasePage {
 
 	
-	By ts_prod_category = By.cssSelector("#product_category");
-	By ts_product_type = By.cssSelector("#product_product_type");
-	By ts_product_name = By.cssSelector("#product_name");
+	By ts_prod_category = By.cssSelector("#category");
+	By ts_product_type = By.cssSelector("#subcategory");
+	By ts_product_name = By.cssSelector("#name");
 	By ts_product_description = By.cssSelector("#product_description");
 	By ts_continue = By.xpath("//input[@name='commit']");
 	By ts_page_heading = By.xpath("//h1[@class='govuk-heading-l']");
-	By ts_hazard_type = By.cssSelector("#investigation_hazard_type");
-	By ts_hazard_description = By.cssSelector("#investigation_hazard_description");
+	By ts_hazard_type = By.cssSelector("#hazard_type");
+	By ts_hazard_description = By.cssSelector("#hazard_description");
 	By ts_hazard_non_compliant_reason = By.cssSelector("#investigation_non_compliant_reason");
 	By ts_business_name = By.cssSelector("#business_trading_name");
 	By ts_business_legalname = By.cssSelector("#business_legal_name");
@@ -44,6 +44,7 @@ public void enter_product_details(String category) throws InterruptedException
 	this.type(this.ts_prod_category,category);
 	find(this.ts_prod_category).sendKeys(Keys.ENTER);
 	this.type(this.ts_product_type,"Auto-test dishwasher");
+	this.select_radio_button_by_text("No");
 	this.type(this.ts_product_name,"Auto-test Testproduct");
 	this.type(this.ts_product_description,"This is a auto test product");
 	
@@ -54,7 +55,7 @@ public void select_compliance(String compliant_type) throws InterruptedException
 {
 	if(compliant_type.equalsIgnoreCase("unsafe"))
 	{
-	this.driver.findElement(By.cssSelector("#investigation_"+compliant_type)).click();
+	this.driver.findElement(By.cssSelector("#base")).click();
 	this.type(this.ts_hazard_type,"Chemical");
 	find(this.ts_hazard_type).sendKeys(Keys.ENTER);
 	this.type(this.ts_hazard_description,"Automated-test");

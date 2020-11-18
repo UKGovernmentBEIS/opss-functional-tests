@@ -14,16 +14,16 @@ import static org.junit.Assert.assertTrue;
 
 public class AssigneePage extends BasePage {
 	By team_elements = By.xpath("//label[contains(@class,'label')]");
-	By change_assign = By.xpath("//div[3]//dd[2]//a[1]");
+	By change_case_owner = By.xpath("//a[contains(.,'Change case owner')]");
 	
 	public AssigneePage(WebDriver driver) {
 		super(driver);
 		
 	}
 	
-	public void click_change_assign()
+	public void click_change_owner()
 	{
-		this.click(change_assign);
+		this.click(change_case_owner);
 	}
 	
 	
