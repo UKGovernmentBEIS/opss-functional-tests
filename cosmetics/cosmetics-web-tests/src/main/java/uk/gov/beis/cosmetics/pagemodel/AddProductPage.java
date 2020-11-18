@@ -51,7 +51,7 @@ public class AddProductPage extends BasePage {
 
 	public void enter_productname(String name) {
 		this.type(prod_name, name);
-		this.click_continue();
+		this.click_continue_on_cos();
 	}
 	public void enter_min_ph_value(String value)
 	{
@@ -75,7 +75,8 @@ public class AddProductPage extends BasePage {
 
 		this.select_radio_button_by_text("Yes");
 		this.type(prod_reference_field, refer_numb);
-		this.click_continue();
+		//this.click_continue();
+		this.click_continue_on_cos();
 
 	}
 
@@ -99,11 +100,11 @@ public class AddProductPage extends BasePage {
 
 	public void select_prod_category(String cat) {
 		this.select_radio_button_by_text("Skin products");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("Skin care products");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("Hand care products");
-		this.click_continue();
+		this.click_continue_on_cos();
 
 	}
 
@@ -141,66 +142,66 @@ public class AddProductPage extends BasePage {
 		this.click_add_cosmetics_product();
 		this.click_by_text("Add cosmetic products");
 		this.select_radio_button_by_text("No");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("No");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.enter_productname("TestManual-Prod");
 		this.enter_reference_number("TestRef-2003");
 		this.select_radio_button_by_text("Yes");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.enter_country_imported_from("India");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("No");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("No, this is a single product");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("No");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("Loose powder");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("A typical non-pressurised bottle, jar, sachet or other package");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("No");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("No");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_prod_category("Skin care products - Hand care products");
 		this.select_radio_button_by_text("Choose a predefined frame formulation");
-		this.click_continue();
+		this.click_continue_on_cos();
 	}
 
 	public void add_product_manually_prebrexit() throws InterruptedException {
 		Thread.sleep(3000);
 		this.click_by_text("Add cosmetic products");
 		this.select_radio_button_by_text("Yes");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("No, I’ll enter information manually");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("Yes");
-		this.click_continue();	
+		this.click_continue_on_cos();	
 		this.enter_productname("TestManual-Prod");
 		this.enter_reference_number("TestRef-2003");
 		this.select_radio_button_by_text("Yes");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.enter_country_imported_from("India");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("No");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("The cosmetic product is a single item");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("No");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("Loose powder");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("A typical non-pressurised bottle, jar, sachet or other package");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("No");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_radio_button_by_text("No");
-		this.click_continue();
+		this.click_continue_on_cos();
 		this.select_prod_category("Skin care products - Hand care products");
 		this.select_radio_button_by_text("Choose a predefined frame formulation");
-		this.click_continue();
+		this.click_continue_on_cos();
 	}
 
 	
@@ -210,27 +211,27 @@ public class AddProductPage extends BasePage {
 	{
 		this.click_by_text("Add cosmetic products");
 		  this.select_radio_button_by_text("No");
-		  this.click_continue();
+		  this.click_continue_on_cos();
 	      this.select_radio_button_by_text("No");
-	      this.click_continue();
+	      this.click_continue_on_cos();
 	      this.enter_productname("TestManual-Prod");
 	      this.enter_reference_number("TestRef-2003");
 	      this.select_radio_button_by_text("Yes");
-		  this.click_continue();
+		  this.click_continue_on_cos();
 	      this.enter_country_imported_from("India");
-	      this.click_continue();
+	      this.click_continue_on_cos();
 	      this.select_radio_button_by_text("No");
-	      this.click_continue();
+	      this.click_continue_on_cos();
 	      this.select_radio_button_by_text("No, this is a single product");
-	      this.click_continue();
+	      this.click_continue_on_cos();
 	      this.select_radio_button_by_text("No");
-	      this.click_continue();
+	      this.click_continue_on_cos();
 	      this.select_radio_button_by_text("Loose powder");
-	      this.click_continue();
+	      this.click_continue_on_cos();
 	      this.select_radio_button_by_text("A typical non-pressurised bottle, jar, sachet or other package");
-	      this.click_continue();
+	      this.click_continue_on_cos();
 	      this.select_radio_button_by_text("No");
-	      this.click_continue();
+	      this.click_continue_on_cos();
 	}
 
 	public void verify_trigger_rule_error(String error)

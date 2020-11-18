@@ -42,7 +42,7 @@ public class WhenSteps extends SharedWebDriver {
 	@When("^I click on continue$")
 	public void i_click_on_continue() throws Throwable {
 		Thread.sleep(2000);
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 	}
 
 	@When("^I should see manual-journey step \"(.*?)\"$")
@@ -54,34 +54,34 @@ public class WhenSteps extends SharedWebDriver {
 	public void i_notify_product_manually() throws Throwable {
 		addProductPage.click_add_cosmetics_product();
 		addProductPage.select_radio_button_by_text("No, they have not been notified in the EU");
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 		addProductPage.select_radio_button_by_text("No");
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 		addProductPage.enter_productname("TestManual-Prod");
 		addProductPage.enter_reference_number("TestRef-2003");
 		addProductPage.select_radio_button_by_text("Yes");
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 		addProductPage.enter_country_imported_from("India");
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 		addProductPage.select_radio_button_by_text("The cosmetic product is a single item");
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 		addProductPage.select_radio_button_by_text("No");
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 		addProductPage.select_radio_button_by_text("Loose powder");
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 		addProductPage.select_radio_button_by_text("No");
 		addProductPage.click_continue();
 		addProductPage.select_radio_button_by_text("No");
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 		addProductPage.select_prod_category("Skin care products - Hand care products");
 		addProductPage.select_radio_button_by_text("Choose a predefined frame formulation");
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 	}
 
 	@When("^I choose frame formulation$")
 	public void i_choose_frame_formulation() throws Throwable {
 		addProductPage.select_frame_formulation("Skin Care Cream, Lotion, Gel");
-		addProductPage.click_continue();
+		addProductPage.click_continue_on_cos();
 	}
 
 	@Then("^I should be asked if the product contains anti-dandruff agents$")

@@ -13,9 +13,11 @@ public class LoginPage extends BasePage {
 	
 	private WebDriver driver;
 	
-	private By usernameField = By.cssSelector("#username");
-	private By passwordField = By.cssSelector("#password");
-	private By loginButton = By.cssSelector("#kc-login");
+	private By usernameField = By.name("user[email]");
+	private By passwordField = By.name("user[password]");
+	private By otp_code = By.id("otp_code");
+	private By loginButton = By.xpath("//button[contains(@class,'govuk-button ')]");
+	
 	private By signInLink = By.xpath("//a[text()='Sign in']");
 	private By signOutLink = By.xpath("//a[text()='Sign out']");
 	private By expiryUnits = By.name("reqActionsEmailTimeoutUnit");
@@ -30,15 +32,19 @@ public class LoginPage extends BasePage {
 
 	public void login_as(String username, String password) throws InterruptedException
 	{
+		this.driver.manage().deleteAllCookies();
 		if (this.IsElementDisplayed(signOutLink)) {
 			this.click(signOutLink);
 		}
+		this.driver.manage().deleteAllCookies();
         this.click_by_text("Sign in to your account");
 		this.type(usernameField, username);
 		this.type(passwordField, password);
 		this.click(loginButton);
+		this.type(otp_code, "11222");	
+		Thread.sleep(2000);
+		this.click(loginButton);
 		Thread.sleep(4000);
-
 		assertTrue("Failed to sign in", this.IsElementDisplayed(signOutLink));
 	}
 public void login_as_kc_admin(String username, String password) throws InterruptedException
@@ -48,7 +54,7 @@ public void login_as_kc_admin(String username, String password) throws Interrupt
 	this.type(usernameField, username);
 	this.type(passwordField, password);
 	this.click(loginButton);
-	Thread.sleep(50000);
+	Thread.sleep(500);
 	}
 }
 
