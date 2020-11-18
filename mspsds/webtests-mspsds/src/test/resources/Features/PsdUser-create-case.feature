@@ -57,7 +57,7 @@ And I should see page "Confirm corrective action details"
 And I click continue on corrective action confirm page
 And I should see "Corrective action was successfully recorded."
 
-@ts-user @regression @corrective-action1
+@ts-user @regression @corrective-action1 @add-attachment
 Scenario: Add corrective action with a file
 Given I login as Trading standard user
 And I open case "Auto-test Testproduct, Auto-test dishwasher – chemical hazard"
@@ -79,6 +79,7 @@ And I should see "Corrective action was successfully recorded."
   @regression @add-attachment @ts-user @test1
   Scenario: Validate error message when I don't enter attachment tile field
   When I add attachment to the case
+  And I submit file upload
   And I Keep attachment title field empty
   And I click save attachment
   Then I should see error "Enter title"

@@ -63,7 +63,7 @@ public class CasesPage extends BasePage {
 	
 	//Attachment page objects
 	public By supporting_information = By.xpath("//a[@id='Supporting information_id']");
-	public By attachment_title = By.xpath("//input[contains(@id,'title')]");
+	public By attachment_title = By.xpath("//input[contains(@id,'document_file_title')]");
 	public By file_upload = By.xpath("//input[contains(@name,'document[file][file]')]");
 	public By back_link = By.xpath("//a[contains(@class,'govuk-back-link')]");
 	public By cancel_link = By.xpath("//a[contains(.,'Cancel')]");

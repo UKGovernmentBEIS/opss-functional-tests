@@ -100,9 +100,9 @@ Then I should see page "New enquiry"
 When I select source "Local authority (Trading Standards)"
 And I click continue input
 And I enter contact person name "Auto test -Contact person"
-And I click continue
+And I click continue input
 And I enter enquriy details
-And I click continue
+And I click continue input
 Then I should see "Enquiry was successfully created."
 And I should see covid badge displayed on the case overview page
 
