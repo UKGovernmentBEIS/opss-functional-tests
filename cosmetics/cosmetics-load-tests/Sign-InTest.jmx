@@ -42,6 +42,18 @@
         <stringProp name="TestPlan.comments">The relevant username and password for the selected environment must be specified.</stringProp>
       </AuthManager>
       <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="User login data" enabled="true">
+        <stringProp name="filename">/Users/nasirkhan/Documents/opss-functional-tests/cosmetics/cosmetics-load-tests/CosmeticsBusinessUsers.csv</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="variableNames">username,password,rpid</stringProp>
+        <boolProp name="ignoreFirstLine">true</boolProp>
+        <stringProp name="delimiter">,</stringProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+      </CSVDataSet>
+      <hashTree/>
       <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="false">
         <collectionProp name="Arguments.arguments">
           <elementProp name="host" elementType="Argument">
@@ -71,7 +83,7 @@
           </elementProp>
           <elementProp name="cosmetics-host" elementType="Argument">
             <stringProp name="Argument.name">cosmetics-host</stringProp>
-            <stringProp name="Argument.value">cosmetics-pr-1852-submit-web.london.cloudapps.digital</stringProp>
+            <stringProp name="Argument.value">cosmetics-pr-1856-submit-web.london.cloudapps.digital</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="cosmetics-port" elementType="Argument">
@@ -81,7 +93,7 @@
           </elementProp>
           <elementProp name="responsible_person_id" elementType="Argument">
             <stringProp name="Argument.name">responsible_person_id</stringProp>
-            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.value">${rpid}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -96,7 +108,7 @@
           </elementProp>
           <elementProp name="cosmetics-host" elementType="Argument">
             <stringProp name="Argument.name">cosmetics-host</stringProp>
-            <stringProp name="Argument.value">submit.cosmetic-product-notifications.service.gov.uk/</stringProp>
+            <stringProp name="Argument.value">submit.cosmetic-product-notifications.service.gov.uk</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="cosmetics-port" elementType="Argument">
@@ -132,8 +144,8 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
         <longProp name="ThreadGroup.start_time">1370726934000</longProp>
         <longProp name="ThreadGroup.end_time">1370726934000</longProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
@@ -150,7 +162,7 @@
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">cosmetics-pr-1852-submit-web.london.cloudapps.digital</stringProp>
+            <stringProp name="HTTPSampler.domain">${cosmetics-host}</stringProp>
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -198,7 +210,7 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+        <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="false">
           <collectionProp name="AuthManager.auth_list">
             <elementProp name="" elementType="Authorization">
               <stringProp name="Authorization.url">https://cosmetics-pr-1852-submit-web.london.cloudapps.digital/</stringProp>
@@ -413,14 +425,14 @@
                 <elementProp name="submit_user[email]" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">submit_user[email]</stringProp>
-                  <stringProp name="Argument.value">nasirkhan.beis@gmail.com</stringProp>
+                  <stringProp name="Argument.value">${username}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="submit_user[password]" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">submit_user[password]</stringProp>
-                  <stringProp name="Argument.value">Nasir@123</stringProp>
+                  <stringProp name="Argument.value">${password}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -811,7 +823,7 @@
             <stringProp name="HTTPSampler.port">443</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/1/change</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/change</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -947,7 +959,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1497,20 +1509,20 @@
                   <elementProp name="submit_user[email]" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">true</boolProp>
                     <stringProp name="Argument.name">submit_user[email]</stringProp>
-                    <stringProp name="Argument.value">nasirkhan.beis@gmail.com</stringProp>
+                    <stringProp name="Argument.value">${username}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   </elementProp>
                   <elementProp name="submit_user[password]" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">true</boolProp>
                     <stringProp name="Argument.name">submit_user[password]</stringProp>
-                    <stringProp name="Argument.value">Nasir@123</stringProp>
+                    <stringProp name="Argument.value">password</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.domain">${cosmetics-host}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.protocol">https</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -1895,7 +1907,7 @@
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.protocol">https</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/responsible_persons/1/change</stringProp>
+              <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/change</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2057,7 +2069,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2112,7 +2124,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/add_notification/new</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/add_notification/new</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2247,7 +2259,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/add_notification/have_products_been_notified_in_eu</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/add_notification/have_products_been_notified_in_eu</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2390,7 +2402,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/add_notification/do_you_have_files_from_eu_notification</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/add_notification/do_you_have_files_from_eu_notification</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2527,7 +2539,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/add_notification/was_product_on_sale_before_eu_exit</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/add_notification/was_product_on_sale_before_eu_exit</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2822,7 +2834,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/build/add_product_name</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/build/add_product_name</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2972,7 +2984,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/build/add_internal_reference</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/build/add_internal_reference</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3109,7 +3121,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/build/single_or_multi_component</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/build/single_or_multi_component</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3355,7 +3367,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/build/number_of_shades</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/build/number_of_shades</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3492,7 +3504,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/build/add_physical_form</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/build/add_physical_form</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3629,7 +3641,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/build/contains_nanomaterials</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/build/contains_nanomaterials</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3766,7 +3778,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/build/select_category</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/build/select_category</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3910,7 +3922,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/build/select_category?category=hair_and_scalp_products</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/build/select_category?category=hair_and_scalp_products</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -4054,7 +4066,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/build/select_category?category=hair_colouring_products</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/build/select_category?category=hair_colouring_products</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -4191,7 +4203,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/build/select_formulation_type</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/build/select_formulation_type</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -4328,7 +4340,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/build/select_frame_formulation</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/build/select_frame_formulation</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -4465,7 +4477,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/trigger_question/select_ph_range</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/trigger_question/select_ph_range</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -4609,7 +4621,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/trigger_question/ph</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/trigger_question/ph</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5083,14 +5095,14 @@
                   <elementProp name="submit_user[email]" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">true</boolProp>
                     <stringProp name="Argument.name">submit_user[email]</stringProp>
-                    <stringProp name="Argument.value">nasirkhan.beis@gmail.com</stringProp>
+                    <stringProp name="Argument.value">${username}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   </elementProp>
                   <elementProp name="submit_user[password]" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">true</boolProp>
                     <stringProp name="Argument.name">submit_user[password]</stringProp>
-                    <stringProp name="Argument.value">Nasir@123</stringProp>
+                    <stringProp name="Argument.value">password</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   </elementProp>
@@ -5481,7 +5493,7 @@
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.protocol">https</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/responsible_persons/1/change</stringProp>
+              <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/change</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5643,7 +5655,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5698,7 +5710,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/add_notification/new</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/add_notification/new</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5833,7 +5845,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/add_notification/have_products_been_notified_in_eu</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/add_notification/have_products_been_notified_in_eu</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5991,7 +6003,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/add_notification/will_products_be_notified_in_eu</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/add_notification/will_products_be_notified_in_eu</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6094,7 +6106,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/build/add_product_name</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/build/add_product_name</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6194,7 +6206,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/build/add_internal_reference</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/build/add_internal_reference</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6281,7 +6293,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/build/single_or_multi_component</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/build/single_or_multi_component</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6353,7 +6365,7 @@
             <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
             <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/build/add_product_image</stringProp>
+            <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/build/add_product_image</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6436,7 +6448,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/build/add_product_image</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/build/add_product_image</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6534,7 +6546,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/build/number_of_shades</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/build/number_of_shades</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6621,7 +6633,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/build/add_physical_form</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/build/add_physical_form</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6708,7 +6720,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/42426819/components/62/build/contains_special_applicator</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/42426819/components/62/build/contains_special_applicator</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6795,7 +6807,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/42426819/components/62/build/contains_cmrs</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/42426819/components/62/build/contains_cmrs</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6882,7 +6894,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/build/contains_nanomaterials</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/build/contains_nanomaterials</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6969,7 +6981,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/build/select_category</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/build/select_category</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -7056,7 +7068,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/build/select_category?category=hair_and_scalp_products</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/build/select_category?category=hair_and_scalp_products</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -7143,7 +7155,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/build/select_category?category=hair_colouring_products</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/build/select_category?category=hair_colouring_products</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -7230,7 +7242,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/build/select_formulation_type</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/build/select_formulation_type</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -7317,7 +7329,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/42426819/components/${component_number}/build/contains_poisonous_ingredients</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/42426819/components/${component_number}/build/contains_poisonous_ingredients</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -7404,7 +7416,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/trigger_question/select_ph_range</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/trigger_question/select_ph_range</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -7498,7 +7510,7 @@
           <stringProp name="HTTPSampler.port">${cosmetics-port}</stringProp>
           <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
-          <stringProp name="HTTPSampler.path">/responsible_persons/${responsible_person_id}/notifications/${prod_id}/components/${component_number}/trigger_question/ph</stringProp>
+          <stringProp name="HTTPSampler.path">/responsible_persons/${rpid}/notifications/${prod_id}/components/${component_number}/trigger_question/ph</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
