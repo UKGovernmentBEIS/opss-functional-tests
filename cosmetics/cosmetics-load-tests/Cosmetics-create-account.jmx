@@ -11,7 +11,27 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="Authorization Manager" enabled="true">
+        <collectionProp name="AuthManager.auth_list">
+          <elementProp name="" elementType="Authorization">
+            <stringProp name="Authorization.url">${protocol}://${cosmetics-host}:${cosmetics-port}</stringProp>
+            <stringProp name="Authorization.username">cosmetics</stringProp>
+            <stringProp name="Authorization.password">reviewAPP</stringProp>
+            <stringProp name="Authorization.domain"></stringProp>
+            <stringProp name="Authorization.realm"></stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Authorization">
+            <stringProp name="Authorization.url">${AUTH_BASE_URL}</stringProp>
+            <stringProp name="Authorization.username">cosmetics</stringProp>
+            <stringProp name="Authorization.password">reviewAPP</stringProp>
+            <stringProp name="Authorization.domain"></stringProp>
+            <stringProp name="Authorization.realm"></stringProp>
+          </elementProp>
+        </collectionProp>
+        <stringProp name="TestPlan.comments">The relevant username and password for the selected environment must be specified.</stringProp>
+      </AuthManager>
+      <hashTree/>
+      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="false">
         <collectionProp name="AuthManager.auth_list">
           <elementProp name="" elementType="Authorization">
             <stringProp name="Authorization.url">https://cosmetics-pr-1729-submit-web.london.cloudapps.digital:443/</stringProp>
@@ -30,16 +50,41 @@
         </collectionProp>
       </AuthManager>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Env-prod" enabled="false">
         <collectionProp name="Arguments.arguments">
-          <elementProp name="host" elementType="Argument">
-            <stringProp name="Argument.name">host</stringProp>
-            <stringProp name="Argument.value">cosmetics-pr-1729-submit-web.london.cloudapps.digital</stringProp>
+          <elementProp name="protocol" elementType="Argument">
+            <stringProp name="Argument.name">protocol</stringProp>
+            <stringProp name="Argument.value">https</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="scheme" elementType="Argument">
-            <stringProp name="Argument.name">scheme</stringProp>
+          <elementProp name="cosmetics-host" elementType="Argument">
+            <stringProp name="Argument.name">cosmetics-host</stringProp>
+            <stringProp name="Argument.value">submit.cosmetic-product-notifications.service.gov.uk</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="cosmetics-port" elementType="Argument">
+            <stringProp name="Argument.name">cosmetics-port</stringProp>
+            <stringProp name="Argument.value">443</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Env-reviewapp" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="protocol" elementType="Argument">
+            <stringProp name="Argument.name">protocol</stringProp>
             <stringProp name="Argument.value">https</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="cosmetics-host" elementType="Argument">
+            <stringProp name="Argument.name">cosmetics-host</stringProp>
+            <stringProp name="Argument.value">cosmetics-pr-1852-submit-web.london.cloudapps.digital</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="cosmetics-port" elementType="Argument">
+            <stringProp name="Argument.name">cosmetics-port</stringProp>
+            <stringProp name="Argument.value">443</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -49,7 +94,7 @@
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments"/>
         </elementProp>
-        <stringProp name="HTTPSampler.domain">cosmetics-pr-1729-submit-web.london.cloudapps.digital</stringProp>
+        <stringProp name="HTTPSampler.domain">cosmetics-pr-1852-submit-web.london.cloudapps.digital</stringProp>
         <stringProp name="HTTPSampler.port"></stringProp>
         <stringProp name="HTTPSampler.protocol">https</stringProp>
         <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -135,7 +180,7 @@
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="Referer" elementType="Header">
                   <stringProp name="Header.name">Referer</stringProp>
-                  <stringProp name="Header.value">${scheme}://${host}/</stringProp>
+                  <stringProp name="Header.value">${protocol}://${cosmetics-host}/</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Language" elementType="Header">
                   <stringProp name="Header.name">Accept-Language</stringProp>
@@ -196,14 +241,14 @@
                 <elementProp name="registration_new_account_form[full_name]" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">registration_new_account_form[full_name]</stringProp>
-                  <stringProp name="Argument.value">Nasir Khan</stringProp>
+                  <stringProp name="Argument.value">load test</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="registration_new_account_form[email]" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">true</boolProp>
                   <stringProp name="Argument.name">registration_new_account_form[email]</stringProp>
-                  <stringProp name="Argument.value">nasirkhan.beis+loadtest${counter}@gmail.com</stringProp>
+                  <stringProp name="Argument.value">loadtest${counter}@example.com</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
