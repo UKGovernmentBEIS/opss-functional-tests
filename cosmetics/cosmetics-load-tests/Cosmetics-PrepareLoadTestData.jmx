@@ -47,7 +47,7 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Environment - Int" enabled="true">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Environment - reviewapp" enabled="true">
         <collectionProp name="Arguments.arguments">
           <elementProp name="protocol" elementType="Argument">
             <stringProp name="Argument.name">protocol</stringProp>
@@ -56,7 +56,27 @@
           </elementProp>
           <elementProp name="cosmetics-host" elementType="Argument">
             <stringProp name="Argument.name">cosmetics-host</stringProp>
-            <stringProp name="Argument.value">cosmetics-pr-1729-submit-web.london.cloudapps.digital</stringProp>
+            <stringProp name="Argument.value">cosmetics-pr-1852-submit-web.london.cloudapps.digital</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="cosmetics-port" elementType="Argument">
+            <stringProp name="Argument.name">cosmetics-port</stringProp>
+            <stringProp name="Argument.value">443</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Environment - prod" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="protocol" elementType="Argument">
+            <stringProp name="Argument.name">protocol</stringProp>
+            <stringProp name="Argument.value">https</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="cosmetics-host" elementType="Argument">
+            <stringProp name="Argument.name">cosmetics-host</stringProp>
+            <stringProp name="Argument.value">submit.cosmetic-product-notifications.service.gov.uk/</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="cosmetics-port" elementType="Argument">
@@ -87,10 +107,17 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="Authorization Manager" enabled="false">
+      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="Authorization Manager" enabled="true">
         <collectionProp name="AuthManager.auth_list">
           <elementProp name="" elementType="Authorization">
             <stringProp name="Authorization.url">${protocol}://${cosmetics-host}:${cosmetics-port}</stringProp>
+            <stringProp name="Authorization.username">cosmetics</stringProp>
+            <stringProp name="Authorization.password">reviewAPP</stringProp>
+            <stringProp name="Authorization.domain"></stringProp>
+            <stringProp name="Authorization.realm"></stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Authorization">
+            <stringProp name="Authorization.url">${AUTH_BASE_URL}</stringProp>
             <stringProp name="Authorization.username">cosmetics</stringProp>
             <stringProp name="Authorization.password">reviewAPP</stringProp>
             <stringProp name="Authorization.domain"></stringProp>
@@ -106,7 +133,7 @@
         <boolProp name="CookieManager.clearEachIteration">true</boolProp>
       </CookieManager>
       <hashTree/>
-      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="false">
         <collectionProp name="AuthManager.auth_list">
           <elementProp name="" elementType="Authorization">
             <stringProp name="Authorization.url">https://cosmetics-pr-1729-submit-web.london.cloudapps.digital:443/sign-out</stringProp>
@@ -496,7 +523,7 @@ vars.put(&quot;user_number&quot;, Integer.toString(threadNumber));</stringProp>
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">cosmetics-pr-1729-submit-web.london.cloudapps.digital</stringProp>
+              <stringProp name="HTTPSampler.domain">${cosmetics-host}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -516,7 +543,7 @@ vars.put(&quot;user_number&quot;, Integer.toString(threadNumber));</stringProp>
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">${scheme}://${host}sign-in</stringProp>
+                    <stringProp name="Header.value">${protocol}://${cosmetics-host}/sign-in</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Language" elementType="Header">
                     <stringProp name="Header.name">Accept-Language</stringProp>
@@ -524,7 +551,7 @@ vars.put(&quot;user_number&quot;, Integer.toString(threadNumber));</stringProp>
                   </elementProp>
                   <elementProp name="Origin" elementType="Header">
                     <stringProp name="Header.name">Origin</stringProp>
-                    <stringProp name="Header.value">${scheme}://cosmetics-pr-1729-submit-web.london.cloudapps.digital</stringProp>
+                    <stringProp name="Header.value">${protocol}://${cosmetics-host}</stringProp>
                   </elementProp>
                   <elementProp name="Accept" elementType="Header">
                     <stringProp name="Header.name">Accept</stringProp>
@@ -710,7 +737,7 @@ vars.put(&quot;user_number&quot;, Integer.toString(threadNumber));</stringProp>
                   </elementProp>
                 </collectionProp>
               </elementProp>
-              <stringProp name="HTTPSampler.domain">cosmetics-pr-1729-submit-web.london.cloudapps.digital</stringProp>
+              <stringProp name="HTTPSampler.domain">${cosmetics-host}</stringProp>
               <stringProp name="HTTPSampler.port">443</stringProp>
               <stringProp name="HTTPSampler.protocol">${protocol}</stringProp>
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
@@ -730,7 +757,7 @@ vars.put(&quot;user_number&quot;, Integer.toString(threadNumber));</stringProp>
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Referer" elementType="Header">
                     <stringProp name="Header.name">Referer</stringProp>
-                    <stringProp name="Header.value">${scheme}://${host}two-factor</stringProp>
+                    <stringProp name="Header.value">${protocol}://${cosmetics-host}/two-factor</stringProp>
                   </elementProp>
                   <elementProp name="Accept-Language" elementType="Header">
                     <stringProp name="Header.name">Accept-Language</stringProp>
@@ -738,7 +765,7 @@ vars.put(&quot;user_number&quot;, Integer.toString(threadNumber));</stringProp>
                   </elementProp>
                   <elementProp name="Origin" elementType="Header">
                     <stringProp name="Header.name">Origin</stringProp>
-                    <stringProp name="Header.value">${scheme}://cosmetics-pr-1729-submit-web.london.cloudapps.digital</stringProp>
+                    <stringProp name="Header.value">${protocol}://${cosmetics-host}</stringProp>
                   </elementProp>
                   <elementProp name="Accept" elementType="Header">
                     <stringProp name="Header.name">Accept</stringProp>
