@@ -28,6 +28,7 @@ public class AddProductPage extends BasePage {
 	By ts_business_name = By.cssSelector("#business_trading_name");
 	By ts_business_legalname = By.cssSelector("#business_legal_name");
 	By ts_create_case = By.xpath("//input[@name='commit']");
+	By ts_product_units = By.xpath("//input[@id='exact_units']");
 	
 	private WebDriver driver;
 	
@@ -45,6 +46,8 @@ public void enter_product_details(String category) throws InterruptedException
 	find(this.ts_prod_category).sendKeys(Keys.ENTER);
 	this.type(this.ts_product_type,"Auto-test dishwasher");
 	this.select_radio_button_by_text("No");
+	this.select_radio_button_by_text("Exact number known");
+	this.type(this.ts_product_units, "20");
 	this.type(this.ts_product_name,"Auto-test Testproduct");
 	this.type(this.ts_product_description,"This is a auto test product");
 	
