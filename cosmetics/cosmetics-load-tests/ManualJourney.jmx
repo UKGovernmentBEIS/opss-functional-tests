@@ -14,7 +14,12 @@
           </elementProp>
           <elementProp name="number_of_notifications_per_user" elementType="Argument">
             <stringProp name="Argument.name">number_of_notifications_per_user</stringProp>
-            <stringProp name="Argument.value">3</stringProp>
+            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="uniform_random_timer" elementType="Argument">
+            <stringProp name="Argument.name">uniform_random_timer</stringProp>
+            <stringProp name="Argument.value">1000.0</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -368,8 +373,8 @@
           </HTTPSamplerProxy>
           <hashTree>
             <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">7636</stringProp>
-              <stringProp name="RandomTimer.range">100.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0</stringProp>
+              <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
               <stringProp name="TestPlan.comments">Recorded:7636ms</stringProp>
             </UniformRandomTimer>
             <hashTree/>
@@ -513,8 +518,8 @@
           </HTTPSamplerProxy>
           <hashTree>
             <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">11211</stringProp>
-              <stringProp name="RandomTimer.range">100.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0</stringProp>
+              <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
               <stringProp name="TestPlan.comments">Recorded:11211ms</stringProp>
             </UniformRandomTimer>
             <hashTree/>
@@ -730,8 +735,8 @@
           </HTTPSamplerProxy>
           <hashTree>
             <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">5291</stringProp>
-              <stringProp name="RandomTimer.range">100.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0</stringProp>
+              <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
               <stringProp name="TestPlan.comments">Recorded:5291ms</stringProp>
             </UniformRandomTimer>
             <hashTree/>
@@ -1317,7 +1322,7 @@
           <hashTree>
             <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">0</stringProp>
-              <stringProp name="RandomTimer.range">100.0</stringProp>
+              <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
               <stringProp name="TestPlan.comments">Recorded:0ms</stringProp>
             </UniformRandomTimer>
             <hashTree/>
@@ -1449,8 +1454,8 @@
           </HTTPSamplerProxy>
           <hashTree>
             <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">7636</stringProp>
-              <stringProp name="RandomTimer.range">100.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0</stringProp>
+              <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
               <stringProp name="TestPlan.comments">Recorded:7636ms</stringProp>
             </UniformRandomTimer>
             <hashTree/>
@@ -1599,8 +1604,8 @@
             </HTTPSamplerProxy>
             <hashTree>
               <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">1121</stringProp>
-                <stringProp name="RandomTimer.range">100.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0</stringProp>
+                <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
                 <stringProp name="TestPlan.comments">Recorded:11211ms</stringProp>
               </UniformRandomTimer>
               <hashTree/>
@@ -1816,8 +1821,8 @@
             </HTTPSamplerProxy>
             <hashTree>
               <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">5291</stringProp>
-                <stringProp name="RandomTimer.range">100.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0</stringProp>
+                <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
                 <stringProp name="TestPlan.comments">Recorded:5291ms</stringProp>
               </UniformRandomTimer>
               <hashTree/>
@@ -2141,8 +2146,8 @@
           </HTTPSamplerProxy>
           <hashTree>
             <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">9293</stringProp>
-              <stringProp name="RandomTimer.range">100.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0</stringProp>
+              <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
               <stringProp name="TestPlan.comments">Recorded:9293ms</stringProp>
             </UniformRandomTimer>
             <hashTree/>
@@ -2870,8 +2875,8 @@
               </HTTPSamplerProxy>
               <hashTree>
                 <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                  <stringProp name="ConstantTimer.delay">7021</stringProp>
-                  <stringProp name="RandomTimer.range">100.0</stringProp>
+                  <stringProp name="ConstantTimer.delay">0</stringProp>
+                  <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
                   <stringProp name="TestPlan.comments">Recorded:7021ms</stringProp>
                 </UniformRandomTimer>
                 <hashTree/>
@@ -4920,7 +4925,7 @@
           <hashTree>
             <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
               <stringProp name="ConstantTimer.delay">0</stringProp>
-              <stringProp name="RandomTimer.range">100.0</stringProp>
+              <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
               <stringProp name="TestPlan.comments">Recorded:0ms</stringProp>
             </UniformRandomTimer>
             <hashTree/>
@@ -5052,8 +5057,8 @@
           </HTTPSamplerProxy>
           <hashTree>
             <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">7636</stringProp>
-              <stringProp name="RandomTimer.range">100.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0</stringProp>
+              <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
               <stringProp name="TestPlan.comments">Recorded:7636ms</stringProp>
             </UniformRandomTimer>
             <hashTree/>
@@ -5202,8 +5207,8 @@
             </HTTPSamplerProxy>
             <hashTree>
               <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">1121</stringProp>
-                <stringProp name="RandomTimer.range">100.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0</stringProp>
+                <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
                 <stringProp name="TestPlan.comments">Recorded:11211ms</stringProp>
               </UniformRandomTimer>
               <hashTree/>
@@ -5419,8 +5424,8 @@
             </HTTPSamplerProxy>
             <hashTree>
               <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">5291</stringProp>
-                <stringProp name="RandomTimer.range">100.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0</stringProp>
+                <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
                 <stringProp name="TestPlan.comments">Recorded:5291ms</stringProp>
               </UniformRandomTimer>
               <hashTree/>
@@ -5744,8 +5749,8 @@
           </HTTPSamplerProxy>
           <hashTree>
             <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">9293</stringProp>
-              <stringProp name="RandomTimer.range">100.0</stringProp>
+              <stringProp name="ConstantTimer.delay">0</stringProp>
+              <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
               <stringProp name="TestPlan.comments">Recorded:9293ms</stringProp>
             </UniformRandomTimer>
             <hashTree/>
@@ -6056,8 +6061,8 @@
               </HTTPSamplerProxy>
               <hashTree>
                 <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                  <stringProp name="ConstantTimer.delay">500</stringProp>
-                  <stringProp name="RandomTimer.range">100.0</stringProp>
+                  <stringProp name="ConstantTimer.delay">0</stringProp>
+                  <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
                   <stringProp name="TestPlan.comments">Recorded:48019ms</stringProp>
                 </UniformRandomTimer>
                 <hashTree/>
@@ -6159,8 +6164,8 @@
             </HTTPSamplerProxy>
             <hashTree>
               <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">7021</stringProp>
-                <stringProp name="RandomTimer.range">100.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0</stringProp>
+                <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
                 <stringProp name="TestPlan.comments">Recorded:7021ms</stringProp>
               </UniformRandomTimer>
               <hashTree/>
@@ -6417,8 +6422,8 @@
               </HTTPSamplerProxy>
               <hashTree>
                 <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                  <stringProp name="ConstantTimer.delay">500</stringProp>
-                  <stringProp name="RandomTimer.range">100.0</stringProp>
+                  <stringProp name="ConstantTimer.delay">0</stringProp>
+                  <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
                   <stringProp name="TestPlan.comments">Recorded:180295ms</stringProp>
                 </UniformRandomTimer>
                 <hashTree/>
@@ -6501,8 +6506,8 @@
             </HTTPSamplerProxy>
             <hashTree>
               <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">500</stringProp>
-                <stringProp name="RandomTimer.range">100.0</stringProp>
+                <stringProp name="ConstantTimer.delay">0</stringProp>
+                <stringProp name="RandomTimer.range">${uniform_random_timer}</stringProp>
                 <stringProp name="TestPlan.comments">Recorded:10524ms</stringProp>
               </UniformRandomTimer>
               <hashTree/>
