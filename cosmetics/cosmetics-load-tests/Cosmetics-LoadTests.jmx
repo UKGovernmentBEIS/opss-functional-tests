@@ -9,7 +9,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="number_of_responsible_person_users" elementType="Argument">
             <stringProp name="Argument.name">number_of_responsible_person_users</stringProp>
-            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.value">200</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="number_of_poison_centre_users" elementType="Argument">
@@ -19,7 +19,7 @@
           </elementProp>
           <elementProp name="number_of_uploads_per_user" elementType="Argument">
             <stringProp name="Argument.name">number_of_uploads_per_user</stringProp>
-            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.value">100</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="ramp_up_time" elementType="Argument">
@@ -36,7 +36,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="host" elementType="Argument">
             <stringProp name="Argument.name">host</stringProp>
-            <stringProp name="Argument.value">cosmetics-pr-1852-search-web.london.cloudapps.digital/</stringProp>
+            <stringProp name="Argument.value">cosmetics-submit-research.london.cloudapps.digital</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="scheme" elementType="Argument">
@@ -46,7 +46,7 @@
           </elementProp>
           <elementProp name="number_of_uploads_per_user" elementType="Argument">
             <stringProp name="Argument.name">number_of_uploads_per_user</stringProp>
-            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.value">100</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -91,7 +91,7 @@
           </elementProp>
           <elementProp name="cosmetics-host" elementType="Argument">
             <stringProp name="Argument.name">cosmetics-host</stringProp>
-            <stringProp name="Argument.value">cosmetics-pr-1856-submit-web.london.cloudapps.digital</stringProp>
+            <stringProp name="Argument.value">cosmetics-submit-research.london.cloudapps.digital</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="cosmetics-port" elementType="Argument">
@@ -164,7 +164,7 @@
       </ThreadGroup>
       <hashTree>
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="UserLogin-Data" enabled="true">
-          <stringProp name="filename">/Users/nasirkhan/Documents/CosmeticsBusinessUsers.csv</stringProp>
+          <stringProp name="filename">CosmeticsUsersResearch.csv</stringProp>
           <stringProp name="fileEncoding"></stringProp>
           <stringProp name="variableNames">username,password,rpid</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
@@ -968,7 +968,7 @@ vars.put(&quot;user_number&quot;, Integer.toString(threadNumber));</stringProp>
               <collectionProp name="Arguments.arguments">
                 <elementProp name="notification_filename" elementType="Argument">
                   <stringProp name="Argument.name">notification_filename</stringProp>
-                  <stringProp name="Argument.value">notification-files/file-</stringProp>
+                  <stringProp name="Argument.value">file-</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
