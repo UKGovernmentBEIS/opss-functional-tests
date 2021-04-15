@@ -382,6 +382,7 @@ public void i_submit_the_form() throws Throwable {
 
 @When("^I click continue on ts case creation page$")
 public void i_click_continue_on_ts_case_creation_page() throws Throwable {
+	Thread.sleep(2000);
 	this.driver.findElement(By.xpath("//input[contains(@type,'submit')]")).click();
 }
 

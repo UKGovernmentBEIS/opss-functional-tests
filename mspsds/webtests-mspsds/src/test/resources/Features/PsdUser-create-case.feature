@@ -53,18 +53,14 @@ Given I login as Trading standard user
 And I open case "Auto-test Testproduct, Auto-test dishwasher – chemical hazard"
 When I go to supporting information tab
 Then I should be able to add activity "Record corrective action"
-And I should see page "Confirm corrective action details"
-And I click continue on corrective action confirm page
 And I should see "Corrective action was successfully recorded."
 
-@ts-user @regression @corrective-action1 @add-attachment
+@ts-user @regression @corrective-action @add-attachment
 Scenario: Add corrective action with a file
 Given I login as Trading standard user
 And I open case "Auto-test Testproduct, Auto-test dishwasher – chemical hazard"
 When I go to supporting information tab
 Then I should be add "Record corrective action" with a file
-And I should see page "Confirm corrective action details"
-And I click continue on corrective action confirm page
 And I should see "Corrective action was successfully recorded."
 
   @regression @add-attachment @ts-user @test1
